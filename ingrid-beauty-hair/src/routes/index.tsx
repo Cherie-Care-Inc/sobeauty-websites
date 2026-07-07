@@ -21,9 +21,9 @@ const translations = {
     nav: { services: "Services", about: "À propos", contact: "Contact", book: "Réserver" },
     hero: {
       title1: "Sublimez",
-      title2: "vos locs",
+      title2: "votre style",
       title3: "à Andilly.",
-      desc: "Ingrid Beauty Hair — Spécialiste des locs depuis 15 ans. Chaleureux et moderne, je vous accueille chez moi à Andilly. Une expérience douce, soignée et personnalisée.",
+      desc: "Ingrid Beauty Hair — Coiffeuse professionnelle spécialisée en locs, tresses, twist et barber. Forte de 15 ans d'expérience, je vous accueille chez moi à Andilly dans une ambiance chaleureuse et soignée.",
       bookNow: "Réserver maintenant",
       discover: "Découvrir",
       happy: "Clientes ravies",
@@ -47,11 +47,11 @@ const translations = {
       title1: "Je m'appelle",
       title2: "Ingrid",
       title3: ".",
-      desc: "Je suis passionnée et autodidacte. J'aime sublimer et révéler la beauté de chaque cliente. Depuis 15 ans, je mets mon savoir-faire au service de vos locs avec douceur, précision et passion.",
+      desc: "Coiffeuse professionnelle passionnée, je mets mon expertise au service de mes clients depuis 15 ans. Locs, tresses, twist ou barber — j'aime sublimer chaque personne avec douceur, précision et soin.",
       bullets: [
-        "À votre écoute pour une coiffure qui vous ressemble",
+        "À votre écoute pour un résultat qui vous ressemble",
         "Douce avec vos cheveux — je ne serre jamais trop",
-        "Perfectionniste — chaque loc est posée avec le plus grand soin",
+        "Perfectionniste — chaque prestation est réalisée avec le plus grand soin",
       ],
       sign: "Je vous attends — Ingrid",
       cta: "Prendre rendez-vous",
@@ -65,7 +65,7 @@ const translations = {
       items: [
         { label: "Écoute", text: "Je prends le temps d'écouter vos envies et de vous conseiller pour que vous repartiez avec exactement ce que vous souhaitiez." },
         { label: "Douceur", text: "Je travaille avec douceur et respect de votre cheveu. Mes clientes me font confiance depuis des années pour cette attention particulière." },
-        { label: "Perfection", text: "Chaque loc est posée avec soin et précision. Je suis perfectionniste car vous méritez un résultat impeccable à chaque fois." },
+        { label: "Perfection", text: "Chaque prestation est réalisée avec soin et précision. Je suis perfectionniste car vous méritez un résultat impeccable à chaque fois." },
       ],
     },
     cta: {
@@ -75,7 +75,7 @@ const translations = {
       desc: "Réservez votre rendez-vous en ligne en quelques secondes.",
       bookNow: "Réserver maintenant",
     },
-    marquee: ["Locs", "Twist", "Barber", "Reprise Racines", "Coloration", "Andilly 95"],
+    marquee: ["Locs", "Twist", "Barber", "Tresses", "Reprise Racines", "Andilly 95"],
     footer: {
       tagline: "Locs, Twist & Barber à Andilly (95). Reprise racines, coiffure et coupe sur mesure.",
       contact: "Contact",
@@ -87,10 +87,10 @@ const translations = {
   en: {
     nav: { services: "Services", about: "About", contact: "Contact", book: "Book" },
     hero: {
-      title1: "Reveal",
-      title2: "your locs",
+      title1: "Elevate",
+      title2: "your style",
       title3: "in Andilly.",
-      desc: "Ingrid Beauty Hair — Locs specialist with 15 years of experience. Warm and modern, I welcome you at my home in Andilly for a gentle, precise and personalised experience.",
+      desc: "Ingrid Beauty Hair — Professional hairdresser specialised in locs, braids, twist and barber. With 15 years of experience, I welcome you at my home in Andilly in a warm and refined setting.",
       bookNow: "Book now",
       discover: "Discover",
       happy: "Happy clients",
@@ -114,11 +114,11 @@ const translations = {
       title1: "My name is",
       title2: "Ingrid",
       title3: ".",
-      desc: "I am self-taught and passionate. I love enhancing and revealing the beauty of every client. For 15 years, I have shared my expertise in locs with gentleness, precision and passion.",
+      desc: "A passionate professional hairdresser, I have been bringing my expertise to my clients for 15 years. Locs, braids, twist or barber — I love enhancing each person with gentleness, precision and care.",
       bullets: [
         "I listen to understand exactly what you want",
-        "Gentle with your hair — I never braid too tight",
-        "Perfectionist — every loc is placed with the greatest care",
+        "Gentle with your hair — I never work too tight",
+        "Perfectionist — every service is delivered with the greatest care",
       ],
       sign: "I'm waiting for you — Ingrid",
       cta: "Book an appointment",
@@ -132,7 +132,7 @@ const translations = {
       items: [
         { label: "Listening", text: "I take the time to listen and advise you so that you leave with exactly what you had in mind." },
         { label: "Gentleness", text: "I work with gentleness and respect for your hair. My clients have trusted me for years for this special care." },
-        { label: "Perfection", text: "Every loc is placed with care and precision. I am a perfectionist because you deserve an impeccable result every time." },
+        { label: "Perfection", text: "Every service is delivered with care and precision. I am a perfectionist because you deserve an impeccable result every time." },
       ],
     },
     cta: {
@@ -142,7 +142,7 @@ const translations = {
       desc: "Book your appointment online in seconds.",
       bookNow: "Book now",
     },
-    marquee: ["Locs", "Twist", "Barber", "Root Retouch", "Colouring", "Andilly 95"],
+    marquee: ["Locs", "Twist", "Barber", "Braiding", "Root Retouch", "Andilly 95"],
     footer: {
       tagline: "Locs, Twist & Barber specialist in Andilly (95). Root retouch, styling and custom cuts.",
       contact: "Contact",
@@ -158,7 +158,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Ingrid Beauty Hair - Spécialiste Locs à Andilly (95)" },
-      { name: "description", content: "Ingrid — Spécialiste Locs, Twist & Barber à Andilly 95580. 15 ans d'expérience. Reprise racines, coiffure et coupe sur mesure. Réservez en ligne." },
+      { name: "description", content: "Ingrid Beauty Hair — Coiffeuse professionnelle à Andilly 95580. Locs, tresses, twist et barber. 15 ans d'expérience. Réservez en ligne." },
       { property: "og:title", content: "Ingrid Beauty Hair - Spécialiste Locs à Andilly (95)" },
       { property: "og:description", content: "Spécialiste des locs à Andilly. Reprise racines twist et crochet, tressage, coloration. 15 ans d'expérience." },
       { property: "og:url", content: "/" },
@@ -285,7 +285,7 @@ function Index() {
             <img src={ingridCutoutImg} alt="Ingrid Beauty Hair" className="absolute left-1/2 -translate-x-1/2 w-auto h-[115%]" style={{ top: '-8%' }} />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to top, oklch(0.18 0.05 350 / 0.60), transparent 55%)" }} />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-cream">
-              <span className="text-xs uppercase tracking-[0.25em]">Locticienne</span>
+              <span className="text-xs uppercase tracking-[0.25em]">Coiffeuse · Barber</span>
               <span className="font-display italic text-2xl">Ingrid</span>
             </div>
           </div>
