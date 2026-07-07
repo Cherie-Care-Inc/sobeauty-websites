@@ -65,7 +65,7 @@ const translations = {
       items: [
         { label: "Écoute", text: "Je prends le temps d'écouter vos envies et de vous conseiller pour que vous repartiez avec exactement ce que vous souhaitiez." },
         { label: "Douceur", text: "Je travaille avec douceur et respect de votre cheveu. Mes clientes me font confiance depuis des années pour cette attention particulière." },
-        { label: "Perfection", text: "Chaque prestation est réalisée avec soin et précision. Je suis perfectionniste car vous méritez un résultat impeccable à chaque fois." },
+        { label: "Perfection", text: "Vos locs sont posées avec soin et précision. Je suis perfectionniste car vous méritez un résultat impeccable à chaque fois." },
       ],
     },
     cta: {
