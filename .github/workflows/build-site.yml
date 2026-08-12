@@ -43,11 +43,17 @@ jobs:
           bun-version: latest
 
       - name: Materialise the brief
+        # Pass the brief through the environment (Actions escapes it safely) —
+        # never interpolate it into the script body: the copy contains quotes and
+        # French apostrophes that would break the shell.
+        env:
+          BRIEF_JSON: ${{ toJSON(github.event.client_payload.brief) }}
+          BRIEF_URL: ${{ github.event.client_payload.brief_url }}
         run: |
-          if [ -n '${{ toJSON(github.event.client_payload.brief) }}' ] && [ '${{ toJSON(github.event.client_payload.brief) }}' != 'null' ]; then
-            echo '${{ toJSON(github.event.client_payload.brief) }}' > /tmp/brief.json
+          if [ -n "$BRIEF_JSON" ] && [ "$BRIEF_JSON" != "null" ]; then
+            printf '%s' "$BRIEF_JSON" > /tmp/brief.json
           else
-            curl -fsSL '${{ github.event.client_payload.brief_url }}' -o /tmp/brief.json
+            curl -fsSL "$BRIEF_URL" -o /tmp/brief.json
           fi
           echo "Brief for slug: $(jq -r .slug /tmp/brief.json)"
 
