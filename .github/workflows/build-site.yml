@@ -32,6 +32,9 @@ jobs:
       JOB_ID: ${{ github.event.client_payload.job_id }}
       SLUG: ${{ github.event.client_payload.slug }}
       IS_PROMOTE: ${{ github.event.action == 'promote-site' }}
+      # Callback URL travels in the dispatch payload (per Supabase project) so Dev
+      # and prod share one repo; falls back to the repo secret if unset.
+      CALLBACK_URL: ${{ github.event.client_payload.callback_url || secrets.STUDIO_CALLBACK_URL }}
     steps:
       - uses: actions/checkout@v4
 
@@ -72,7 +75,7 @@ jobs:
       - name: Report success
         if: success()
         run: |
-          curl -fsS -X POST "${{ secrets.STUDIO_CALLBACK_URL }}" \
+          curl -fsS -X POST "$CALLBACK_URL" \
             -H "Authorization: Bearer ${{ secrets.STUDIO_SITE_CALLBACK_SECRET }}" \
             -H "Content-Type: application/json" \
             -d "{\"job_id\":\"${JOB_ID}\",\"status\":\"$([ "$IS_PROMOTE" = "true" ] && echo delivered || echo built)\",\"url\":\"${{ steps.deploy.outputs.url }}\"}"
@@ -80,7 +83,7 @@ jobs:
       - name: Report failure
         if: failure()
         run: |
-          curl -fsS -X POST "${{ secrets.STUDIO_CALLBACK_URL }}" \
+          curl -fsS -X POST "$CALLBACK_URL" \
             -H "Authorization: Bearer ${{ secrets.STUDIO_SITE_CALLBACK_SECRET }}" \
             -H "Content-Type: application/json" \
             -d "{\"job_id\":\"${JOB_ID}\",\"status\":\"failed\",\"error\":\"build-site workflow failed — see Actions run ${{ github.run_id }}\"}"
