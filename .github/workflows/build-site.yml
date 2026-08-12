@@ -1,0 +1,86 @@
+name: Build beautician site
+
+# Triggered by the Studio `website` edge agent via repository_dispatch.
+#   event_type "build-site"   → deploy to the -preview host (admin review)
+#   event_type "promote-site" → deploy to the production host (after approval)
+#
+# client_payload:
+#   job_id       — studio_jobs.id (echoed back in the callback)
+#   brief        — the enriched brief JSON (inline; used if present)
+#   brief_url    — signed URL to fetch the brief (fallback if brief omitted / too big)
+#   slug         — client slug (for logging)
+#
+# Required repo secrets:
+#   CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID  — wrangler deploy
+#   STUDIO_CALLBACK_URL                          — studio-worker callback endpoint
+#   STUDIO_SITE_CALLBACK_SECRET                  — bearer secret the endpoint checks
+
+on:
+  repository_dispatch:
+    types: [build-site, promote-site]
+
+concurrency:
+  group: site-${{ github.event.client_payload.slug }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      JOB_ID: ${{ github.event.client_payload.job_id }}
+      SLUG: ${{ github.event.client_payload.slug }}
+      IS_PROMOTE: ${{ github.event.action == 'promote-site' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Materialise the brief
+        run: |
+          if [ -n '${{ toJSON(github.event.client_payload.brief) }}' ] && [ '${{ toJSON(github.event.client_payload.brief) }}' != 'null' ]; then
+            echo '${{ toJSON(github.event.client_payload.brief) }}' > /tmp/brief.json
+          else
+            curl -fsSL '${{ github.event.client_payload.brief_url }}' -o /tmp/brief.json
+          fi
+          echo "Brief for slug: $(jq -r .slug /tmp/brief.json)"
+
+      - name: Build & deploy
+        id: deploy
+        run: |
+          FLAGS="--deploy"
+          if [ "$IS_PROMOTE" != "true" ]; then FLAGS="$FLAGS --preview"; fi
+          bun scripts/build-from-brief.ts /tmp/brief.json $FLAGS
+          if [ "$IS_PROMOTE" = "true" ]; then
+            echo "url=https://${SLUG}.sobeauty.business" >> "$GITHUB_OUTPUT"
+          else
+            echo "url=https://${SLUG}-preview.sobeauty.business" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit the generated site
+        if: success()
+        run: |
+          git config user.name "sobeauty-bot"
+          git config user.email "bot@sobeauty.business"
+          git add "${SLUG}/" || true
+          git commit -m "build(${SLUG}): $([ "$IS_PROMOTE" = "true" ] && echo promote || echo preview) via website agent" || echo "nothing to commit"
+          git push || echo "push skipped"
+
+      - name: Report success
+        if: success()
+        run: |
+          curl -fsS -X POST "${{ secrets.STUDIO_CALLBACK_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.STUDIO_SITE_CALLBACK_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"job_id\":\"${JOB_ID}\",\"status\":\"$([ "$IS_PROMOTE" = "true" ] && echo delivered || echo built)\",\"url\":\"${{ steps.deploy.outputs.url }}\"}"
+
+      - name: Report failure
+        if: failure()
+        run: |
+          curl -fsS -X POST "${{ secrets.STUDIO_CALLBACK_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.STUDIO_SITE_CALLBACK_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"job_id\":\"${JOB_ID}\",\"status\":\"failed\",\"error\":\"build-site workflow failed — see Actions run ${{ github.run_id }}\"}"

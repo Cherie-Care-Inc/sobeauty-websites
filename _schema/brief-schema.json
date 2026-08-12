@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sobeauty.business/brief-schema.json",
+  "title": "SoBeauty Website Build Brief",
+  "type": "object",
+  "required": [
+    "brand_name",
+    "professional_name",
+    "slug",
+    "city",
+    "country",
+    "address",
+    "postal_code",
+    "phone",
+    "email",
+    "logo_url",
+    "primary_services",
+    "color_palette",
+    "typography"
+  ],
+  "properties": {
+    "brand_name": {
+      "type": "string",
+      "description": "Brand or studio name — used in meta title, alt tags, footer",
+      "examples": ["Ingrid Beauty Hair"]
+    },
+    "professional_name": {
+      "type": "string",
+      "description": "Full name of the beautician — used in About section",
+      "examples": ["Ingrid Delishys-T"]
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Kebab-case identifier — used for folder name, subdomain, booking URL",
+      "examples": ["ingrid-beauty-hair"]
+    },
+    "city": {
+      "type": "string",
+      "examples": ["Andilly"]
+    },
+    "country": {
+      "type": "string",
+      "default": "France",
+      "examples": ["France"]
+    },
+    "address": {
+      "type": "string",
+      "description": "Street address",
+      "examples": ["16 rue du président Paul Doumer"]
+    },
+    "postal_code": {
+      "type": "string",
+      "examples": ["95580"]
+    },
+    "phone": {
+      "type": "string",
+      "pattern": "^\\+?[0-9 ()-]{7,20}$",
+      "examples": ["+33660872886"]
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "examples": ["ingrid.shillingford123@gmail.com"]
+    },
+    "logo_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Supabase CDN URL of the client's logo",
+      "examples": ["https://mjdrordjjxnysfupzgzv.supabase.co/storage/v1/object/public/client-logos/..."]
+    },
+    "owner_photo_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Portrait photo for the About section — Supabase URL"
+    },
+    "primary_services": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["locs", "braiding", "makeup", "nails", "barber", "coloring", "wigs", "skincare"]
+      },
+      "description": "Used to pick images from the media library. First item = hero image source.",
+      "examples": [["locs", "braiding"]]
+    },
+    "tagline_fr": {
+      "type": "string",
+      "description": "Short tagline in French — used in hero section",
+      "examples": ["Sublimez vos locs à Andilly."]
+    },
+    "tagline_en": {
+      "type": "string",
+      "description": "Short tagline in English",
+      "examples": ["Reveal your locs in Andilly."]
+    },
+    "color_palette": {
+      "type": "string",
+      "enum": [
+        "violet-elegance",
+        "or-noir",
+        "rose-nude",
+        "vert-sauge",
+        "bordeaux-gold",
+        "bleu-nuit",
+        "terracotta",
+        "monochrome"
+      ],
+      "description": "Named palette from the SoBeauty palette library"
+    },
+    "typography": {
+      "type": "string",
+      "enum": ["playfair", "cormorant", "fraunces", "dm-serif", "libre-baskerville"],
+      "description": "Display font family"
+    },
+    "years_experience": {
+      "type": "integer",
+      "minimum": 0,
+      "examples": [15]
+    },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "examples": [["Français", "Créole", "Anglais"]]
+    },
+    "instagram": {
+      "type": "string",
+      "description": "Handle only, without @",
+      "examples": ["ingridbeautyhair971"]
+    },
+    "tiktok": {
+      "type": "string",
+      "description": "Handle only, without @",
+      "examples": ["ingridbeautyhair971"]
+    },
+    "facebook": {
+      "type": "string",
+      "description": "Full URL-encoded Facebook page URL",
+      "examples": ["https://www.facebook.com/Ingrid%20Beauty%20Hair"]
+    },
+    "whatsapp": {
+      "type": "string",
+      "pattern": "^\\+[0-9]{7,15}$",
+      "description": "WhatsApp number in E.164 format — enables floating WhatsApp button",
+      "examples": ["+33660872886"]
+    },
+    "bio_fr": {
+      "type": "string",
+      "description": "About section biography in French"
+    },
+    "bio_en": {
+      "type": "string",
+      "description": "About section biography in English"
+    },
+    "services": {
+      "type": "array",
+      "description": "Full service menu for the /services page",
+      "items": {
+        "type": "object",
+        "required": ["group_title_fr", "items"],
+        "properties": {
+          "group_title_fr": { "type": "string" },
+          "group_title_en": { "type": "string" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name_fr", "price"],
+              "properties": {
+                "name_fr": { "type": "string" },
+                "name_en": { "type": "string" },
+                "duration": { "type": "string" },
+                "price": { "type": "string" },
+                "notes_fr": { "type": "string" },
+                "notes_en": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "deposit_percent": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Acompte % required at booking",
+      "examples": [40]
+    },
+    "cancellation_hours": {
+      "type": "integer",
+      "description": "Hours before appointment for free cancellation",
+      "examples": [48]
+    },
+    "travels": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the beautician travels to clients"
+    },
+    "cf_analytics_token": {
+      "type": "string",
+      "description": "Optional. Cloudflare Web Analytics token — only add if client requests traffic analytics. Get from CF dashboard → Analytics → Web Analytics → Add a site."
+    }
+  },
+  "additionalProperties": true
+}

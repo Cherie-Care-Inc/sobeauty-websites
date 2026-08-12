@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "maison-prodige",
+  "compatibility_date": "2025-09-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "dist/server/server.js",
+  "assets": { "directory": "dist/client" },
+  "routes": [
+    {
+      "pattern": "maison-prodige.sobeauty.business",
+      "custom_domain": true
+    }
+  ]
+}

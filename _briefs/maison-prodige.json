@@ -1,0 +1,142 @@
+{
+  "slug": "maison-prodige",
+  "brand_name": "Maison Prodige Beauty",
+  "professional_name": "Fally Christelle Kongo",
+  "first_name": "Fally",
+  "display_parts": ["Maison", "Prodige"],
+  "schema_type": "HairSalon",
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_url": "https://book.sobeauty.business/maison-prodige",
+  "logo_url": "",
+  "portrait_tag": "Coiffeuse · Tresses",
+  "years_experience": 7,
+  "deposit_percent": 30,
+  "contact": {
+    "phone_human": "06 68 12 58 66",
+    "phone_tel": "+33668125866",
+    "email": "ackfall8@gmail.com",
+    "address": "1 Square Martorell, 94550 Chevilly-Larue",
+    "city": "Chevilly-Larue",
+    "postal_code": "94550",
+    "region": "94550 Val-de-Marne",
+    "location_hint": "20 min Paris",
+    "mode": "home"
+  },
+  "theme": { "palette": "or-noir", "font": "fraunces" },
+  "images": {},
+  "copy": {
+    "fr": {
+      "hero": {
+        "title1": "Sublimez",
+        "title2": "votre beauté",
+        "title3": " avec soin.",
+        "desc": "Maison Prodige Beauty — Fally Christelle Kongo, coiffeuse passionnée depuis 7 ans. Tresses, perruques, tissage et nattes collées à Chevilly-Larue ou à domicile, à 20 minutes de Paris."
+      },
+      "highlights": [
+        { "title": "Tresses & Nattes", "desc": "Box braids, cornrows, nattes africaines et tressage sur mesure. Un résultat net et durable, réalisé avec soin." },
+        { "title": "Perruque & Tissage", "desc": "Pose de perruque naturelle ou synthétique, tissage et closure. Un look naturel, élégant et soigné." },
+        { "title": "Natte Collée & Vanille", "desc": "Nattes collées, braids vanille et stylisation créative. Un style unique rien que pour vous." }
+      ],
+      "about": {
+        "title2": "Fally",
+        "desc": "Créative et profondément passionnée par la coiffure, faire rayonner chaque cliente est ma plus grande joie. Depuis 7 ans, je maîtrise toutes les techniques capillaires : tresses, tissage, pose de perruque, nattes collées et bien plus encore. Je vous accueille à Chevilly-Larue ou me déplace chez vous, à 20 minutes de Paris.",
+        "bullets": [
+          "À l'écoute de vos envies pour un résultat qui vous ressemble",
+          "Créative — j'adapte chaque coiffure à votre style et vos cheveux",
+          "Soignée et précise — chaque prestation est réalisée avec le plus grand soin"
+        ],
+        "sign": "Je vous attends — Fally"
+      },
+      "pillars": [
+        { "label": "Écoute", "text": "Je prends le temps de comprendre vos envies et votre style pour créer une coiffure qui vous ressemble vraiment." },
+        { "label": "Créativité", "text": "Passionnée et créative, j'aime proposer des styles qui subliment chaque cliente — du plus classique au plus audacieux." },
+        { "label": "Soin", "text": "Je travaille avec minutie et respect de votre cheveu. Chaque prestation est réalisée avec le plus grand soin pour un résultat impeccable." }
+      ],
+      "marquee": ["Tresses", "Nattes Collées", "Perruque", "Tissage", "Braids Vanille", "Chevilly-Larue 94"],
+      "footerTagline": "Tresses, perruques & tissage à Chevilly-Larue (94). Service à domicile, 20 min de Paris.",
+      "services": [
+        {
+          "title": "Tresses & Nattes",
+          "items": [
+            { "name": "Box braids (mi-longues)", "duration": "3h", "price": "80€" },
+            { "name": "Cornrows / nattes collées", "duration": "2h", "price": "50€" },
+            { "name": "Braids vanille", "duration": "2h30", "price": "65€" }
+          ]
+        },
+        {
+          "title": "Perruque & Tissage",
+          "items": [
+            { "name": "Pose de perruque", "duration": "1h", "price": "40€" },
+            { "name": "Tissage avec closure", "duration": "2h", "price": "70€", "notes": "mèches non incluses" }
+          ]
+        }
+      ],
+      "contact": {
+        "intro": "Une question ou une envie de coiffure ? Écrivez-moi, je réponds avec plaisir.",
+        "policy": [
+          "Toute réservation est confirmée par un acompte de 30%.",
+          "Annulation gratuite jusqu'à 48h avant le rendez-vous.",
+          "Un retard de plus de 20 min peut écourter ou annuler la prestation."
+        ],
+        "note": "Service à domicile à Chevilly-Larue et alentours, à 20 minutes de Paris."
+      }
+    },
+    "en": {
+      "hero": {
+        "title1": "Elevate",
+        "title2": "your beauty",
+        "title3": " with care.",
+        "desc": "Maison Prodige Beauty — Fally Christelle Kongo, passionate hairdresser for 7 years. Braids, wigs, weaves and glue braids in Chevilly-Larue or at your home, 20 minutes from Paris."
+      },
+      "highlights": [
+        { "title": "Braids & Cornrows", "desc": "Box braids, cornrows, African braids and custom braiding. A neat, long-lasting result, crafted with care." },
+        { "title": "Wig & Weave", "desc": "Natural or synthetic wig placement, weaves and closures. A natural, elegant and refined look." },
+        { "title": "Glue Braids & Vanilla", "desc": "Glue braids, vanilla braids and creative styling. A unique style, just for you." }
+      ],
+      "about": {
+        "title2": "Fally",
+        "desc": "Creative and deeply passionate about hairdressing, making every client shine is my greatest joy. For 7 years, I have mastered all hair techniques: braids, weaves, wig placements, glue braids and much more. I welcome you in Chevilly-Larue or come to you, 20 minutes from Paris.",
+        "bullets": [
+          "I listen to understand exactly the style you want",
+          "Creative — I adapt every style to your hair and personality",
+          "Precise and careful — every service is delivered with the greatest care"
+        ],
+        "sign": "I'm waiting for you — Fally"
+      },
+      "pillars": [
+        { "label": "Listening", "text": "I take the time to understand your desires and your style to create a hairstyle that truly reflects who you are." },
+        { "label": "Creativity", "text": "Passionate and creative, I love proposing styles that enhance every client — from the most classic to the most daring." },
+        { "label": "Care", "text": "I work with precision and respect for your hair. Every service is delivered with the greatest care for an impeccable result." }
+      ],
+      "marquee": ["Braids", "Glue Braids", "Wigs", "Weave", "Vanilla Braids", "Chevilly-Larue 94"],
+      "footerTagline": "Braids, wigs & weave in Chevilly-Larue (94). Home service, 20 min from Paris.",
+      "services": [
+        {
+          "title": "Braids & Cornrows",
+          "items": [
+            { "name": "Box braids (medium)", "duration": "3h", "price": "80€" },
+            { "name": "Cornrows / glue braids", "duration": "2h", "price": "50€" },
+            { "name": "Vanilla braids", "duration": "2h30", "price": "65€" }
+          ]
+        },
+        {
+          "title": "Wig & Weave",
+          "items": [
+            { "name": "Wig placement", "duration": "1h", "price": "40€" },
+            { "name": "Weave with closure", "duration": "2h", "price": "70€", "notes": "hair not included" }
+          ]
+        }
+      ],
+      "contact": {
+        "intro": "A question or a hairstyle in mind? Write to me, I'll gladly reply.",
+        "policy": [
+          "Every booking is confirmed with a 30% deposit.",
+          "Free cancellation up to 48h before the appointment.",
+          "A delay of more than 20 min may shorten or cancel the service."
+        ],
+        "note": "Home service in Chevilly-Larue and nearby, 20 minutes from Paris."
+      }
+    }
+  }
+}
