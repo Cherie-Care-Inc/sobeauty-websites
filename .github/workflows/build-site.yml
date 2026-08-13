@@ -78,6 +78,13 @@ jobs:
           git commit -m "build(${SLUG}): $([ "$IS_PROMOTE" = "true" ] && echo promote || echo preview) via website agent" || echo "nothing to commit"
           git push || echo "push skipped"
 
+      # Once the site is live, tear down the -preview Worker (+ its custom domain)
+      # so only the production URL remains. Tolerant if it's already gone.
+      - name: Remove preview after go-live
+        if: success() && env.IS_PROMOTE == 'true'
+        working-directory: ${{ env.SLUG }}
+        run: npx wrangler delete --name "${SLUG}-preview" || echo "preview worker already gone"
+
       - name: Report success
         if: success()
         run: |
