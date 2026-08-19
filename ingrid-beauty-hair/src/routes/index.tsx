@@ -6,8 +6,9 @@ import svcLocsImg from "@/assets/svc-locs.jpg";
 import svcTwistImg from "@/assets/svc-twist.jpg";
 import svcBarberImg from "@/assets/svc-barber.jpg";
 import flowerImg from "@/assets/flower.png";
+import ingridLogoImg from "@/assets/ingrid-logo.jpeg";
 
-const LOGO_URL = "https://mjdrordjjxnysfupzgzv.supabase.co/storage/v1/object/public/client-logos/nbqiDYMPqU8LGg5e3CRdPp/1781041519432.png";
+const LOGO_URL = ingridLogoImg;
 const BOOKING_URL = "https://book.sobeauty.business/ingrid-beauty-hair";
 const PHONE_HUMAN = "06 60 87 28 86";
 const PHONE_TEL = "+33660872886";

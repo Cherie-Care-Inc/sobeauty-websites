@@ -9,8 +9,9 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import ingridLogoImg from "@/assets/ingrid-logo.jpeg";
 
-const LOGO_URL = "https://mjdrordjjxnysfupzgzv.supabase.co/storage/v1/object/public/client-logos/nbqiDYMPqU8LGg5e3CRdPp/1781041519432.png";
+const LOGO_URL = ingridLogoImg;
 
 // Set from Cloudflare dashboard → Analytics → Web Analytics → Add a site
 const CF_WEB_ANALYTICS_TOKEN = "";

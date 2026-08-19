@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone, Instagram, Music2, Facebook, Clock } from "lucide-react";
 import { SiteFooter } from "./index";
+import ingridLogoImg from "@/assets/ingrid-logo.jpeg";
 
-const LOGO_URL = "https://mjdrordjjxnysfupzgzv.supabase.co/storage/v1/object/public/client-logos/nbqiDYMPqU8LGg5e3CRdPp/1781041519432.png";
+const LOGO_URL = ingridLogoImg;
 const BOOKING_URL = "https://book.sobeauty.business/ingrid-beauty-hair";
 
 type Lang = "fr" | "en";
