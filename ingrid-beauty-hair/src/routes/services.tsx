@@ -8,7 +8,7 @@ const LOGO_URL = ingridLogoImg;
 const BOOKING_URL = "https://book.sobeauty.business/ingrid-beauty-hair";
 
 type Lang = "fr" | "en";
-type Item = { name: string; duration: string; price: string; notes?: string };
+type Item = { name: string; price: string; notes?: string };
 type Group = { title: string; items: Item[] };
 
 const translations = {
@@ -23,42 +23,121 @@ const translations = {
     },
     groups: [
       {
-        title: "Locs — Reprise racines twist",
+        title: "Locs",
         items: [
-          { name: "Locs (jusqu'à 50 locs)", duration: "1h", price: "60€", notes: "Reprise racines twist + coiffure simple" },
-          { name: "Locs (50 à 80 locs)", duration: "1h30", price: "70€", notes: "Reprise racines twist + coiffure simple" },
-          { name: "Locs (80 à 100 locs)", duration: "2h", price: "80€", notes: "Reprise racines twist + coiffure simple" },
-          { name: "Locs (100 à 120 locs)", duration: "2h30", price: "90€", notes: "Reprise racines twist + coiffure simple" },
-          { name: "Locs (120 à 140 locs)", duration: "3h", price: "100€", notes: "Reprise racines twist + coiffure" },
+          { name: "Starter Locs", price: "150 €" },
+          { name: "Retwist", price: "Sur devis" },
+          { name: "Reprise racines twist", price: "Sur devis" },
+          { name: "Micro-Locs Retwist", price: "Sur devis" },
+          { name: "Crochet Retwist", price: "Sur devis" },
+          { name: "Barrel Twist", price: "Sur devis" },
+          { name: "Boho Locs", price: "Sur devis" },
+          { name: "Loc Repair", price: "Sur devis" },
+          { name: "Égalisation / Raccourcissement locks", price: "Sur devis" },
         ],
       },
       {
-        title: "Locs — Reprise racines crochet",
+        title: "Tresses & Braids",
         items: [
-          { name: "Locs (jusqu'à 50 locs)", duration: "2h", price: "75€", notes: "Reprise racines crochet + coiffure simple" },
-          { name: "Locs (50 à 80 locs)", duration: "3h", price: "85€", notes: "Reprise racines crochet + coiffure simple" },
-          { name: "Locs (80 à 100 locs)", duration: "4h", price: "95€", notes: "Reprise racines crochet + coiffure simple" },
-          { name: "Locs (100 à 120 locs)", duration: "5h", price: "105€", notes: "Reprise racines crochet + coiffure simple" },
-          { name: "Locs (100 à 120 locs) — Premium", duration: "6h", price: "115€", notes: "Reprise racines crochet + coiffure simple" },
+          { name: "Knotless Braids", price: "Sur devis" },
+          { name: "Box Braids", price: "Sur devis" },
+          { name: "Fulani Braids", price: "Sur devis" },
+          { name: "Ghana Weaving", price: "Sur devis" },
+          { name: "Crochet Braids", price: "Sur devis" },
+          { name: "Stitch Cornrows", price: "Sur devis" },
+          { name: "Straight Back Cornrows", price: "Sur devis" },
+          { name: "Nattes sans rajouts", price: "Sur devis" },
+          { name: "Nattes / vanilles avec des rajouts", price: "Sur devis" },
+          { name: "Vanilles sans rajouts", price: "Sur devis" },
+          { name: "Tresses collées avec rajout", price: "Sur devis" },
+          { name: "Tresses collées avec rajouts", price: "Sur devis" },
         ],
       },
       {
-        title: "Produits capillaires",
+        title: "Twists & Finger Coils",
         items: [
-          { name: "Sérum Pousse Pousse 100 ml", duration: "—", price: "20€" },
-          { name: "Sérum Pousse Pousse 200 ml", duration: "—", price: "25€" },
-          { name: "Huile explosive 300 ml", duration: "—", price: "30€" },
-          { name: "Shampooing savon noir 100 ml", duration: "—", price: "20€" },
+          { name: "Passion Twists", price: "Sur devis" },
+          { name: "Marley Twists", price: "Sur devis" },
+          { name: "Finger Coils", price: "40 €" },
+        ],
+      },
+      {
+        title: "Kids",
+        items: [
+          { name: "Kids Braids", price: "Sur devis" },
+          { name: "Kids Cornrows", price: "Sur devis" },
+          { name: "Kids Twists", price: "Sur devis" },
+        ],
+      },
+      {
+        title: "Coupe & Coiffure",
+        items: [
+          { name: "Coiffure simple", price: "10 €" },
+          { name: "Coiffure élaborée (évènement spécial)", price: "20 €" },
+          { name: "Coupe enfant", price: "10 €" },
+          { name: "Coupe femme / coupe homme", price: "15 €" },
+          { name: "Coupe + barbe", price: "25 €" },
+          { name: "Coupe transformation", price: "Sur devis" },
+          { name: "Tailler les pointes abîmées", price: "35 €" },
+        ],
+      },
+      {
+        title: "Coloration & Décoloration",
+        items: [
+          { name: "Coloration Partielle", price: "Sur devis" },
+          { name: "Coloration tête entière", price: "Sur devis" },
+          { name: "Décoloration partielle", price: "Sur devis" },
+          { name: "Décoloration tête entière", price: "Sur devis" },
+        ],
+      },
+      {
+        title: "Soins & Traitements",
+        items: [
+          { name: "Diagnostic", price: "20 €" },
+          { name: "Shampooing simple", price: "25 €" },
+          { name: "Shampoo & Wash", price: "25 €" },
+          { name: "Shampooing détox", price: "60 €" },
+          { name: "Soin « anti-pelliculaire »", price: "40 €" },
+          { name: "Soin « Cuir chevelu apaisant » (psoriasis / démangeaisons)", price: "60 €" },
+          { name: "Soin « Hydratation Intense »", price: "55 €" },
+          { name: "Soin « Nutrition profonde » (cheveux cassants)", price: "60 €" },
+          { name: "Soin « Pousse et Fortification »", price: "65 €" },
+        ],
+      },
+      {
+        title: "✨ Rituels Royal IBH",
+        items: [
+          { name: "Le 💫 Rituel Royal IBH", price: "100 €" },
+          { name: "Le ✨ Rituel Royal IBH", price: "160 €" },
+        ],
+      },
+      {
+        title: "Forfaits FC Locks Twist",
+        items: [
+          { name: "FC Locks Twist — jusqu'à 50 locks", price: "85 €", notes: "Shampooing simple · Retwist · Coiffure simple" },
+          { name: "FC Locks Twist — 50 à 80 locks", price: "95 €", notes: "Shampooing simple · Retwist · Coiffure simple" },
+          { name: "FC Locks Twist — 80 à 100 locks", price: "105 €", notes: "Shampooing simple · Retwist · Coiffure simple" },
+          { name: "FC Locks Twist — 100 à 120 locks", price: "115 €", notes: "Shampooing simple · Retwist · Coiffure simple" },
+          { name: "FC Locks Twist — 120 à 140 locks", price: "125 €", notes: "Shampooing simple · Retwist · Coiffure simple" },
+        ],
+      },
+      {
+        title: "Forfaits FRC Locks Twist",
+        items: [
+          { name: "FRC Locks Twist — jusqu'à 50 locks", price: "60 €", notes: "Retwist · Coiffure simple" },
+          { name: "FRC Locks Twist — 50 à 80 locks", price: "70 €", notes: "Retwist · Coiffure simple" },
+          { name: "FRC Locks Twist — 80 à 100 locks", price: "80 €", notes: "Retwist · Coiffure simple" },
+          { name: "FRC Locks Twist — 100 à 120 locks", price: "90 €", notes: "Retwist · Coiffure simple" },
         ],
       },
     ] as Group[],
     info: {
       title: "Bon à savoir",
-      text: "Je vous accueille à mon domicile au 16 rue du président Paul Doumer, 95580 Andilly. Je ne me déplace pas. J'ai également d'autres prestations disponibles sur demande : tressage, barber, coloration… N'hésitez pas à me contacter pour en savoir plus.",
+      text: "Je vous accueille à mon domicile au 16 rue du président Paul Doumer, 95580 Andilly. Je ne me déplace pas. Pour toutes les prestations affichées « sur devis », contactez-moi avant de réserver afin de valider les détails et le tarif.",
       deposit: "Acompte obligatoire de 40% du total de la prestation à la réservation.",
     },
     footer: {
-      tagline: "Spécialiste des locs à Andilly (95). Reprise racines twist & crochet, tressage, coloration.",
+      tagline: "Locs, tresses & soins capillaires à Andilly (95). Spécialiste reprise racines, braiding, coloration.",
       contact: "Contact", follow: "Suivez-moi", policy: "Politique d'annulation", rights: "Tous droits réservés.",
     },
   },
@@ -73,42 +152,121 @@ const translations = {
     },
     groups: [
       {
-        title: "Locs — Twist root retouch",
+        title: "Locs",
         items: [
-          { name: "Locs (up to 50 locs)", duration: "1h", price: "€60", notes: "Twist root retouch + simple styling" },
-          { name: "Locs (50 to 80 locs)", duration: "1h30", price: "€70", notes: "Twist root retouch + simple styling" },
-          { name: "Locs (80 to 100 locs)", duration: "2h", price: "€80", notes: "Twist root retouch + simple styling" },
-          { name: "Locs (100 to 120 locs)", duration: "2h30", price: "€90", notes: "Twist root retouch + simple styling" },
-          { name: "Locs (120 to 140 locs)", duration: "3h", price: "€100", notes: "Twist root retouch + styling" },
+          { name: "Starter Locs", price: "€150" },
+          { name: "Retwist", price: "On request" },
+          { name: "Root retouch — twist", price: "On request" },
+          { name: "Micro-Locs Retwist", price: "On request" },
+          { name: "Crochet Retwist", price: "On request" },
+          { name: "Barrel Twist", price: "On request" },
+          { name: "Boho Locs", price: "On request" },
+          { name: "Loc Repair", price: "On request" },
+          { name: "Locs trim / shortening", price: "On request" },
         ],
       },
       {
-        title: "Locs — Crochet root retouch",
+        title: "Braids & Cornrows",
         items: [
-          { name: "Locs (up to 50 locs)", duration: "2h", price: "€75", notes: "Crochet root retouch + simple styling" },
-          { name: "Locs (50 to 80 locs)", duration: "3h", price: "€85", notes: "Crochet root retouch + simple styling" },
-          { name: "Locs (80 to 100 locs)", duration: "4h", price: "€95", notes: "Crochet root retouch + simple styling" },
-          { name: "Locs (100 to 120 locs)", duration: "5h", price: "€105", notes: "Crochet root retouch + simple styling" },
-          { name: "Locs (100 to 120 locs) — Premium", duration: "6h", price: "€115", notes: "Crochet root retouch + simple styling" },
+          { name: "Knotless Braids", price: "On request" },
+          { name: "Box Braids", price: "On request" },
+          { name: "Fulani Braids", price: "On request" },
+          { name: "Ghana Weaving", price: "On request" },
+          { name: "Crochet Braids", price: "On request" },
+          { name: "Stitch Cornrows", price: "On request" },
+          { name: "Straight Back Cornrows", price: "On request" },
+          { name: "Braids without extensions", price: "On request" },
+          { name: "Braids / vanilles with extensions", price: "On request" },
+          { name: "Vanilles without extensions", price: "On request" },
+          { name: "Glue braids with extensions (small)", price: "On request" },
+          { name: "Glue braids with extensions (full)", price: "On request" },
         ],
       },
       {
-        title: "Hair products",
+        title: "Twists & Finger Coils",
         items: [
-          { name: "Sérum Pousse Pousse 100 ml", duration: "—", price: "€20" },
-          { name: "Sérum Pousse Pousse 200 ml", duration: "—", price: "€25" },
-          { name: "Explosive Oil 300 ml", duration: "—", price: "€30" },
-          { name: "Black Soap Shampoo 100 ml", duration: "—", price: "€20" },
+          { name: "Passion Twists", price: "On request" },
+          { name: "Marley Twists", price: "On request" },
+          { name: "Finger Coils", price: "€40" },
+        ],
+      },
+      {
+        title: "Kids",
+        items: [
+          { name: "Kids Braids", price: "On request" },
+          { name: "Kids Cornrows", price: "On request" },
+          { name: "Kids Twists", price: "On request" },
+        ],
+      },
+      {
+        title: "Cut & Styling",
+        items: [
+          { name: "Simple styling", price: "€10" },
+          { name: "Elaborate styling (special event)", price: "€20" },
+          { name: "Children's cut", price: "€10" },
+          { name: "Women's / men's cut", price: "€15" },
+          { name: "Cut + beard", price: "€25" },
+          { name: "Transformation cut", price: "On request" },
+          { name: "Split ends trim", price: "€35" },
+        ],
+      },
+      {
+        title: "Colour & Bleach",
+        items: [
+          { name: "Partial colour", price: "On request" },
+          { name: "Full-head colour", price: "On request" },
+          { name: "Partial bleach", price: "On request" },
+          { name: "Full-head bleach", price: "On request" },
+        ],
+      },
+      {
+        title: "Care & Treatments",
+        items: [
+          { name: "Diagnostic", price: "€20" },
+          { name: "Simple shampoo", price: "€25" },
+          { name: "Shampoo & Wash", price: "€25" },
+          { name: "Detox shampoo", price: "€60" },
+          { name: "Anti-dandruff treatment", price: "€40" },
+          { name: "Soothing scalp treatment (psoriasis / itching)", price: "€60" },
+          { name: "Intense Hydration treatment", price: "€55" },
+          { name: "Deep Nutrition treatment (brittle hair)", price: "€60" },
+          { name: "Growth & Strengthening treatment", price: "€65" },
+        ],
+      },
+      {
+        title: "✨ Royal IBH Rituals",
+        items: [
+          { name: "The 💫 Royal IBH Ritual", price: "€100" },
+          { name: "The ✨ Royal IBH Ritual", price: "€160" },
+        ],
+      },
+      {
+        title: "FC Locks Twist packages",
+        items: [
+          { name: "FC Locks Twist — up to 50 locks", price: "€85", notes: "Simple shampoo · Retwist · Simple styling" },
+          { name: "FC Locks Twist — 50 to 80 locks", price: "€95", notes: "Simple shampoo · Retwist · Simple styling" },
+          { name: "FC Locks Twist — 80 to 100 locks", price: "€105", notes: "Simple shampoo · Retwist · Simple styling" },
+          { name: "FC Locks Twist — 100 to 120 locks", price: "€115", notes: "Simple shampoo · Retwist · Simple styling" },
+          { name: "FC Locks Twist — 120 to 140 locks", price: "€125", notes: "Simple shampoo · Retwist · Simple styling" },
+        ],
+      },
+      {
+        title: "FRC Locks Twist packages",
+        items: [
+          { name: "FRC Locks Twist — up to 50 locks", price: "€60", notes: "Retwist · Simple styling" },
+          { name: "FRC Locks Twist — 50 to 80 locks", price: "€70", notes: "Retwist · Simple styling" },
+          { name: "FRC Locks Twist — 80 to 100 locks", price: "€80", notes: "Retwist · Simple styling" },
+          { name: "FRC Locks Twist — 100 to 120 locks", price: "€90", notes: "Retwist · Simple styling" },
         ],
       },
     ] as Group[],
     info: {
       title: "Good to know",
-      text: "I welcome you at my home at 16 rue du président Paul Doumer, 95580 Andilly. I do not travel. I also offer other services on request: braiding, barber, colouring… Feel free to contact me for more information.",
+      text: "I welcome you at my home at 16 rue du président Paul Doumer, 95580 Andilly. I do not travel. For services listed as \"on request\", please contact me before booking to confirm details and pricing.",
       deposit: "A 40% deposit of the total service amount is required at booking.",
     },
     footer: {
-      tagline: "Locs specialist in Andilly (95). Twist & crochet root retouch, braiding, colouring.",
+      tagline: "Locs, braids & hair care in Andilly (95). Root retouch specialist, braiding, colouring.",
       contact: "Contact", follow: "Follow me", policy: "Cancellation policy", rights: "All rights reserved.",
     },
   },
@@ -119,9 +277,9 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Services & Tarifs - Ingrid Beauty Hair" },
-      { name: "description", content: "Menu complet des prestations d'Ingrid Beauty Hair : reprise racines locs en twist et crochet, produits capillaires. Tarifs et durées. Andilly 95580." },
+      { name: "description", content: "Menu complet d'Ingrid Beauty Hair à Andilly (95) : locs, tresses, braids, soins capillaires, coloration, coupe. Starter Locs 150€, Forfaits FC/FRC Locks Twist, Rituels Royal IBH." },
       { property: "og:title", content: "Services & Tarifs - Ingrid Beauty Hair" },
-      { property: "og:description", content: "Menu complet des prestations : locs reprise racines twist et crochet, produits capillaires Sérum Pousse Pousse, Huile explosive." },
+      { property: "og:description", content: "Locs, knotless braids, Fulani, Ghana Weaving, soins, coloration, coupe — tous les tarifs d'Ingrid Beauty Hair à Andilly (95580)." },
       { property: "og:url", content: "/services" },
     ],
     links: [{ rel: "canonical", href: "/services" }],
@@ -180,12 +338,11 @@ function ServicesPage() {
               <ul className="divide-y divide-border">
                 {g.items.map((it) => (
                   <li key={it.name + it.price} className="grid grid-cols-12 gap-4 py-4 items-baseline">
-                    <div className="col-span-12 md:col-span-7">
+                    <div className="col-span-8 md:col-span-10">
                       <div className="font-medium text-foreground">{it.name}</div>
                       {it.notes && <div className="text-xs text-muted-foreground mt-1">{it.notes}</div>}
                     </div>
-                    <div className="col-span-6 md:col-span-3 text-sm text-muted-foreground">{it.duration}</div>
-                    <div className="col-span-6 md:col-span-2 text-right font-display text-xl text-accent">{it.price}</div>
+                    <div className="col-span-4 md:col-span-2 text-right font-display text-xl text-accent">{it.price}</div>
                   </li>
                 ))}
               </ul>
