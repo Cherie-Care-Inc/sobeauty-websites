@@ -9,7 +9,7 @@ import svc3Img from "@/assets/svc-twist.jpg";
 import flowerImg from "@/assets/flower.png";
 
 const LOGO_URL = "";
-const BOOKING_URL = "https://book.sobeauty.business/maison-prodige";
+const BOOKING_URL = "https://book.sobeauty.business/prodige";
 const PHONE_HUMAN = "06 68 12 58 66";
 const PHONE_TEL = "+33668125866";
 const EMAIL = "ackfall8@gmail.com";

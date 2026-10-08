@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Mail, MapPin, Phone, Instagram, Music2, Facebook
 import { SiteFooter } from "./index";
 
 const LOGO_URL = "";
-const BOOKING_URL = "https://book.sobeauty.business/maison-prodige";
+const BOOKING_URL = "https://book.sobeauty.business/prodige";
 
 type Lang = "fr" | "en";
 
