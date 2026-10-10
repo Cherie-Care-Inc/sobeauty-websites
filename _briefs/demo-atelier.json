@@ -1,0 +1,154 @@
+{
+  "slug": "demo-atelier",
+  "template": "atelier",
+  "category": "hair",
+  "brand_name": "Maison Awa",
+  "professional_name": "Awa Diallo",
+  "first_name": "Awa",
+  "display_parts": ["Maison", "Awa"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "2250700000000",
+  "logo_url": "",
+  "portrait_tag": "Coiffeuse · Tresses et locs",
+  "years_experience": 8,
+  "deposit_percent": 20,
+  "contact": {
+    "phone_human": "+225 07 00 00 00 00",
+    "phone_tel": "+2250700000000",
+    "email": "contact@maison-awa.ci",
+    "address": "Rue des Jardins, Cocody, Abidjan",
+    "city": "Abidjan",
+    "region": "Cocody",
+    "location_hint": "Parking devant le salon",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#B5542E"] },
+  "images": {
+    "hero_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/14588f7563356f9bf105694e496e67c9.jpg",
+    "about_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/1dff49858bc52c022f450a6f601c5d3b.jpg",
+    "svc_urls": [
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/27bd8664d3131aa99b9c1563355127b7.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/2a47031cd111c62c4a4ed5a056cfc578.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/6fee304620dee38a1ab31b538aa3b10c.jpg"
+    ],
+    "gallery_urls": [
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/72dac18c45692fe84e2f2792ea7bf73e.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/78b70cb9bdb02804075de823770cdfbd.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/8b2a566d5f2c8774ca4962a0f495c81c.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/b58398bc7ff6da89deb75027c21fa23f.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/cac67ffaa7f2899c8e0353cb8efe33f4.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/d50b47f5653d85d3df95e415f384f683.jpg"
+    ]
+  },
+  "team": [
+    { "name": "Awa Diallo", "photo_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/1dff49858bc52c022f450a6f601c5d3b.jpg", "owner": true, "share_code": "AWA1", "services": {} },
+    { "name": "Mariam Koné", "photo_url": "", "owner": false, "share_code": "MAR2", "services": { "fr": ["Tresses", "Locs"], "en": ["Braids", "Locs"] } },
+    { "name": "Fatou Sow", "photo_url": "", "owner": false, "share_code": "FAT3", "services": { "fr": ["Soins", "Coloration"], "en": ["Treatments", "Colour"] } }
+  ],
+  "reviews": [
+    { "author": "Aïcha B.", "text": "Mes knotless sont parfaites, légères et bien alignées. Awa prend le temps de comprendre ce qu'on veut.", "rating": 5, "service": "Knotless braids", "date": "2026-09-14" },
+    { "author": "Nadia K.", "text": "Premier salon où mes locs sont vraiment respectées. Reprise nette, cuir chevelu apaisé.", "rating": 5, "service": "Reprise de locs", "date": "2026-08-30" },
+    { "author": "Grace O.", "text": "Accueil chaleureux, réservation en ligne simple, et le résultat tient des semaines.", "rating": 4, "service": "Nattes collées", "date": "2026-08-02" }
+  ],
+  "reviews_summary": { "average": 4.8, "count": 37 },
+  "hours": [
+    { "day": 0, "ranges": [["09:00", "19:00"]] },
+    { "day": 1, "ranges": [["09:00", "19:00"]] },
+    { "day": 2, "ranges": [["09:00", "19:00"]] },
+    { "day": 3, "ranges": [["09:00", "20:00"]] },
+    { "day": 4, "ranges": [["09:00", "20:00"]] },
+    { "day": 5, "ranges": [["08:00", "18:00"]] },
+    { "day": 6, "ranges": [] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Des tresses", "title2": "qui respectent", "title3": " vos cheveux.", "desc": "Maison Awa, salon de coiffure à Cocody : tresses, locs, nattes collées et soins, réalisés avec douceur et précision par une équipe de trois coiffeuses.", "lead_service": "Knotless braids, la prestation la plus réservée" },
+      "highlights": [
+        { "title": "Tresses et nattes", "desc": "Knotless, box braids, nattes collées et vanilles : des tresses légères, régulières, posées sans tirer." },
+        { "title": "Locs", "desc": "Création, reprise et entretien de locs, avec un soin du cuir chevelu à chaque visite." },
+        { "title": "Soins et coloration", "desc": "Soins profonds, protéines, coloration douce : des cheveux nourris avant toute coiffure." }
+      ],
+      "about": { "title2": "Maison Awa", "desc": "Awa a ouvert le salon en 2018 avec un fauteuil et une règle : ne jamais presser une cliente. Huit ans plus tard, l'équipe compte trois coiffeuses et la règle n'a pas changé. Chaque rendez-vous commence par un échange sur vos cheveux, votre routine et le résultat que vous voulez.", "bullets": ["Une consultation avant chaque prestation", "Des produits choisis pour les cheveux texturés", "Des durées annoncées et respectées"], "sign": "Awa et l'équipe" },
+      "pillars": [
+        { "label": "Écoute", "text": "On prend le temps de comprendre ce que vous voulez avant de toucher à vos cheveux." },
+        { "label": "Précision", "text": "Des séparations nettes, des tresses régulières, un rendu qui tient." },
+        { "label": "Douceur", "text": "Aucune traction excessive : vos bordures et votre cuir chevelu sont protégés." }
+      ],
+      "marquee": ["Knotless braids", "Locs", "Nattes collées", "Vanilles", "Soins profonds", "Cocody"],
+      "footerTagline": "Tresses, locs et soins à Cocody, Abidjan. Réservation en ligne, acompte de 20 %.",
+      "offer": "Offre de rentrée : 10 % sur les knotless braids jusqu'au 31 octobre",
+      "faq": [
+        { "q": "Faut-il venir les cheveux lavés ?", "a": "Oui, lavés et démêlés la veille ou le jour même. Un shampoing est proposé sur place si besoin." },
+        { "q": "Les mèches sont-elles fournies ?", "a": "Les mèches sont incluses dans le prix des knotless et box braids. Pour les autres prestations, apportez les vôtres ou demandez-nous." },
+        { "q": "Comment fonctionne l'acompte ?", "a": "Un acompte de 20 % confirme votre rendez-vous. Il est déduit du total le jour de la prestation." }
+      ],
+      "services": [
+        { "title": "Tresses et nattes", "items": [
+          { "name": "Knotless braids (mi-longues)", "duration": "4h", "price": "25 000 FCFA", "notes": "Mèches incluses" },
+          { "name": "Box braids", "duration": "4h30", "price": "22 000 FCFA", "notes": "Mèches incluses" },
+          { "name": "Nattes collées", "duration": "1h30", "price": "8 000 FCFA" },
+          { "name": "Vanilles", "duration": "3h", "price": "15 000 FCFA" }
+        ] },
+        { "title": "Locs", "items": [
+          { "name": "Création de locs", "duration": "5h", "price": "35 000 FCFA" },
+          { "name": "Reprise de locs", "duration": "2h", "price": "12 000 FCFA" },
+          { "name": "Soin du cuir chevelu", "duration": "45 min", "price": "6 000 FCFA" }
+        ] },
+        { "title": "Soins et coloration", "items": [
+          { "name": "Soin profond", "duration": "1h", "price": "8 000 FCFA" },
+          { "name": "Coloration douce", "duration": "2h", "price": "18 000 FCFA", "notes": "Sur consultation" }
+        ] }
+      ],
+      "contact": { "intro": "Une question avant de réserver ? Écrivez-nous, on répond vite.", "policy": ["L'acompte de 20 % confirme le rendez-vous.", "Annulation gratuite jusqu'à 48 h avant.", "Au-delà de 20 minutes de retard, la prestation peut être écourtée."], "note": "Le salon est à deux minutes du carrefour de la Riviera, parking devant la porte." },
+      "cta": { "title1": "Prête pour", "title2": "de belles tresses", "title3": " ?", "desc": "Choisissez votre coiffeuse, votre prestation et votre créneau en ligne." },
+      "team_roles": { "Awa Diallo": "Fondatrice · Tresses et locs", "Mariam Koné": "Coiffeuse · Tresses et locs", "Fatou Sow": "Coiffeuse · Soins et coloration" }
+    },
+    "en": {
+      "hero": { "title1": "Braids", "title2": "that respect", "title3": " your hair.", "desc": "Maison Awa, hair salon in Cocody: braids, locs, cornrows and treatments, done with care and precision by a team of three stylists.", "lead_service": "Knotless braids, the most booked service" },
+      "highlights": [
+        { "title": "Braids and cornrows", "desc": "Knotless, box braids, cornrows and twists: light, even braids, installed without pulling." },
+        { "title": "Locs", "desc": "Starting, retwisting and maintaining locs, with scalp care at every visit." },
+        { "title": "Treatments and colour", "desc": "Deep conditioning, protein treatments, gentle colour: nourished hair before any style." }
+      ],
+      "about": { "title2": "Maison Awa", "desc": "Awa opened the salon in 2018 with one chair and one rule: never rush a client. Eight years later the team has three stylists and the rule has not changed. Every appointment starts with a conversation about your hair, your routine and the result you want.", "bullets": ["A consultation before every service", "Products chosen for textured hair", "Durations announced and respected"], "sign": "Awa and the team" },
+      "pillars": [
+        { "label": "Listening", "text": "We take the time to understand what you want before touching your hair." },
+        { "label": "Precision", "text": "Clean parts, even braids, a result that lasts." },
+        { "label": "Gentleness", "text": "No excessive tension: your edges and scalp are protected." }
+      ],
+      "marquee": ["Knotless braids", "Locs", "Cornrows", "Twists", "Deep conditioning", "Cocody"],
+      "footerTagline": "Braids, locs and treatments in Cocody, Abidjan. Online booking, 20% deposit.",
+      "offer": "Back-to-school offer: 10% off knotless braids until 31 October",
+      "faq": [
+        { "q": "Should I come with washed hair?", "a": "Yes, washed and detangled the day before or the same day. A shampoo is available on site if needed." },
+        { "q": "Is the hair included?", "a": "Extensions are included in the price of knotless and box braids. For other services, bring your own or ask us." },
+        { "q": "How does the deposit work?", "a": "A 20% deposit confirms your appointment. It is deducted from the total on the day." }
+      ],
+      "services": [
+        { "title": "Braids and cornrows", "items": [
+          { "name": "Knotless braids (medium)", "duration": "4h", "price": "25,000 FCFA", "notes": "Hair included" },
+          { "name": "Box braids", "duration": "4h30", "price": "22,000 FCFA", "notes": "Hair included" },
+          { "name": "Cornrows", "duration": "1h30", "price": "8,000 FCFA" },
+          { "name": "Twists", "duration": "3h", "price": "15,000 FCFA" }
+        ] },
+        { "title": "Locs", "items": [
+          { "name": "Starter locs", "duration": "5h", "price": "35,000 FCFA" },
+          { "name": "Retwist", "duration": "2h", "price": "12,000 FCFA" },
+          { "name": "Scalp treatment", "duration": "45 min", "price": "6,000 FCFA" }
+        ] },
+        { "title": "Treatments and colour", "items": [
+          { "name": "Deep conditioning", "duration": "1h", "price": "8,000 FCFA" },
+          { "name": "Gentle colour", "duration": "2h", "price": "18,000 FCFA", "notes": "Consultation required" }
+        ] }
+      ],
+      "contact": { "intro": "A question before booking? Write to us, we answer quickly.", "policy": ["The 20% deposit confirms the appointment.", "Free cancellation up to 48 hours before.", "After 20 minutes late, the service may be shortened."], "note": "The salon is two minutes from the Riviera junction, parking at the door." },
+      "cta": { "title1": "Ready for", "title2": "beautiful braids", "title3": "?", "desc": "Choose your stylist, your service and your time slot online." },
+      "team_roles": { "Awa Diallo": "Founder · Braids and locs", "Mariam Koné": "Stylist · Braids and locs", "Fatou Sow": "Stylist · Treatments and colour" }
+    }
+  }
+}

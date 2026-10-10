@@ -1,233 +1,390 @@
 #!/usr/bin/env bun
 /**
- * build-from-brief.ts — the DETERMINISTIC website builder.
+ * build-from-brief.ts — the DETERMINISTIC website builder (v2, templates).
  *
- * Turns an enriched brief (produced by the Studio `website` edge agent from the
- * beautician's intake answers + profile data) into a live site. No LLM, no
- * judgment: the brief already carries every piece of PROSE, per language. This
- * script does the mechanical assembly the LLM shouldn't:
- *   • resolve the palette (named set OR brand hex) → CSS token values
- *   • resolve the display font → font stack + Google Fonts URL
- *   • supply all structural CHROME labels (nav, "Réserver", section tags…)
- *   • assemble SEO strings + schema.org JSON-LD
- *   • materialise a client folder from _template-base
- *   • download the chosen images into src/assets
- *   • write src/content.ts (the one file the template renders from)
- *   • set package.json / wrangler.jsonc name + route (preview or production)
- *   • optionally build + deploy to Cloudflare
+ * Turns an enriched brief (from the Studio `website` edge agent) into a site:
+ *   • picks the layout (`brief.template`, else the category default)
+ *   • resolves the design tokens: template palette + the member's brand colour,
+ *     every pair contrast-checked (WCAG AA)
+ *   • supplies the structural labels (nav, buttons, section titles)
+ *   • cleans the copy (no em dash, no placeholder, no lorem) and refuses to
+ *     build when a required text is missing
+ *   • assembles SEO + schema.org JSON-LD
+ *   • materialises the client folder from _template-base, downloads the images
+ *     (hero, about, highlights, gallery) keeping their real format
+ *   • writes src/content.ts, src/layout.ts, src/assets/generated-images.ts
+ *   • sets package.json / wrangler.jsonc, favicon, then optionally builds and
+ *     deploys to Cloudflare.
  *
  * Usage:
  *   bun scripts/build-from-brief.ts <brief.json>            # write files only
  *   bun scripts/build-from-brief.ts <brief.json> --build    # + bun run build
  *   bun scripts/build-from-brief.ts <brief.json> --deploy   # + wrangler deploy
  *   bun scripts/build-from-brief.ts <brief.json> --preview  # target the -preview host
- *
- * The GitHub Actions workflow calls this with --deploy (and --preview for the
- * review build, without it for the approved promotion).
+ *   bun scripts/build-from-brief.ts <brief.json> --out <dir> # write elsewhere (demos)
  */
 
-import { readFileSync, writeFileSync, existsSync, cpSync, mkdirSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, cpSync, mkdirSync, rmSync } from "fs";
 import { join } from "path";
 import { spawnSync } from "child_process";
+import type { CategoryKey, DayHours, Lang, PageCopy, Product, Review, ServiceGroup, SiteContent, TeamMember, TemplateKey, ThemeTokens } from "../_schema/site-content";
+import { TEMPLATES, FONTS, DEFAULT_TEMPLATE, isTemplateKey } from "../_schema/templates";
+import { LABELS } from "./labels";
+import { contrast, ensureContrast, normalizeHex, onColor, softOf, luminance, mix } from "./color";
 
 const REPO = join(import.meta.dir, "..");
 const TEMPLATE = join(REPO, "_template-base");
 const BASE_DOMAIN = "sobeauty.business";
+const API_BASE = "https://api.cherie.care/functions/v1";
+const CREDIT = { label: "SoBeauty", url: "https://sobeauty.business", logoUrl: "https://sobeauty.business/logo-sobeauty.png" };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Brief type (the edge agent's output). Prose is per-language; the rest is data.
+// Brief (the edge agent's output). v1 briefs still build (template inferred).
 // ─────────────────────────────────────────────────────────────────────────────
 
-type Lang = "fr" | "en";
-type PaletteName =
-  | "violet-elegance" | "or-noir" | "rose-nude" | "vert-sauge"
-  | "bordeaux-gold" | "bleu-nuit" | "terracotta" | "monochrome";
-type FontName = "fraunces" | "playfair" | "cormorant" | "dm-serif" | "libre-baskerville";
-type SchemaType = "HairSalon" | "BeautySalon" | "NailSalon" | "Barber";
 type Mode = "salon" | "home" | "mobile";
-
-interface HeroCopy { title1: string; title2: string; title3: string; desc: string; }
-interface AboutCopy { title2: string; desc: string; bullets: string[]; sign: string; }
-interface Pillar { label: string; text: string; }
-interface Highlight { title: string; desc: string; }
-interface ServiceGroup { title: string; items: { name: string; duration?: string; price: string; notes?: string }[]; }
-
+interface HeroCopy { title1: string; title2: string; title3: string; desc: string; lead_service?: string }
+interface AboutCopy { title2: string; desc: string; bullets: string[]; sign: string }
+interface Pillar { label: string; text: string }
+interface Highlight { title: string; desc: string }
 interface LangCopy {
   hero: HeroCopy;
-  highlights: Highlight[];          // 3 homepage service cards
+  highlights: Highlight[];
   about: AboutCopy;
-  pillars: Pillar[];                // 3 trust pillars
+  pillars: Pillar[];
   marquee: string[];
   footerTagline: string;
-  services: ServiceGroup[];         // full priced menu
+  services: ServiceGroup[];
   contact: { intro: string; policy: string[]; note?: string };
   cta?: { title1: string; title2: string; title3: string; desc: string };
+  faq?: { q: string; a: string }[];
+  offer?: string;
+  team_roles?: Record<string, string>;   // member name → role line
 }
 
 interface Brief {
-  slug: string;
+  slug: string;                       // site slug (brand name based)
+  template?: TemplateKey;
+  category?: CategoryKey;
   brand_name: string;
   professional_name: string;
-  first_name?: string;              // portrait/signature; else derived
-  display_parts?: [string, string]; // wordmark split; else derived
-  schema_type?: SchemaType;
+  first_name?: string;
+  display_parts?: [string, string];
+  schema_type?: SiteContent["brand"]["schemaType"];
   langs?: Lang[];
   default_lang?: Lang;
-
-  booking_url?: string;             // else derived from slug
+  booking_url?: string;
+  booking_slug?: string;              // live facts source (public page slug)
+  live?: boolean;
+  shop_url?: string;
+  whatsapp?: string;                  // digits, international
   logo_url?: string;
   owner_photo_url?: string;
-
+  credit_logo_url?: string;
   contact: {
     phone_human: string; phone_tel: string; email: string;
-    address: string; city: string; postal_code?: string; region?: string;
-    location_hint?: string;
-    instagram?: string; tiktok?: string; facebook?: string;
+    address: string; city: string; postal_code?: string; region?: string; location_hint?: string; maps_url?: string;
+    instagram?: string; tiktok?: string; facebook?: string; snapchat?: string;
     mode?: Mode;
   };
-
   theme: {
-    palette?: PaletteName;
-    colors?: { copper: string; copperGlow: string; espresso: string; cream: string; heroMid?: string };
-    font?: FontName;
+    palette?: string;                 // v1 named palette (ignored in v2)
+    colors?: { copper?: string; accent?: string; copperGlow?: string; espresso?: string; cream?: string; heroMid?: string };
+    brand_colors?: string[];          // the member's colours (hex), first = accent
+    font?: string;                    // v1 font name (ignored unless no template font)
   };
-
-  images: { hero_url?: string; about_url?: string; svc_urls?: string[]; };
-
+  images: { hero_url?: string; about_url?: string; svc_urls?: string[]; gallery_urls?: string[] };
+  team?: { name: string; photo_url?: string | null; owner?: boolean; share_code?: string; services?: Partial<Record<Lang, string[]>> }[];
+  products?: { id: string; name: string; description?: string | null; price_amount: number; currency: string; image_urls?: string[]; image_url?: string | null; kind?: "physical" | "digital"; in_stock?: boolean }[];
+  reviews?: Review[];
+  reviews_summary?: { average: number; count: number } | null;
+  hours?: DayHours[];
   years_experience?: number;
-  portrait_tag?: string;            // "Coiffeuse · Tresses"
-  deposit_percent?: number;         // acompte at booking (drives the services info line)
+  portrait_tag?: string;
+  deposit_percent?: number;
   cf_analytics_token?: string;
-
   copy: Record<Lang, LangCopy>;
   seo?: Partial<Record<Lang, { title: string; description: string }>>;
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Deterministic lookups
-// ─────────────────────────────────────────────────────────────────────────────
-
-const PALETTES: Record<PaletteName, { copper: string; copperGlow: string; espresso: string; cream: string; heroMid: string }> = {
-  "violet-elegance": { copper: "oklch(0.48 0.20 310)", copperGlow: "oklch(0.88 0.05 355)", espresso: "oklch(0.20 0.06 310)", cream: "oklch(0.99 0.003 310)", heroMid: "oklch(0.30 0.10 310)" },
-  "or-noir":         { copper: "oklch(0.72 0.12 75)",  copperGlow: "oklch(0.88 0.08 75)",  espresso: "oklch(0.16 0.03 60)",  cream: "oklch(0.99 0.004 60)",  heroMid: "oklch(0.28 0.05 60)" },
-  "rose-nude":       { copper: "oklch(0.72 0.08 20)",  copperGlow: "oklch(0.88 0.04 20)",  espresso: "oklch(0.22 0.04 20)",  cream: "oklch(0.98 0.008 60)",  heroMid: "oklch(0.34 0.06 20)" },
-  "vert-sauge":      { copper: "oklch(0.60 0.10 155)", copperGlow: "oklch(0.85 0.06 155)", espresso: "oklch(0.20 0.05 155)", cream: "oklch(0.98 0.005 155)", heroMid: "oklch(0.30 0.07 155)" },
-  "bordeaux-gold":   { copper: "oklch(0.42 0.16 15)",  copperGlow: "oklch(0.72 0.12 75)",  espresso: "oklch(0.18 0.05 15)",  cream: "oklch(0.99 0.004 60)",  heroMid: "oklch(0.28 0.09 15)" },
-  "bleu-nuit":       { copper: "oklch(0.50 0.18 260)", copperGlow: "oklch(0.78 0.08 220)", espresso: "oklch(0.17 0.06 255)", cream: "oklch(0.98 0.004 220)", heroMid: "oklch(0.28 0.10 258)" },
-  "terracotta":      { copper: "oklch(0.58 0.14 40)",  copperGlow: "oklch(0.82 0.08 55)",  espresso: "oklch(0.22 0.06 35)",  cream: "oklch(0.99 0.005 55)",  heroMid: "oklch(0.32 0.09 38)" },
-  "monochrome":      { copper: "oklch(0.40 0.00 0)",   copperGlow: "oklch(0.75 0.00 0)",   espresso: "oklch(0.15 0.00 0)",   cream: "oklch(0.99 0.00 0)",   heroMid: "oklch(0.28 0.00 0)" },
-};
-
-const FONTS: Record<FontName, { stack: string; family: string; axis: string }> = {
-  fraunces:            { stack: "'Fraunces', Georgia, serif",            family: "Fraunces",            axis: "Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400" },
-  playfair:            { stack: "'Playfair Display', Georgia, serif",    family: "Playfair Display",    axis: "Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400" },
-  cormorant:           { stack: "'Cormorant Garamond', Georgia, serif",  family: "Cormorant Garamond",  axis: "Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400" },
-  "dm-serif":          { stack: "'DM Serif Display', Georgia, serif",    family: "DM Serif Display",    axis: "DM+Serif+Display:ital@0;1" },
-  "libre-baskerville": { stack: "'Libre Baskerville', Georgia, serif",   family: "Libre Baskerville",   axis: "Libre+Baskerville:ital,wght@0,400;0,700;1,400" },
-};
-
-/** Structural chrome — never written by the LLM, always these. */
-const LABELS: Record<Lang, {
-  nav: { services: string; about: string; menu: string; contact: string; book: string };
-  hero: { bookNow: string; discover: string; happy: string };
-  services: { tag: string; title1: string; title2: string; title3: string; seeAll: string; more: string };
-  about: { tag: string; title1: string; title3: string; cta: string; experience: string };
-  testimonials: { tag: string; title1: string; title2: string; title3: string };
-  cta: { title1: string; title2: string; title3: string; bookNow: string };
-  footer: { contact: string; follow: string; policy: string; rights: string };
-  sub: {
-    home: string; menuWord: string;
-    svcEyebrow: string; svcTitleAccent: string; svcSubtitle: string; svcInfoTitle: string;
-    ctHeroTitle: string; ctHeroAccent: string; ctCta: string;
-    ctLabelPhone: string; ctLabelEmail: string; ctLabelAddress: string; ctPolicyTitle: string;
-  };
-}> = {
-  fr: {
-    nav: { services: "Services", about: "À propos", menu: "Menu", contact: "Contact", book: "Réserver" },
-    hero: { bookNow: "Réserver maintenant", discover: "Découvrir", happy: "Clientes ravies" },
-    services: { tag: "Prestations", title1: "Des prestations", title2: "d'exception", title3: " pour vous.", seeAll: "Voir tous mes services", more: "Et bien plus..." },
-    about: { tag: "À propos", title1: "Je m'appelle", title3: ".", cta: "Prendre rendez-vous", experience: "ans d'expérience" },
-    testimonials: { tag: "Pourquoi me choisir", title1: "Un savoir-faire", title2: "qui vous fait", title3: " rayonner." },
-    cta: { title1: "Prête à", title2: "rayonner", title3: " ?", bookNow: "Réserver maintenant" },
-    footer: { contact: "Contact", follow: "Suivez-moi", policy: "Politique d'annulation", rights: "Tous droits réservés." },
-    sub: {
-      home: "Accueil", menuWord: "Menu & tarifs",
-      svcEyebrow: "Menu complet", svcTitleAccent: "& tarifs", svcSubtitle: "Retrouvez l'ensemble de mes prestations et leurs tarifs.", svcInfoTitle: "Bon à savoir",
-      ctHeroTitle: "Prenons", ctHeroAccent: "rendez-vous", ctCta: "Réserver en ligne",
-      ctLabelPhone: "Téléphone", ctLabelEmail: "Email", ctLabelAddress: "Adresse", ctPolicyTitle: "Politique d'annulation",
-    },
-  },
-  en: {
-    nav: { services: "Services", about: "About", menu: "Menu", contact: "Contact", book: "Book" },
-    hero: { bookNow: "Book now", discover: "Discover", happy: "Happy clients" },
-    services: { tag: "Services", title1: "Exceptional", title2: "services", title3: " for you.", seeAll: "View all services", more: "And much more..." },
-    about: { tag: "About", title1: "My name is", title3: ".", cta: "Book an appointment", experience: "years of experience" },
-    testimonials: { tag: "Why choose me", title1: "Craft that", title2: "makes you", title3: " shine." },
-    cta: { title1: "Ready to", title2: "shine", title3: " ?", bookNow: "Book now" },
-    footer: { contact: "Contact", follow: "Follow me", policy: "Cancellation policy", rights: "All rights reserved." },
-    sub: {
-      home: "Home", menuWord: "Menu & pricing",
-      svcEyebrow: "Full menu", svcTitleAccent: "& pricing", svcSubtitle: "All my services and their pricing in one place.", svcInfoTitle: "Good to know",
-      ctHeroTitle: "Let's", ctHeroAccent: "book", ctCta: "Book online",
-      ctLabelPhone: "Phone", ctLabelEmail: "Email", ctLabelAddress: "Address", ctPolicyTitle: "Cancellation policy",
-    },
-  },
-};
-
-/** Derived sub-page bits that depend on the pro's data. */
-const MODE_INFO: Record<Mode, { fr: string; en: string }> = {
-  salon:  { fr: "Je vous reçois en salon.", en: "I welcome you at my salon." },
-  home:   { fr: "Je vous reçois à mon domicile.", en: "I welcome you at my home." },
-  mobile: { fr: "Je me déplace chez vous.", en: "I travel to you." },
-};
-const SOCIAL_NAMES: Record<Lang, { lead: string; tail: string }> = {
-  fr: { lead: "", tail: " — suivez mon travail au quotidien." },
-  en: { lead: "", tail: " — follow my work day to day." },
-};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
 function die(msg: string): never { console.error(`❌  ${msg}`); process.exit(1); }
+const warn = (msg: string) => console.warn(`⚠️   ${msg}`);
 
-function resolveTheme(t: Brief["theme"]) {
-  const font = FONTS[t.font ?? "fraunces"];
-  const colors = t.colors
-    ? { ...t.colors, heroMid: t.colors.heroMid ?? t.colors.espresso }
-    : PALETTES[t.palette ?? "or-noir"];
-  const googleFontsUrl =
-    `https://fonts.googleapis.com/css2?family=${font.axis}` +
-    `&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@500&display=swap`;
-  return { ...colors, fontDisplayStack: font.stack, googleFontsUrl };
+/** Copy hygiene: no em/en dash, no doubled spaces, trimmed. */
+const clean = (s: unknown): string => String(s ?? "")
+  .replace(/\s*[—–]\s*/g, ", ").replace(/,\s*,/g, ", ").replace(/\s*,\s*([.!?])/g, "$1")
+  .replace(/[ \t]+/g, " ").replace(/\s+([,.;:!?])/g, "$1").trim();
+const cleanList = (xs: unknown): string[] => (Array.isArray(xs) ? xs.map(clean).filter(Boolean) : []);
+/**
+ * The third part of a split title carries its own spacing: " vos cheveux." keeps
+ * its leading space, "." sticks to the word, "?" gets the French narrow space.
+ */
+const tail = (s: unknown, lang: Lang): string => {
+  const c = clean(s);
+  if (!c) return "";
+  if (/^[.,;]/.test(c)) return c;
+  if (/^[!?:]/.test(c)) return lang === "fr" ? `\u202F${c}` : c;
+  return ` ${c}`;
+};
+
+const PLACEHOLDER = /(lorem|ipsum|\{\{|\}\}|\bTODO\b|\bTBD\b|\[insert|placeholder|xxx)/i;
+function assertClean(path: string, value: string) {
+  if (PLACEHOLDER.test(value)) die(`placeholder text in ${path}: "${value.slice(0, 60)}"`);
+}
+function required(path: string, value: string): string {
+  if (!value.trim()) die(`missing required copy: ${path}`);
+  assertClean(path, value);
+  return value;
 }
 
 function deriveDisplayParts(name: string): [string, string] {
   const words = name.trim().split(/\s+/);
-  if (words.length === 1) return [words[0], ""];
-  return [words[0], words.slice(1).join(" ")];
+  return words.length === 1 ? [words[0], ""] : [words[0], words.slice(1).join(" ")];
 }
 
-function buildStructuredData(b: Brief, host: string, lang: Lang): string {
-  const c = b.contact;
+const money = (amount: number, currency: string, lang: Lang): string => {
+  try {
+    return new Intl.NumberFormat(lang === "en" ? "en-GB" : "fr-FR", { style: "currency", currency, maximumFractionDigits: 2 })
+      .format(amount).replace(/[   ]/g, " ").replace(/F CFA/, "FCFA");
+  } catch { return `${amount} ${currency}`; }
+};
+
+function inferCategory(b: Brief): CategoryKey {
+  if (b.category) return b.category;
+  const hay = `${b.portrait_tag ?? ""} ${Object.values(b.copy).flatMap((c) => c.services.map((g) => g.title)).join(" ")}`.toLowerCase();
+  const hasServices = Object.values(b.copy).some((c) => c.services.some((g) => g.items.length));
+  const products = b.products ?? [];
+  if (!hasServices && products.length) return products.every((p) => p.kind === "digital") ? "training" : "shop";
+  if (/(barber|barbier|coupe homme)/.test(hay) || b.schema_type === "Barber") return "barber";
+  if (/(ongle|nail|manucure)/.test(hay) || b.schema_type === "NailSalon") return "nails";
+  if (/(maquill|makeup|make-up)/.test(hay)) return "makeup";
+  if (/(massage|spa|bien-être|wellness|corps)/.test(hay)) return "spa";
+  if (/(soin|peau|skin|facial|cil|sourcil|lash|brow|épil)/.test(hay)) return "skin";
+  return "hair";
+}
+
+function schemaTypeFor(category: CategoryKey, given?: Brief["schema_type"]): SiteContent["brand"]["schemaType"] {
+  if (given) return given;
+  return ({ hair: "HairSalon", barber: "Barber", nails: "NailSalon", makeup: "BeautySalon", skin: "BeautySalon", spa: "DaySpa", institut: "BeautySalon", shop: "Store", training: "EducationalOrganization" } as const)[category];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Theme: template palette + brand accent, contrast-checked
+// ─────────────────────────────────────────────────────────────────────────────
+
+function resolveTheme(b: Brief, template: TemplateKey): ThemeTokens {
+  const meta = TEMPLATES[template];
+  const p = { ...meta.palette };
+  const brand = (b.theme?.brand_colors ?? []).map(normalizeHex).filter(Boolean) as string[];
+  const legacy = b.theme?.colors?.accent ?? b.theme?.colors?.copper;
+  const accentIn = brand[0] ?? (legacy && normalizeHex(legacy)) ?? null;
+  if (accentIn) {
+    // Her colour as the accent: readable as text on the page and the cards,
+    // and as a button background under its own text.
+    let accent = ensureContrast(accentIn, p.bg, 4.5);
+    accent = ensureContrast(accent, p.surface, 4.5);
+    accent = ensureContrast(accent, p.surface2, 4.5);
+    const moved = contrast(accent, accentIn) > 1.6;
+    if (moved) warn(`brand colour ${accentIn} adjusted to ${accent} for readability on ${template}`);
+    p.accent = accent;
+    p.accentFg = onColor(accent);
+    p.accentSoft = softOf(accent, p.bg);
+    // A dark hero can take her second colour when it is dark enough.
+    const second = brand[1];
+    if (second && meta.scheme === "light" && luminance(p.heroBg) < 0.2 && luminance(second) < 0.12) {
+      p.heroBg = second;
+      p.heroFg = onColor(second);
+      p.heroMuted = mix(second, p.heroFg, 0.7);
+    }
+  }
+  // Final guard on every text/background pair (template palettes pass; brand overrides are forced to).
+  p.fg = ensureContrast(p.fg, p.bg, 7);
+  p.mutedFg = ensureContrast(p.mutedFg, p.bg, 4.5);
+  p.mutedFg = ensureContrast(p.mutedFg, p.surface2, 4.5);
+  p.accentFg = contrast(p.accentFg, p.accent) >= 4.5 ? p.accentFg : onColor(p.accent);
+  p.heroFg = ensureContrast(p.heroFg, p.heroBg, 7);
+  p.heroMuted = ensureContrast(p.heroMuted, p.heroBg, 4.5);
+  const display = FONTS[meta.fonts.display], body = FONTS[meta.fonts.body];
+  const families = [display.axis, ...(body.family !== display.family ? [body.axis] : [])].map((a) => `family=${a}`).join("&");
+  return {
+    bg: p.bg, fg: p.fg, surface: p.surface, surface2: p.surface2, mutedFg: p.mutedFg, border: p.border,
+    accent: p.accent, accentFg: p.accentFg, accentSoft: p.accentSoft,
+    heroBg: p.heroBg, heroFg: p.heroFg, heroMuted: p.heroMuted,
+    fontDisplay: display.stack, fontBody: body.stack,
+    googleFontsUrl: `https://fonts.googleapis.com/css2?${families}&display=swap`,
+    radius: meta.radius,
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Assemble SiteContent
+// ─────────────────────────────────────────────────────────────────────────────
+
+function buildStructuredData(b: Brief, c: SiteContent, host: string): string {
+  const ct = b.contact;
+  const lang = c.brand.defaultLang;
+  const hours = (b.hours ?? []).filter((h) => h.ranges.length).map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][h.day],
+    opens: h.ranges[0][0], closes: h.ranges[h.ranges.length - 1][1],
+  }));
   return JSON.stringify({
     "@context": "https://schema.org",
-    "@type": b.schema_type ?? "HairSalon",
+    "@type": c.brand.schemaType,
     name: b.brand_name,
-    description: b.seo?.[lang]?.description ?? b.copy[lang].hero.desc,
+    description: c.seo[lang].description,
     url: `https://${host}`,
-    telephone: c.phone_tel,
-    email: c.email,
-    address: { "@type": "PostalAddress", streetAddress: c.address, addressLocality: c.city, postalCode: c.postal_code ?? "", addressCountry: "FR" },
-    image: b.logo_url || undefined,
+    telephone: ct.phone_tel || undefined,
+    email: ct.email || undefined,
+    address: ct.address ? { "@type": "PostalAddress", streetAddress: ct.address, addressLocality: ct.city, postalCode: ct.postal_code ?? "" } : undefined,
+    image: b.logo_url || b.images.hero_url || undefined,
     logo: b.logo_url || undefined,
-    priceRange: "€€",
-    currenciesAccepted: "EUR",
-    knowsLanguage: b.langs ?? ["fr"],
-    sameAs: [c.instagram, c.tiktok, c.facebook].filter(Boolean),
+    sameAs: [ct.instagram, ct.tiktok, ct.facebook, ct.snapchat].filter(Boolean),
     founder: { "@type": "Person", name: b.professional_name },
+    ...(hours.length ? { openingHoursSpecification: hours } : {}),
+    ...(c.blocks.reviewsSummary ? { aggregateRating: { "@type": "AggregateRating", ratingValue: c.blocks.reviewsSummary.average, reviewCount: c.blocks.reviewsSummary.count } } : {}),
   });
 }
+
+function assemble(b: Brief, host: string, template: TemplateKey, category: CategoryKey, files: SiteContent["assets"]) {
+  const langs = (b.langs?.length ? b.langs : ["fr"]) as Lang[];
+  const defaultLang = (b.default_lang && langs.includes(b.default_lang) ? b.default_lang : langs[0]) as Lang;
+  const firstName = clean(b.first_name ?? b.professional_name.trim().split(/\s+/)[0]);
+  const displayParts = b.display_parts ?? deriveDisplayParts(b.brand_name);
+  const theme = resolveTheme(b, template);
+  const region = clean(b.contact.region ?? [b.contact.postal_code, b.contact.city].filter(Boolean).join(" "));
+  const mode: Mode = b.contact.mode ?? "salon";
+  const bookingSlug = b.booking_slug ?? (b.booking_url?.match(/book\.sobeauty\.business\/([^/?#]+)/)?.[1] ?? "");
+  const bookingUrl = b.booking_url ?? (bookingSlug ? `https://book.${BASE_DOMAIN}/${bookingSlug}` : "");
+  if (!bookingUrl) die("booking_url (or booking_slug) is required: every button books on her page");
+  const whatsappDigits = (b.whatsapp ?? "").replace(/\D/g, "");
+  const whatsappUrl = whatsappDigits ? `https://wa.me/${whatsappDigits}` : "";
+  const products: Product[] = (b.products ?? []).map((p) => ({
+    id: p.id, name: clean(p.name), desc: clean(p.description), price: money(Number(p.price_amount), p.currency, defaultLang),
+    image: p.image_url || p.image_urls?.[0] || "", images: (p.image_urls?.length ? p.image_urls : p.image_url ? [p.image_url] : []).filter(Boolean),
+    kind: p.kind === "digital" ? "digital" : "physical", inStock: p.in_stock !== false, url: b.shop_url || bookingUrl,
+  }));
+  const team: TeamMember[] = (b.team ?? []).map((m) => ({
+    name: clean(m.name), photo: m.photo_url || "", owner: !!m.owner,
+    role: Object.fromEntries(langs.map((l) => [l, clean(b.copy[l]?.team_roles?.[m.name] ?? "")]).filter(([, v]) => v)),
+    services: m.services ?? {},
+    bookUrl: m.share_code ? `${bookingUrl}${bookingUrl.includes("?") ? "&" : "?"}c=${encodeURIComponent(m.share_code)}` : bookingUrl,
+  }));
+  const reviews: Review[] = (b.reviews ?? []).map((r) => ({ author: clean(r.author), text: clean(r.text), rating: Math.max(1, Math.min(5, Math.round(Number(r.rating) || 5))), service: clean(r.service), date: r.date ?? "" }))
+    .filter((r) => r.text.length > 12);
+  const hours: DayHours[] = (b.hours ?? []).filter((h) => Number.isInteger(h.day) && h.day >= 0 && h.day <= 6);
+  const summary = b.reviews_summary && b.reviews_summary.count >= 3 ? { average: Math.round(Number(b.reviews_summary.average) * 10) / 10, count: Number(b.reviews_summary.count) } : null;
+
+  const i18n = {} as Record<Lang, PageCopy>;
+  const services = {} as SiteContent["services"];
+  const contactPage = {} as SiteContent["contactPage"];
+  const pages = {} as SiteContent["pages"];
+  const seo = {} as SiteContent["seo"];
+  const seoPages = {} as SiteContent["seoPages"];
+
+  for (const lang of langs) {
+    const L = LABELS[lang];
+    const c = b.copy[lang];
+    if (!c) die(`brief.copy missing language "${lang}"`);
+    const salonVoice = /^l'équipe|^the team|^notre|^our/i.test(c.about.sign ?? "") || mode === "salon" && team.length > 1;
+    const highlights = c.highlights.map((h) => ({ title: clean(h.title), desc: clean(h.desc) })).filter((h) => h.title && h.desc).slice(0, 4);
+    const menu: ServiceGroup[] = c.services.map((g) => ({ title: clean(g.title), items: g.items.map((it) => ({ name: clean(it.name), duration: clean(it.duration), price: clean(it.price), ...(it.notes ? { notes: clean(it.notes) } : {}), ...(it.image ? { image: it.image } : {}) })).filter((it) => it.name && it.price) })).filter((g) => g.title && g.items.length);
+    // Highlights never empty when there is a menu: derive from the first groups.
+    const fallbackHighlights = menu.slice(0, 3).map((g) => ({ title: g.title, desc: g.items.slice(0, 3).map((i) => i.name).join(", ") + "." }));
+    const stats: { value: string; label: string }[] = [];
+    if (b.years_experience && b.years_experience > 0) stats.push({ value: `${b.years_experience}+`, label: L.stats.years });
+    if (summary) { stats.push({ value: `${summary.average.toFixed(1).replace(/\.0$/, "")}/5`, label: L.stats.rating }); stats.push({ value: `${summary.count}`, label: L.stats.reviews }); }
+    const faq = (c.faq ?? []).map((f) => ({ q: clean(f.q), a: clean(f.a) })).filter((f) => f.q && f.a).slice(0, 8);
+    const heroDesc = required(`copy.${lang}.hero.desc`, clean(c.hero.desc));
+    const aboutDesc = required(`copy.${lang}.about.desc`, clean(c.about.desc));
+    const pillars = c.pillars.map((p) => ({ label: clean(p.label), text: clean(p.text) })).filter((p) => p.label && p.text).slice(0, 3);
+
+    i18n[lang] = {
+      nav: { home: L.sub.home, ...L.nav },
+      hero: {
+        eyebrow: clean(`${b.brand_name}${b.contact.city ? ` · ${b.contact.city}` : ""}`),
+        title1: required(`copy.${lang}.hero.title1`, clean(c.hero.title1)), title2: clean(c.hero.title2), title3: tail(c.hero.title3, lang), desc: heroDesc,
+        bookNow: L.hero.bookNow, discover: L.hero.discover,
+        location: clean([b.contact.city, b.contact.postal_code].filter(Boolean).join(" · ")),
+        portraitTag: clean(b.portrait_tag), portraitName: salonVoice ? "" : firstName,
+        leadService: clean(c.hero.lead_service),
+      },
+      services: { tag: L.services.tag, title1: L.services.title1, title2: L.services.title2, title3: L.services.title3, seeAll: L.services.seeAll, more: L.services.more, from: L.services.from, duration: L.services.duration, items: highlights.length ? highlights : fallbackHighlights },
+      about: {
+        tag: L.about.tag, title1: salonVoice ? L.about.teamTitle1 : L.about.title1, title2: clean(c.about.title2) || (salonVoice ? b.brand_name : firstName), title3: L.about.title3,
+        desc: aboutDesc, bullets: cleanList(c.about.bullets).slice(0, 3), sign: clean(c.about.sign), cta: L.about.cta,
+        experienceValue: b.years_experience ? String(b.years_experience) : "", experience: L.about.experience,
+      },
+      pillars: { ...L.pillars, items: pillars },
+      reviews: L.reviews,
+      team: L.team,
+      gallery: L.gallery,
+      faq: { ...L.faq, items: faq },
+      hours: L.hours,
+      products: L.products,
+      programmes: L.programmes,
+      cta: { title1: clean(c.cta?.title1) || L.cta.title1, title2: clean(c.cta?.title2) || L.cta.title2, title3: c.cta?.title3?.trim() ? tail(c.cta.title3, lang) : L.cta.title3, desc: clean(c.cta?.desc), bookNow: L.cta.bookNow, whatsapp: L.cta.whatsapp },
+      offer: clean(c.offer),
+      stats,
+      marquee: cleanList(c.marquee).slice(0, 8),
+      footer: { tagline: clean(c.footerTagline), ...L.footer },
+      location: { city: clean(b.contact.city), region, hint: clean(b.contact.location_hint), directions: L.location.directions },
+    };
+    for (const [k, v] of Object.entries({ ...i18n[lang].hero, ...i18n[lang].about, tagline: i18n[lang].footer.tagline, offer: i18n[lang].offer })) if (typeof v === "string") assertClean(`copy.${lang}.${k}`, v);
+    services[lang] = menu;
+    contactPage[lang] = { intro: clean(c.contact?.intro), policy: cleanList(c.contact?.policy).slice(0, 4), ...(c.contact?.note ? { note: clean(c.contact.note) } : {}) };
+    seo[lang] = b.seo?.[lang] ? { title: clean(b.seo[lang]!.title), description: clean(b.seo[lang]!.description) } : { title: `${b.brand_name}${b.contact.city ? ` · ${b.contact.city}` : ""}`, description: heroDesc.slice(0, 160) };
+    const infoParts = [L.modeInfo[mode], b.contact.location_hint ? `${clean(b.contact.location_hint)}.` : ""].filter(Boolean);
+    const socialNames = [b.contact.instagram && "Instagram", b.contact.tiktok && "TikTok", b.contact.facebook && "Facebook", b.contact.snapchat && "Snapchat"].filter(Boolean) as string[];
+    pages[lang] = {
+      navHome: L.sub.home,
+      services: { eyebrow: L.sub.svcEyebrow, titleAccent: L.sub.svcTitleAccent, subtitle: L.sub.svcSubtitle, infoTitle: L.sub.svcInfoTitle, infoText: infoParts.join(" "), depositLine: b.deposit_percent ? L.deposit(b.deposit_percent) : "" },
+      contact: {
+        heroTitle: L.sub.ctHeroTitle, heroAccent: L.sub.ctHeroAccent, ctaLabel: L.sub.ctCta,
+        labelPhone: L.sub.ctLabelPhone, labelEmail: L.sub.ctLabelEmail, labelAddress: L.sub.ctLabelAddress, labelWhatsapp: L.sub.ctLabelWhatsapp,
+        socialsLine: socialNames.length ? `${socialNames.join(" · ")}${L.socialsTail}` : "", policyTitle: L.sub.ctPolicyTitle, signature: salonVoice ? `L'équipe ${b.brand_name}`.replace(/^L'équipe/, lang === "en" ? "The team at" : "L'équipe") : firstName,
+      },
+    };
+    seoPages[lang] = {
+      services: { title: `${b.brand_name} · ${L.sub.menuWord}`, description: L.sub.svcSubtitle },
+      contact: { title: `${b.brand_name} · ${L.nav.contact}`, description: contactPage[lang].intro || heroDesc.slice(0, 160) },
+    };
+  }
+
+  const mapsUrl = b.contact.maps_url || (b.contact.address ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(b.contact.address)}` : "");
+  const content: SiteContent = {
+    template, category,
+    brand: {
+      name: clean(b.brand_name), displayParts, initial: b.brand_name.trim()[0].toUpperCase(), slug: b.slug,
+      logoUrl: b.logo_url ?? "", bookingUrl, shopUrl: b.shop_url ?? (products.length ? `${bookingUrl}${bookingUrl.includes("?") ? "&" : "?"}tab=boutique` : ""),
+      whatsappUrl, schemaType: schemaTypeFor(category, b.schema_type), defaultLang, langs,
+    },
+    contact: {
+      phoneHuman: clean(b.contact.phone_human), phoneTel: (b.contact.phone_tel ?? "").replace(/[^\d+]/g, ""), email: clean(b.contact.email),
+      address: clean(b.contact.address), city: clean(b.contact.city), region, locationHint: clean(b.contact.location_hint), mapsUrl,
+      socials: { instagram: b.contact.instagram || undefined, tiktok: b.contact.tiktok || undefined, facebook: b.contact.facebook || undefined, snapchat: b.contact.snapchat || undefined },
+      mode,
+    },
+    live: { enabled: b.live !== false && !!bookingSlug, apiBase: API_BASE, slug: bookingSlug },
+    theme,
+    assets: files,
+    blocks: { team, products, reviews, reviewsSummary: summary, hours, galleryUrls: (b.images.gallery_urls ?? []).filter(Boolean) },
+    credit: { ...CREDIT, logoUrl: b.credit_logo_url ?? CREDIT.logoUrl },
+    cfAnalyticsToken: b.cf_analytics_token ?? "",
+    i18n, services, contactPage, pages, seo, seoPages,
+    structuredData: "",
+  };
+  content.structuredData = buildStructuredData(b, content, host);
+  return content;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Images
+// ─────────────────────────────────────────────────────────────────────────────
 
 function extFromType(ct: string | null, url: string): string {
   const t = (ct ?? "").toLowerCase();
@@ -239,175 +396,87 @@ function extFromType(ct: string | null, url: string): string {
   return m ? m[1].toLowerCase().replace("jpeg", "jpg") : "jpg";
 }
 
-// Download into src/assets as `<base>.<real-ext>` and return the filename, so the
-// generated image barrel points at a file whose extension matches its bytes
-// (Cloudflare serves by extension → correct Content-Type for og:image etc.).
-async function download(url: string, dir: string, base: string): Promise<string> {
-  const res = await fetch(url);
-  if (!res.ok) die(`failed to download ${url} (${res.status})`);
-  const file = `${base}.${extFromType(res.headers.get("content-type"), url)}`;
-  writeFileSync(join(dir, "src/assets", file), Buffer.from(await res.arrayBuffer()));
-  console.log(`   ↓ ${base} → ${file}`);
-  return file;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Assemble SiteContent (matches _schema/site-content.ts)
-// ─────────────────────────────────────────────────────────────────────────────
-
-function assemble(b: Brief, host: string) {
-  const langs = b.langs ?? ["fr"];
-  const defaultLang = b.default_lang ?? langs[0];
-  const firstName = b.first_name ?? b.professional_name.trim().split(/\s+/)[0];
-  const displayParts = b.display_parts ?? deriveDisplayParts(b.brand_name);
-  const theme = resolveTheme(b.theme);
-  const region = b.contact.region ?? [b.contact.postal_code, b.contact.city].filter(Boolean).join(" ");
-
-  const mode = b.contact.mode ?? "home";
-  const socialNames = [
-    b.contact.instagram && "Instagram",
-    b.contact.tiktok && "TikTok",
-    b.contact.facebook && "Facebook",
-  ].filter(Boolean) as string[];
-
-  const i18n: Record<string, unknown> = {};
-  const services: Record<string, unknown> = {};
-  const contactPage: Record<string, unknown> = {};
-  const pages: Record<string, unknown> = {};
-  const seo: Record<string, unknown> = {};
-  const seoPages: Record<string, unknown> = {};
-
-  for (const lang of langs) {
-    const L = LABELS[lang];
-    const c = b.copy[lang];
-    if (!c) die(`brief.copy missing language "${lang}"`);
-    i18n[lang] = {
-      nav: { home: L.sub.home, ...L.nav },
-      hero: {
-        eyebrow: `${b.brand_name} · ${b.contact.city}`,
-        title1: c.hero.title1, title2: c.hero.title2, title3: c.hero.title3, desc: c.hero.desc,
-        bookNow: L.hero.bookNow, discover: L.hero.discover, happy: L.hero.happy,
-        location: `${b.contact.city} · ${b.contact.postal_code ?? ""}`.trim(),
-        portraitTag: b.portrait_tag ?? "", portraitName: firstName,
-      },
-      services: { tag: L.services.tag, ...L.services, items: c.highlights },
-      about: {
-        tag: L.about.tag, title1: L.about.title1, title2: c.about.title2 || firstName, title3: L.about.title3,
-        desc: c.about.desc, bullets: c.about.bullets, sign: c.about.sign, cta: L.about.cta,
-        experienceValue: b.years_experience != null ? String(b.years_experience) : "", experience: L.about.experience,
-      },
-      testimonials: { ...L.testimonials, items: c.pillars },
-      cta: { title1: c.cta?.title1 ?? L.cta.title1, title2: c.cta?.title2 ?? L.cta.title2, title3: c.cta?.title3 ?? L.cta.title3, desc: c.cta?.desc ?? "", bookNow: L.cta.bookNow },
-      marquee: c.marquee,
-      footer: { tagline: c.footerTagline, contact: L.footer.contact, follow: L.footer.follow, policy: L.footer.policy, rights: L.footer.rights },
-      location: { city: b.contact.city, region, hint: b.contact.location_hint ?? "" },
-    };
-    services[lang] = c.services;
-    contactPage[lang] = c.contact;
-    seo[lang] = b.seo?.[lang] ?? { title: `${b.brand_name} · ${b.contact.city}`, description: c.hero.desc };
-
-    const infoParts = [MODE_INFO[mode][lang], b.contact.location_hint ? `${b.contact.location_hint}.` : ""].filter(Boolean);
-    const depositLine = b.deposit_percent
-      ? (lang === "fr"
-          ? `Un acompte de ${b.deposit_percent}% est demandé à la réservation.`
-          : `A ${b.deposit_percent}% deposit is required at booking.`)
-      : "";
-    const socialsLine = socialNames.length
-      ? `${socialNames.join(" · ")}${SOCIAL_NAMES[lang].tail}`
-      : "";
-    pages[lang] = {
-      navHome: L.sub.home,
-      services: {
-        eyebrow: L.sub.svcEyebrow, titleAccent: L.sub.svcTitleAccent, subtitle: L.sub.svcSubtitle,
-        infoTitle: L.sub.svcInfoTitle, infoText: infoParts.join(" "), depositLine,
-      },
-      contact: {
-        heroTitle: L.sub.ctHeroTitle, heroAccent: L.sub.ctHeroAccent, ctaLabel: L.sub.ctCta,
-        labelPhone: L.sub.ctLabelPhone, labelEmail: L.sub.ctLabelEmail, labelAddress: L.sub.ctLabelAddress,
-        socialsLine, policyTitle: L.sub.ctPolicyTitle, signature: `— ${firstName}`,
-      },
-    };
-    seoPages[lang] = {
-      services: { title: `${b.brand_name} · ${L.sub.menuWord}`, description: L.sub.svcSubtitle },
-      contact: { title: `${b.brand_name} · ${L.nav.contact}`, description: c.contact.intro || c.hero.desc },
-    };
+/** Download into src/assets as `<base>.<real-ext>`; "" when the image cannot be fetched (the block then hides). */
+async function download(url: string, dir: string, base: string, must = false): Promise<string> {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const ct = res.headers.get("content-type");
+    if (ct && !/image\//.test(ct)) throw new Error(`not an image (${ct})`);
+    const file = `${base}.${extFromType(ct, url)}`;
+    writeFileSync(join(dir, "src/assets", file), Buffer.from(await res.arrayBuffer()));
+    console.log(`   ↓ ${base} → ${file}`);
+    return file;
+  } catch (e) {
+    if (must) die(`failed to download ${url}: ${(e as Error).message}`);
+    warn(`image skipped ${base}: ${(e as Error).message}`);
+    return "";
   }
-
-  return {
-    brand: {
-      name: b.brand_name, displayParts, initial: b.brand_name.trim()[0].toUpperCase(), slug: b.slug,
-      logoUrl: b.logo_url ?? "", bookingUrl: b.booking_url ?? `https://book.${BASE_DOMAIN}/${b.slug}`,
-      schemaType: b.schema_type ?? "HairSalon", defaultLang, langs,
-    },
-    contact: {
-      phoneHuman: b.contact.phone_human, phoneTel: b.contact.phone_tel, email: b.contact.email,
-      address: b.contact.address, city: b.contact.city, region, locationHint: b.contact.location_hint ?? "",
-      socials: { instagram: b.contact.instagram, tiktok: b.contact.tiktok, facebook: b.contact.facebook },
-      mode: b.contact.mode ?? "home",
-    },
-    theme,
-    assets: { hero: "hero.jpg", about: "about.jpg", svc1: "svc-1.jpg", svc2: "svc-2.jpg", svc3: "svc-3.jpg", flower: "flower.png" },
-    cfAnalyticsToken: b.cf_analytics_token ?? "",
-    i18n, services, contactPage, pages, seo, seoPages,
-    structuredData: buildStructuredData(b, host, defaultLang),
-  };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Main
 // ─────────────────────────────────────────────────────────────────────────────
 
-const briefPath = process.argv[2];
-const flags = new Set(process.argv.slice(3));
-if (!briefPath) die("Usage: bun scripts/build-from-brief.ts <brief.json> [--build] [--deploy] [--preview]");
+const argv = process.argv.slice(2);
+const briefPath = argv[0];
+const flags = new Set(argv.filter((a) => a.startsWith("--")));
+const outIdx = argv.indexOf("--out");
+const outDir = outIdx >= 0 ? argv[outIdx + 1] : null;
+if (!briefPath) die("Usage: bun scripts/build-from-brief.ts <brief.json> [--build] [--deploy] [--preview] [--out <dir>]");
 
 const brief: Brief = JSON.parse(readFileSync(briefPath, "utf-8"));
 if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(brief.slug ?? "")) die(`slug "${brief.slug}" must be kebab-case`);
+const category = inferCategory(brief);
+const template: TemplateKey = isTemplateKey(brief.template) ? brief.template : DEFAULT_TEMPLATE[category];
 
 const preview = flags.has("--preview");
 const host = preview ? `${brief.slug}-preview.${BASE_DOMAIN}` : `${brief.slug}.${BASE_DOMAIN}`;
-const dir = join(REPO, brief.slug);
+const dir = outDir ? (outDir.startsWith("/") ? outDir : join(process.cwd(), outDir)) : join(REPO, brief.slug);
 
-console.log(`\n🏗  Building ${brief.brand_name} → ${host}\n`);
+console.log(`\n🏗  Building ${brief.brand_name} → ${host}  [${template} · ${category}]\n`);
 
-// 1. materialise client folder from template
-if (!existsSync(dir)) {
-  cpSync(TEMPLATE, dir, { recursive: true, filter: (s) => !/\/(node_modules|dist)(\/|$)/.test(s) });
-  console.log(`   • copied _template-base → ${brief.slug}/`);
-}
+// 1. materialise the client folder from the template (always refresh the code,
+//    keep the folder's downloaded assets out of the copy)
+mkdirSync(dir, { recursive: true });
+cpSync(TEMPLATE, dir, { recursive: true, filter: (s) => !/\/(node_modules|dist|\.wrangler)(\/|$)/.test(s) && !/\/src\/assets\/[^/]+\.(jpe?g|png|webp|avif)$/.test(s) });
 mkdirSync(join(dir, "src/assets"), { recursive: true });
+// Registry + schema come from _schema (single source).
+writeFileSync(join(dir, "src/site-content.ts"), readFileSync(join(REPO, "_schema/site-content.ts"), "utf-8"));
+writeFileSync(join(dir, "src/layouts/registry.ts"), readFileSync(join(REPO, "_schema/templates.ts"), "utf-8").replace('from "./site-content"', 'from "../site-content"'));
+console.log(`   • materialised ${dir}`);
 
-// 2. write content.ts
-const content = assemble(brief, host);
-const contentTs =
-  `// GENERATED by build-from-brief.ts — do not edit by hand.\n` +
-  `import type { SiteContent } from "./site-content";\n\n` +
-  `const content: SiteContent = ${JSON.stringify(content, null, 2)};\n\n` +
-  `export default content;\n`;
-writeFileSync(join(dir, "src/content.ts"), contentTs);
-console.log(`   • wrote src/content.ts`);
-
-// 3. images — download the pro's real photos (keeping their true format) and
-//    regenerate the image barrel. Non-downloaded slots keep the template
-//    placeholders (which are .jpg).
+// 2. images (real format kept); the barrel exports "" for what is absent
 console.log(`   • assets`);
-const files = { hero: "hero.jpg", about: "about.jpg", svc1: "svc-1.jpg", svc2: "svc-2.jpg", svc3: "svc-3.jpg", flower: "flower.png" };
+const files: SiteContent["assets"] = { hero: "", about: "", svc: [], gallery: [] };
 if (brief.images.hero_url) files.hero = await download(brief.images.hero_url, dir, "hero");
 const aboutUrl = brief.owner_photo_url ?? brief.images.about_url;
 if (aboutUrl) files.about = await download(aboutUrl, dir, "about");
-const svc = brief.images.svc_urls ?? [];
-if (svc[0]) files.svc1 = await download(svc[0], dir, "svc-1");
-if (svc[1]) files.svc2 = await download(svc[1], dir, "svc-2");
-if (svc[2]) files.svc3 = await download(svc[2], dir, "svc-3");
+for (const [i, u] of (brief.images.svc_urls ?? []).slice(0, 4).entries()) files.svc.push(await download(u, dir, `svc-${i + 1}`));
+for (const [i, u] of (brief.images.gallery_urls ?? []).slice(0, 12).entries()) files.gallery.push(await download(u, dir, `g-${i + 1}`));
+files.svc = files.svc.filter(Boolean);
+files.gallery = files.gallery.filter(Boolean);
+const imp = (name: string, file: string) => (file ? `import ${name} from "./${file}";\n` : "");
+const svcNames = files.svc.map((_, i) => `svc${i + 1}Img`);
+const galNames = files.gallery.map((_, i) => `g${i + 1}Img`);
 writeFileSync(join(dir, "src/assets/generated-images.ts"),
   `// GENERATED by build-from-brief.ts — do not edit by hand.\n` +
-  `import heroImg from "./${files.hero}";\n` +
-  `import aboutImg from "./${files.about}";\n` +
-  `import svc1Img from "./${files.svc1}";\n` +
-  `import svc2Img from "./${files.svc2}";\n` +
-  `import svc3Img from "./${files.svc3}";\n` +
-  `import flowerImg from "./${files.flower}";\n\n` +
-  `export { heroImg, aboutImg, svc1Img, svc2Img, svc3Img, flowerImg };\n`);
+  imp("heroImgFile", files.hero) + imp("aboutImgFile", files.about) +
+  files.svc.map((f, i) => imp(svcNames[i], f)).join("") + files.gallery.map((f, i) => imp(galNames[i], f)).join("") +
+  `\nexport const heroImg: string = ${files.hero ? "heroImgFile" : '""'};\n` +
+  `export const aboutImg: string = ${files.about ? "aboutImgFile" : '""'};\n` +
+  `export const svcImgs: string[] = [${svcNames.join(", ")}];\n` +
+  `export const galleryImgs: string[] = [${galNames.join(", ")}];\n`);
+
+// 3. content.ts + layout.ts
+const content = assemble(brief, host, template, category, files);
+writeFileSync(join(dir, "src/content.ts"),
+  `// GENERATED by build-from-brief.ts — do not edit by hand.\n` +
+  `import type { SiteContent } from "./site-content";\n\n` +
+  `const content: SiteContent = ${JSON.stringify(content, null, 2)};\n\nexport default content;\n`);
+writeFileSync(join(dir, "src/layout.ts"),
+  `// GENERATED by build-from-brief.ts — do not edit by hand.\n// Re-exports the chosen layout so the bundle only carries that one.\nexport { default } from "./layouts/${template}";\n`);
+console.log(`   • wrote src/content.ts + src/layout.ts (${template})`);
 
 // 4. package.json + wrangler.jsonc name & route
 const pkgPath = join(dir, "package.json");
@@ -425,12 +494,16 @@ writeFileSync(join(dir, "wrangler.jsonc"), JSON.stringify(wrangler, null, 2) + "
 console.log(`   • package.json + wrangler.jsonc (${wrangler.name})`);
 
 // 5. favicon initial
-const fav = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" style="fill:${content.theme.copper}"/><text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, serif" font-size="44" font-weight="600" fill="white">${content.brand.initial}</text></svg>`;
+const fav = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" style="fill:${content.theme.accent}"/><text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, serif" font-size="40" font-weight="600" fill="${content.theme.accentFg}">${content.brand.initial}</text></svg>`;
 writeFileSync(join(dir, "public/favicon.svg"), fav);
 
-console.log(`\n✅  Files written to ${brief.slug}/`);
+// 6. a quality summary (what the page will show)
+const d = content.blocks;
+console.log(`\n   blocks: menu ${content.services[content.brand.defaultLang].reduce((n, g) => n + g.items.length, 0)} · team ${d.team.length} · products ${d.products.length} · reviews ${d.reviews.length} · hours ${d.hours.length ? "yes" : "no"} · gallery ${files.gallery.length} · faq ${content.i18n[content.brand.defaultLang].faq.items.length} · stats ${content.i18n[content.brand.defaultLang].stats.length}`);
+console.log(`   tokens: accent ${content.theme.accent} on bg ${content.theme.bg} = ${contrast(content.theme.accent, content.theme.bg).toFixed(1)}:1 · hero ${contrast(content.theme.heroFg, content.theme.heroBg).toFixed(1)}:1`);
+console.log(`\n✅  Files written to ${dir}`);
 
-// 6. optional build / deploy
+// 7. optional build / deploy
 function run(cmd: string, args: string[]) {
   console.log(`\n$ ${cmd} ${args.join(" ")}`);
   const r = spawnSync(cmd, args, { cwd: dir, stdio: "inherit" });
@@ -441,3 +514,4 @@ if (flags.has("--deploy")) {
   run("npx", ["wrangler", "deploy"]);
   console.log(`\n🚀  Deployed → https://${host}`);
 }
+void rmSync;
