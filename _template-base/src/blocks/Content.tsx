@@ -127,7 +127,9 @@ export function BookCta({ data, className = "", tone = "hero" }: { data: SiteDat
       <h2 className="font-display text-4xl leading-[1.05] text-balance sm:text-5xl lg:text-6xl">{c.title1} <em className="italic">{c.title2}</em>{c.title3}</h2>
       {c.desc && <p className={`mx-auto mt-4 max-w-xl text-base sm:text-lg ${muted}`}>{c.desc}</p>}
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <Button href={data.content.brand.bookingUrl} external size="lg" variant={tone === "accent" ? "hero" : "primary"} className={tone === "accent" ? "bg-accent-fg text-accent" : ""}>{c.bookNow}</Button>
+        {tone === "accent"
+          ? <a href={data.content.brand.bookingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-[var(--radius)] bg-accent-fg px-7 py-4 text-base font-semibold text-accent transition-transform duration-300 hover:scale-[1.02]">{c.bookNow}</a>
+          : <Button href={data.content.brand.bookingUrl} external size="lg">{c.bookNow}</Button>}
         {data.whatsappUrl && <Button href={data.whatsappUrl} external size="lg" variant="outline" className={tone === "hero" ? "border-hero-muted/50 text-hero-fg hover:bg-hero-fg/10" : ""}>{c.whatsapp}</Button>}
       </div>
     </div>

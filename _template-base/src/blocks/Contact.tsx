@@ -19,7 +19,7 @@ export function ContactCards({ data, className = "" }: { data: SiteData; classNa
         const inner = (
           <>
             <div className="eyebrow text-muted-fg">{c.label}</div>
-            <div className="mt-2 break-words font-display text-xl sm:text-2xl">{c.value}</div>
+            <div className={`mt-2 font-display ${c.value.includes("@") ? "break-all text-lg sm:text-xl" : "break-words text-xl sm:text-2xl"}`}>{c.value}</div>
             {c.sub && <div className="mt-1 text-sm text-muted-fg">{c.sub}</div>}
           </>
         );

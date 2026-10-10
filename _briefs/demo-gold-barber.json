@@ -1,0 +1,158 @@
+{
+  "slug": "demo-gold-barber",
+  "template": "gold-barber",
+  "category": "barber",
+  "brand_name": "Kingdom Barber Club",
+  "professional_name": "Franck Mbarga",
+  "first_name": "Franck",
+  "display_parts": ["Kingdom", "Barber Club"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "237690000000",
+  "logo_url": "",
+  "portrait_tag": "Barbier · Dégradés et barbe",
+  "years_experience": 9,
+  "contact": {
+    "phone_human": "+237 6 90 00 00 00",
+    "phone_tel": "+237690000000",
+    "email": "contact@kingdombarber.cm",
+    "address": "Rue Koloko, Bonapriso, Douala",
+    "city": "Douala",
+    "region": "Bonapriso",
+    "location_hint": "Face à la pharmacie de Bonapriso, parking devant",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "facebook": "https://www.facebook.com/sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#C9A24D"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80",
+      "https://images.unsplash.com/photo-1532710093739-9470acff878f?w=1600&q=80",
+      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80",
+      "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80",
+      "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1600&q=80",
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80",
+      "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=1600&q=80",
+      "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80"
+    ]
+  },
+  "team": [
+    { "name": "Franck Mbarga", "photo_url": "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=1200&q=80", "owner": true, "share_code": "FRA1", "services": {} },
+    { "name": "Steve Ngono", "photo_url": "", "owner": false, "share_code": "STE2", "services": { "fr": ["Dégradés", "Contours"], "en": ["Fades", "Line-ups"] } },
+    { "name": "Cédric Abena", "photo_url": "", "owner": false, "share_code": "CED3", "services": { "fr": ["Barbe", "Rasage"], "en": ["Beard", "Shave"] } }
+  ],
+  "reviews": [
+    { "author": "Yannick T.", "text": "Le meilleur dégradé de Douala, net et propre à chaque fois. Franck connaît ma coupe par cœur, je n'ai plus rien à expliquer.", "rating": 5, "service": "Dégradé", "date": "2026-09-18" },
+    { "author": "Boris N.", "text": "Rasage à la serviette chaude impeccable, zéro irritation. On réserve sur WhatsApp et on passe sans attendre.", "rating": 5, "service": "Rasage serviette chaude", "date": "2026-09-05" },
+    { "author": "Hervé K.", "text": "Mon fils de 6 ans est resté tranquille tout le long, c'est dire. Coupe nette, prix correct, équipe sympa.", "rating": 5, "service": "Coupe enfant", "date": "2026-08-22" },
+    { "author": "Patrick E.", "text": "Barbe redessinée avec précision, et des conseils pour l'entretenir à la maison. Salon propre et ponctuel.", "rating": 4, "service": "Taille de barbe", "date": "2026-08-01" }
+  ],
+  "reviews_summary": { "average": 4.8, "count": 112 },
+  "hours": [
+    { "day": 0, "ranges": [["08:30", "20:00"]] },
+    { "day": 1, "ranges": [["08:30", "20:00"]] },
+    { "day": 2, "ranges": [["08:30", "20:00"]] },
+    { "day": 3, "ranges": [["08:30", "20:00"]] },
+    { "day": 4, "ranges": [["08:30", "21:00"]] },
+    { "day": 5, "ranges": [["08:00", "21:00"]] },
+    { "day": 6, "ranges": [["09:00", "14:00"]] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Coupe.", "title2": "Barbe.", "title3": " Style.", "desc": "Kingdom Barber Club, salon de barbier à Bonapriso, Douala. Dégradés précis, barbe redessinée au rasoir, serviette chaude et conseils d'entretien, par trois barbiers qui prennent le temps de bien faire.", "lead_service": "Dégradé et barbe, le combo le plus réservé" },
+      "highlights": [
+        { "title": "Dégradés et coupes", "desc": "Skin fade, low fade, coupe classique ou afro sculpté : une coupe nette qui tient jusqu'au prochain passage." },
+        { "title": "Barbe et rasage", "desc": "Taille, contours au rasoir, rasage à la serviette chaude et huile de finition. Zéro irritation." },
+        { "title": "Soins pour homme", "desc": "Gommage, masque noir et soin du visage après la coupe, pour une peau propre et nette." }
+      ],
+      "about": { "title2": "Kingdom Barber Club", "desc": "Franck a ouvert le salon en 2017 avec deux fauteuils et une tondeuse. Neuf ans plus tard, Kingdom compte trois barbiers, une clientèle fidèle et une règle simple : chaque client repart avec une coupe nette et un conseil pour l'entretenir. Réservation en ligne ou sur WhatsApp, et on accueille aussi ceux qui passent sans rendez-vous quand un fauteuil est libre.", "bullets": ["Outils désinfectés entre chaque client", "Réservation en ligne ou sur WhatsApp", "Ouvert sept jours sur sept"], "sign": "Franck et l'équipe" },
+      "pillars": [
+        { "label": "Sans rendez-vous", "text": "Passez quand vous voulez : si un fauteuil est libre, on vous prend tout de suite." },
+        { "label": "Précision", "text": "Des contours au rasoir et des dégradés fondus, vérifiés au miroir avant que vous partiez." },
+        { "label": "Hygiène", "text": "Lames neuves, outils désinfectés, serviettes propres pour chaque client." }
+      ],
+      "marquee": ["Dégradé", "Barbe", "Rasage serviette chaude", "Sans rendez-vous", "WhatsApp", "Bonapriso"],
+      "footerTagline": "Salon de barbier à Bonapriso, Douala. Dégradés, barbe, rasage et soins pour homme. Ouvert sept jours sur sept.",
+      "offer": "Le samedi matin : coupe père et fils à 4 500 FCFA",
+      "faq": [
+        { "q": "Peut-on venir sans rendez-vous ?", "a": "Oui. Les clients avec réservation passent en premier, les autres dès qu'un fauteuil est libre." },
+        { "q": "Combien de temps dure une coupe ?", "a": "Trente minutes pour une coupe classique, quarante-cinq pour un dégradé avec barbe." },
+        { "q": "Faites-vous les coupes enfants ?", "a": "Oui, à partir de 3 ans. Le samedi matin, la coupe père et fils est à tarif réduit." },
+        { "q": "Comment réserver ?", "a": "En ligne en deux minutes, ou par WhatsApp en nous envoyant le créneau souhaité." }
+      ],
+      "services": [
+        { "title": "Coupes", "items": [
+          { "name": "Coupe classique", "duration": "30 min", "price": "3 000 FCFA" },
+          { "name": "Dégradé (fade)", "duration": "40 min", "price": "4 000 FCFA" },
+          { "name": "Coupe enfant", "duration": "25 min", "price": "2 000 FCFA", "notes": "À partir de 3 ans" },
+          { "name": "Contours et ligne", "duration": "15 min", "price": "1 500 FCFA" }
+        ] },
+        { "title": "Barbe et rasage", "items": [
+          { "name": "Taille de barbe", "duration": "20 min", "price": "2 000 FCFA" },
+          { "name": "Rasage serviette chaude", "duration": "30 min", "price": "3 500 FCFA" },
+          { "name": "Coupe et barbe", "duration": "50 min", "price": "5 500 FCFA" },
+          { "name": "Coloration barbe", "duration": "30 min", "price": "4 000 FCFA" }
+        ] },
+        { "title": "Soins pour homme", "items": [
+          { "name": "Soin du visage", "duration": "25 min", "price": "5 000 FCFA" },
+          { "name": "Gommage et masque noir", "duration": "30 min", "price": "6 000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "Un créneau à caler ou une question ? Écrivez-nous sur WhatsApp, on répond vite.", "policy": ["Annulation gratuite jusqu'à 2 h avant.", "Au-delà de 15 minutes de retard, le créneau peut être donné au client suivant.", "Les clients sans rendez-vous sont pris dès qu'un fauteuil se libère."], "note": "Le salon est face à la pharmacie de Bonapriso, parking devant la porte." },
+      "cta": { "title1": "Prêt pour", "title2": "une coupe nette", "title3": " ?", "desc": "Réservez votre créneau en ligne ou écrivez-nous sur WhatsApp." },
+      "team_roles": { "Franck Mbarga": "Fondateur · Dégradés et barbe", "Steve Ngono": "Barbier · Dégradés et contours", "Cédric Abena": "Barbier · Barbe et rasage" }
+    },
+    "en": {
+      "hero": { "title1": "Cut.", "title2": "Trim.", "title3": " Define.", "desc": "Kingdom Barber Club, barbershop in Bonapriso, Douala. Sharp fades, razor-lined beards, hot towel shaves and grooming advice, by three barbers who take the time to do it right.", "lead_service": "Fade and beard, the most booked combo" },
+      "highlights": [
+        { "title": "Fades and cuts", "desc": "Skin fade, low fade, classic cut or sculpted afro: a clean cut that holds until your next visit." },
+        { "title": "Beard and shave", "desc": "Trim, razor line-up, hot towel shave and finishing oil. Zero irritation." },
+        { "title": "Men's grooming", "desc": "Scrub, black mask and facial after the cut, for clean, clear skin." }
+      ],
+      "about": { "title2": "Kingdom Barber Club", "desc": "Franck opened the shop in 2017 with two chairs and one clipper. Nine years later, Kingdom counts three barbers, a loyal clientele and one simple rule: every client leaves with a clean cut and a tip to maintain it. Book online or on WhatsApp, and walk-ins are welcome whenever a chair is free.", "bullets": ["Tools disinfected between every client", "Booking online or on WhatsApp", "Open seven days a week"], "sign": "Franck and the team" },
+      "pillars": [
+        { "label": "Walk-ins welcome", "text": "Come by any time: if a chair is free, we take you right away." },
+        { "label": "Precision", "text": "Razor line-ups and blended fades, checked in the mirror before you leave." },
+        { "label": "Hygiene", "text": "Fresh blades, disinfected tools, clean towels for every client." }
+      ],
+      "marquee": ["Fade", "Beard", "Hot towel shave", "Walk-ins welcome", "WhatsApp", "Bonapriso"],
+      "footerTagline": "Barbershop in Bonapriso, Douala. Fades, beard, shave and men's grooming. Open seven days a week.",
+      "offer": "Saturday mornings: father and son cut for 4,500 FCFA",
+      "faq": [
+        { "q": "Can I come without an appointment?", "a": "Yes. Clients with a booking go first, walk-ins as soon as a chair is free." },
+        { "q": "How long does a cut take?", "a": "Thirty minutes for a classic cut, forty-five for a fade with beard." },
+        { "q": "Do you cut kids' hair?", "a": "Yes, from age 3. On Saturday mornings the father and son cut is discounted." },
+        { "q": "How do I book?", "a": "Online in two minutes, or on WhatsApp by sending us the time you want." }
+      ],
+      "services": [
+        { "title": "Cuts", "items": [
+          { "name": "Classic cut", "duration": "30 min", "price": "3,000 FCFA" },
+          { "name": "Fade", "duration": "40 min", "price": "4,000 FCFA" },
+          { "name": "Kids' cut", "duration": "25 min", "price": "2,000 FCFA", "notes": "From age 3" },
+          { "name": "Line-up", "duration": "15 min", "price": "1,500 FCFA" }
+        ] },
+        { "title": "Beard and shave", "items": [
+          { "name": "Beard trim", "duration": "20 min", "price": "2,000 FCFA" },
+          { "name": "Hot towel shave", "duration": "30 min", "price": "3,500 FCFA" },
+          { "name": "Cut and beard", "duration": "50 min", "price": "5,500 FCFA" },
+          { "name": "Beard colour", "duration": "30 min", "price": "4,000 FCFA" }
+        ] },
+        { "title": "Men's grooming", "items": [
+          { "name": "Facial", "duration": "25 min", "price": "5,000 FCFA" },
+          { "name": "Scrub and black mask", "duration": "30 min", "price": "6,000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "Need a slot or have a question? Message us on WhatsApp, we answer fast.", "policy": ["Free cancellation up to 2 hours before.", "After 15 minutes late, the slot may go to the next client.", "Walk-ins are taken as soon as a chair is free."], "note": "The shop is opposite the Bonapriso pharmacy, parking at the door." },
+      "cta": { "title1": "Ready for", "title2": "a clean cut", "title3": "?", "desc": "Book your slot online or message us on WhatsApp." },
+      "team_roles": { "Franck Mbarga": "Founder · Fades and beard", "Steve Ngono": "Barber · Fades and line-ups", "Cédric Abena": "Barber · Beard and shave" }
+    }
+  }
+}

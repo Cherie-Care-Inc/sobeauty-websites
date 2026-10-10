@@ -1,0 +1,167 @@
+{
+  "slug": "demo-glow",
+  "template": "glow",
+  "category": "institut",
+  "brand_name": "Institut Nayé",
+  "professional_name": "Nayé Faye",
+  "first_name": "Nayé",
+  "display_parts": ["Institut", "Nayé"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "221770000000",
+  "logo_url": "",
+  "portrait_tag": "Esthéticienne · Soins du visage",
+  "years_experience": 9,
+  "deposit_percent": 20,
+  "contact": {
+    "phone_human": "+221 77 000 00 00",
+    "phone_tel": "+221770000000",
+    "email": "bonjour@institut-naye.sn",
+    "address": "Rue 10 x Avenue Cheikh Anta Diop, Point E, Dakar",
+    "city": "Dakar",
+    "region": "Point E",
+    "location_hint": "Au premier étage, entrée à côté de la pharmacie",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#8A1C2B"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1600&q=80",
+      "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1600&q=80",
+      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=1600&q=80",
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1600&q=80",
+      "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1600&q=80",
+      "https://images.unsplash.com/photo-1600428877878-1a0fd85beda8?w=1600&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80"
+    ]
+  },
+  "team": [
+    { "name": "Nayé Faye", "photo_url": "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=1200&q=80", "owner": true, "share_code": "NAY1", "services": { "fr": ["Soins du visage"], "en": ["Facials"] } },
+    { "name": "Khady Ndiaye", "photo_url": "", "owner": false, "share_code": "KHA2", "services": { "fr": ["Cils", "Sourcils"], "en": ["Lashes", "Brows"] } },
+    { "name": "Bineta Sarr", "photo_url": "", "owner": false, "share_code": "BIN3", "services": { "fr": ["Ongles"], "en": ["Nails"] } }
+  ],
+  "products": [
+    { "id": "serum-eclat", "name": "Sérum éclat vitamine C", "description": "30 ml. Unifie le teint et ravive l'éclat, matin et soir sur peau propre.", "price_amount": 18000, "currency": "XOF", "image_urls": ["https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=1200&q=80"], "kind": "physical", "in_stock": true },
+    { "id": "roller-quartz", "name": "Rouleau quartz rose et huile visage", "description": "Le duo du soin maison : rouleau en quartz rose et huile d'argan 20 ml pour drainer et nourrir.", "price_amount": 14500, "currency": "XOF", "image_urls": ["https://images.unsplash.com/photo-1600428877878-1a0fd85beda8?w=1200&q=80"], "kind": "physical", "in_stock": true },
+    { "id": "kit-pinceaux", "name": "Kit de 3 pinceaux teint", "description": "Poudre, fond de teint et estompe. Poils synthétiques doux, manche rose doré.", "price_amount": 9500, "currency": "XOF", "image_urls": ["https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80"], "kind": "physical", "in_stock": true }
+  ],
+  "reviews": [
+    { "author": "Aminata D.", "text": "Mon soin hydratant a transformé ma peau en une séance. Nayé explique chaque étape et conseille sans jamais forcer la vente.", "rating": 5, "service": "Soin hydratant", "date": "2026-09-20" },
+    { "author": "Coumba S.", "text": "Extensions de cils posées par Khady : légères, naturelles, elles tiennent trois semaines sans problème.", "rating": 5, "service": "Extensions de cils", "date": "2026-09-02" },
+    { "author": "Rama T.", "text": "Manucure semi-permanente impeccable, l'institut est propre et calme, on se sent bien accueillie.", "rating": 4, "service": "Semi-permanent", "date": "2026-08-15" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 52 },
+  "hours": [
+    { "day": 0, "ranges": [["09:30", "19:00"]] },
+    { "day": 1, "ranges": [["09:30", "19:00"]] },
+    { "day": 2, "ranges": [["09:30", "19:00"]] },
+    { "day": 3, "ranges": [["09:30", "20:00"]] },
+    { "day": 4, "ranges": [["09:30", "20:00"]] },
+    { "day": 5, "ranges": [["09:00", "18:00"]] },
+    { "day": 6, "ranges": [] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Bienvenue", "title2": "là où votre peau", "title3": " respire.", "desc": "Institut Nayé, à Point E : soins du visage, extensions de cils, sourcils et ongles, réalisés par une équipe de trois esthéticiennes qui prennent le temps de regarder votre peau avant de la toucher.", "lead_service": "Soin hydratant profond, le soin le plus réservé" },
+      "highlights": [
+        { "title": "Soins du visage", "desc": "Nettoyage, hydratation, éclat : un diagnostic de peau puis un protocole adapté à votre carnation et à votre saison." },
+        { "title": "Cils et sourcils", "desc": "Extensions cil à cil, rehaussement, restructuration et teinture : un regard ouvert, jamais chargé." },
+        { "title": "Ongles", "desc": "Manucure et pédicure soignées, semi-permanent et gel, avec des couleurs choisies pour les peaux foncées." }
+      ],
+      "about": { "title2": "Institut Nayé", "desc": "Nayé a ouvert l'institut en 2017 après neuf ans dans les soins du visage à Dakar et à Casablanca. Sa conviction n'a pas bougé : les peaux noires et métissées ont besoin de protocoles pensés pour elles, pas de recettes copiées. Khady et Bineta l'ont rejointe pour les cils, les sourcils et les ongles, avec la même exigence.", "bullets": ["Diagnostic de peau offert avant chaque soin", "Produits testés sur toutes les carnations", "Une cabine, une cliente, jamais deux à la fois"], "sign": "Nayé, Khady et Bineta" },
+      "pillars": [
+        { "label": "Regard", "text": "On observe votre peau et vos habitudes avant de proposer quoi que ce soit." },
+        { "label": "Douceur", "text": "Des gestes lents, des produits sans parfum agressif, aucune rougeur en sortant." },
+        { "label": "Honnêteté", "text": "Si un soin ne vous convient pas, on vous le dit et on propose autre chose." }
+      ],
+      "marquee": ["Soins du visage", "Extensions de cils", "Sourcils", "Semi-permanent", "Pédicure", "Point E"],
+      "footerTagline": "Soins du visage, cils, sourcils et ongles à Point E, Dakar. Réservation en ligne, acompte de 20 %.",
+      "offer": "Octobre : le soin éclat à 25 000 FCFA au lieu de 30 000 FCFA",
+      "faq": [
+        { "q": "Faut-il venir démaquillée ?", "a": "Non, le démaquillage fait partie du soin. Évitez simplement le gommage la veille." },
+        { "q": "Les extensions de cils abîment-elles les cils naturels ?", "a": "Pas lorsqu'elles sont posées cil à cil avec le bon poids. Khady adapte la longueur et l'épaisseur à vos cils." },
+        { "q": "Comment fonctionne l'acompte ?", "a": "Un acompte de 20 % confirme votre rendez-vous. Il est déduit du total le jour de la prestation." }
+      ],
+      "services": [
+        { "title": "Soins du visage", "items": [
+          { "name": "Soin hydratant profond", "duration": "1h", "price": "25 000 FCFA" },
+          { "name": "Soin éclat vitamine C", "duration": "1h15", "price": "30 000 FCFA" },
+          { "name": "Nettoyage de peau", "duration": "45 min", "price": "18 000 FCFA", "notes": "Extraction douce" },
+          { "name": "Soin anti-taches", "duration": "1h15", "price": "35 000 FCFA", "notes": "Cure de 3 séances conseillée" }
+        ] },
+        { "title": "Cils et sourcils", "items": [
+          { "name": "Extensions cil à cil", "duration": "1h45", "price": "28 000 FCFA" },
+          { "name": "Remplissage extensions", "duration": "1h", "price": "15 000 FCFA" },
+          { "name": "Rehaussement de cils", "duration": "1h", "price": "20 000 FCFA" },
+          { "name": "Restructuration sourcils", "duration": "30 min", "price": "7 000 FCFA" },
+          { "name": "Teinture sourcils", "duration": "20 min", "price": "6 000 FCFA" }
+        ] },
+        { "title": "Ongles", "items": [
+          { "name": "Manucure semi-permanent", "duration": "1h", "price": "12 000 FCFA" },
+          { "name": "Pédicure semi-permanent", "duration": "1h15", "price": "15 000 FCFA" },
+          { "name": "Pose gel", "duration": "1h45", "price": "22 000 FCFA" },
+          { "name": "Dépose", "duration": "30 min", "price": "5 000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "Une question sur votre peau ou un soin ? Écrivez-nous, on vous répond dans la journée.", "policy": ["L'acompte de 20 % confirme le rendez-vous.", "Annulation gratuite jusqu'à 24 h avant.", "Au-delà de 15 minutes de retard, la prestation peut être écourtée."], "note": "L'institut est au premier étage, l'entrée est à côté de la pharmacie. Parking dans la rue." },
+      "cta": { "title1": "Offrez", "title2": "une pause", "title3": " à votre peau.", "desc": "Choisissez votre soin, votre esthéticienne et votre créneau en ligne." },
+      "team_roles": { "Nayé Faye": "Fondatrice · Soins du visage", "Khady Ndiaye": "Esthéticienne · Cils et sourcils", "Bineta Sarr": "Prothésiste ongulaire" }
+    },
+    "en": {
+      "hero": { "title1": "Welcome", "title2": "where your skin", "title3": " breathes.", "desc": "Institut Nayé, in Point E: facials, lash extensions, brows and nails, by a team of three beauticians who take the time to look at your skin before touching it.", "lead_service": "Deep hydrating facial, the most booked treatment" },
+      "highlights": [
+        { "title": "Facials", "desc": "Cleansing, hydration, glow: a skin diagnosis, then a protocol adapted to your complexion and the season." },
+        { "title": "Lashes and brows", "desc": "Classic extensions, lash lift, brow shaping and tinting: an open look, never heavy." },
+        { "title": "Nails", "desc": "Careful manicures and pedicures, gel polish and gel, with colours chosen for darker skin tones." }
+      ],
+      "about": { "title2": "Institut Nayé", "desc": "Nayé opened the institute in 2017 after nine years in facial care in Dakar and Casablanca. Her conviction has not changed: Black and mixed skin needs protocols designed for it, not copied recipes. Khady and Bineta joined her for lashes, brows and nails, with the same standards.", "bullets": ["Free skin diagnosis before every treatment", "Products tested on every complexion", "One room, one client, never two at a time"], "sign": "Nayé, Khady and Bineta" },
+      "pillars": [
+        { "label": "Attention", "text": "We look at your skin and your habits before suggesting anything." },
+        { "label": "Gentleness", "text": "Slow movements, no harsh fragrances, no redness when you leave." },
+        { "label": "Honesty", "text": "If a treatment is not right for you, we say so and suggest another." }
+      ],
+      "marquee": ["Facials", "Lash extensions", "Brows", "Gel polish", "Pedicure", "Point E"],
+      "footerTagline": "Facials, lashes, brows and nails in Point E, Dakar. Online booking, 20% deposit.",
+      "offer": "October: the glow facial at 25,000 FCFA instead of 30,000 FCFA",
+      "faq": [
+        { "q": "Should I come without makeup?", "a": "No, makeup removal is part of the treatment. Just avoid exfoliating the day before." },
+        { "q": "Do lash extensions damage natural lashes?", "a": "Not when applied lash by lash with the right weight. Khady adapts length and thickness to your lashes." },
+        { "q": "How does the deposit work?", "a": "A 20% deposit confirms your appointment. It is deducted from the total on the day." }
+      ],
+      "services": [
+        { "title": "Facials", "items": [
+          { "name": "Deep hydrating facial", "duration": "1h", "price": "25,000 FCFA" },
+          { "name": "Vitamin C glow facial", "duration": "1h15", "price": "30,000 FCFA" },
+          { "name": "Deep cleansing", "duration": "45 min", "price": "18,000 FCFA", "notes": "Gentle extraction" },
+          { "name": "Dark spot treatment", "duration": "1h15", "price": "35,000 FCFA", "notes": "Course of 3 sessions recommended" }
+        ] },
+        { "title": "Lashes and brows", "items": [
+          { "name": "Classic lash extensions", "duration": "1h45", "price": "28,000 FCFA" },
+          { "name": "Lash refill", "duration": "1h", "price": "15,000 FCFA" },
+          { "name": "Lash lift", "duration": "1h", "price": "20,000 FCFA" },
+          { "name": "Brow shaping", "duration": "30 min", "price": "7,000 FCFA" },
+          { "name": "Brow tint", "duration": "20 min", "price": "6,000 FCFA" }
+        ] },
+        { "title": "Nails", "items": [
+          { "name": "Gel polish manicure", "duration": "1h", "price": "12,000 FCFA" },
+          { "name": "Gel polish pedicure", "duration": "1h15", "price": "15,000 FCFA" },
+          { "name": "Gel set", "duration": "1h45", "price": "22,000 FCFA" },
+          { "name": "Removal", "duration": "30 min", "price": "5,000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "A question about your skin or a treatment? Write to us, we answer the same day.", "policy": ["The 20% deposit confirms the appointment.", "Free cancellation up to 24 hours before.", "After 15 minutes late, the treatment may be shortened."], "note": "The institute is on the first floor, the entrance is next to the pharmacy. Street parking." },
+      "cta": { "title1": "Give", "title2": "your skin", "title3": " a break.", "desc": "Choose your treatment, your beautician and your time slot online." },
+      "team_roles": { "Nayé Faye": "Founder · Facials", "Khady Ndiaye": "Beautician · Lashes and brows", "Bineta Sarr": "Nail technician" }
+    }
+  }
+}

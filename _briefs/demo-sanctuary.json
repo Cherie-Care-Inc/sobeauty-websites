@@ -1,0 +1,168 @@
+{
+  "slug": "demo-sanctuary",
+  "template": "sanctuary",
+  "category": "spa",
+  "brand_name": "Maison Lúa",
+  "professional_name": "Adjoa Mensah",
+  "first_name": "Adjoa",
+  "display_parts": ["Maison", "Lúa"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "33600000000",
+  "logo_url": "",
+  "portrait_tag": "Spa et massages",
+  "years_experience": 12,
+  "deposit_percent": 30,
+  "contact": {
+    "phone_human": "+33 6 00 00 00 00",
+    "phone_tel": "+33600000000",
+    "email": "contact@maison-lua.fr",
+    "address": "14 rue des Petites Écuries, 75010 Paris",
+    "city": "Paris",
+    "postal_code": "75010",
+    "region": "Paris 10e",
+    "location_hint": "Métro Château d'Eau, à 3 minutes à pied",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "facebook": "https://www.facebook.com/sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#1F5F55"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1600&q=80",
+      "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80",
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1600&q=80",
+      "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1583416750470-965b2707b355?w=1600&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80",
+      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1600&q=80",
+      "https://images.unsplash.com/photo-1611073615830-9f76902c10fe?w=1600&q=80",
+      "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=1600&q=80",
+      "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1600&q=80"
+    ]
+  },
+  "team": [
+    { "name": "Adjoa Mensah", "photo_url": "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=1200&q=80", "owner": true, "share_code": "ADJ1", "services": { "fr": ["Massages", "Soins du corps"], "en": ["Massages", "Body treatments"] } },
+    { "name": "Léna Morel", "photo_url": "", "owner": false, "share_code": "LEN2", "services": { "fr": ["Soins du visage", "Rituels"], "en": ["Facials", "Rituals"] } }
+  ],
+  "reviews": [
+    { "author": "Sophie L.", "text": "Le massage aux pierres chaudes d'Adjoa est le meilleur que j'ai reçu à Paris. Une heure et demie hors du temps, et un dos enfin détendu.", "rating": 5, "service": "Pierres chaudes", "date": "2026-09-25" },
+    { "author": "Mariam K.", "text": "Le rituel signature avec Léna : gommage, enveloppement, massage. J'en suis sortie avec une peau de bébé et l'esprit léger.", "rating": 5, "service": "Rituel signature", "date": "2026-09-08" },
+    { "author": "Thomas B.", "text": "Accueil discret, cabine impeccable, thé après la séance. Le massage deep tissue a réglé mes tensions d'épaules en deux séances.", "rating": 5, "service": "Deep tissue", "date": "2026-08-19" },
+    { "author": "Inès R.", "text": "J'ai offert le duo à ma mère, elle en parle encore. Réservation simple et rappel la veille.", "rating": 4, "service": "Massage duo", "date": "2026-07-30" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 128 },
+  "hours": [
+    { "day": 0, "ranges": [] },
+    { "day": 1, "ranges": [["10:00", "20:00"]] },
+    { "day": 2, "ranges": [["10:00", "20:00"]] },
+    { "day": 3, "ranges": [["10:00", "21:00"]] },
+    { "day": 4, "ranges": [["10:00", "21:00"]] },
+    { "day": 5, "ranges": [["09:30", "19:00"]] },
+    { "day": 6, "ranges": [["11:00", "17:00"]] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Un sanctuaire", "title2": "pour le corps", "title3": " et l'esprit.", "desc": "Maison Lúa, spa et studio de massage dans le 10e : massages, rituels du corps et soins du visage dans deux cabines calmes, à trois minutes du métro. On vient pour une heure, on repart avec une semaine de légèreté.", "lead_service": "Massage aux pierres chaudes, le soin le plus réservé" },
+      "highlights": [
+        { "title": "Massages", "desc": "Suédois, deep tissue, femme enceinte : une pression ajustée à votre corps, jamais une routine appliquée à tous." },
+        { "title": "Pierres chaudes", "desc": "Basalte chauffé, huiles tièdes, gestes lents : le soin qui dénoue les dos fatigués des bureaux et des trajets." },
+        { "title": "Soins du visage", "desc": "Nettoyage, masque et massage du visage, avec des produits choisis pour toutes les carnations." },
+        { "title": "Rituels du corps", "desc": "Gommage, enveloppement puis massage : un parcours complet de deux heures, seule ou en duo." }
+      ],
+      "about": { "title2": "Maison Lúa", "desc": "Adjoa a appris le massage à Accra auprès de sa grand-mère, puis en école à Lyon. Douze ans plus tard, elle a ouvert Maison Lúa avec une idée simple : un spa à taille humaine, deux cabines, pas de musique d'ascenseur, un vrai thé après chaque soin. Léna l'a rejointe pour les soins du visage et les rituels.", "bullets": ["Deux cabines seulement, jamais de bruit de couloir", "Huiles végétales pressées à froid, sans parfum de synthèse", "Un entretien de cinq minutes avant chaque premier soin"], "sign": "Adjoa et Léna" },
+      "pillars": [
+        { "label": "Calme", "text": "Le téléphone reste dehors, la lumière est basse, le temps annoncé est respecté." },
+        { "label": "Précision", "text": "Chaque massage commence par vos zones de tension, pas par un protocole figé." },
+        { "label": "Soin", "text": "Linge changé à chaque cliente, huiles de qualité, cabine aérée entre deux rendez-vous." }
+      ],
+      "marquee": ["Massage suédois", "Pierres chaudes", "Deep tissue", "Rituel signature", "Soin du visage", "Paris 10e"],
+      "footerTagline": "Spa et studio de massage à Paris 10e. Réservation en ligne, acompte de 30 %.",
+      "offer": "Offre de la semaine : le massage suédois 60 min à 69 € au lieu de 85 €, du lundi au jeudi",
+      "faq": [
+        { "q": "Que dois-je apporter ?", "a": "Rien. Serviettes, peignoir, chaussons et thé sont fournis. Arrivez cinq minutes avant pour vous poser." },
+        { "q": "Peut-on réserver un massage en duo ?", "a": "Oui, les deux cabines communiquent. Choisissez le massage duo dans la carte, deux praticiennes vous accueillent en même temps." },
+        { "q": "Le massage femme enceinte est-il possible dès le premier trimestre ?", "a": "À partir du deuxième trimestre, sur le côté avec un coussin adapté. Avant, nous proposons un soin du visage ou un massage des pieds." },
+        { "q": "Comment fonctionne l'acompte ?", "a": "Un acompte de 30 % confirme votre créneau. Il est déduit le jour du soin et remboursé en cas d'annulation 48 h avant." }
+      ],
+      "services": [
+        { "title": "Massages", "items": [
+          { "name": "Massage suédois", "duration": "60 min", "price": "85 €" },
+          { "name": "Massage suédois", "duration": "90 min", "price": "120 €" },
+          { "name": "Deep tissue", "duration": "60 min", "price": "95 €" },
+          { "name": "Massage femme enceinte", "duration": "60 min", "price": "90 €", "notes": "À partir du 2e trimestre" },
+          { "name": "Massage duo", "duration": "60 min", "price": "170 €", "notes": "Pour deux personnes" }
+        ] },
+        { "title": "Pierres chaudes", "items": [
+          { "name": "Pierres chaudes dos et nuque", "duration": "45 min", "price": "75 €" },
+          { "name": "Pierres chaudes corps entier", "duration": "90 min", "price": "135 €" }
+        ] },
+        { "title": "Soins du visage", "items": [
+          { "name": "Soin éclat", "duration": "45 min", "price": "70 €" },
+          { "name": "Soin hydratant profond", "duration": "60 min", "price": "85 €" }
+        ] },
+        { "title": "Rituels du corps", "items": [
+          { "name": "Gommage corps", "duration": "30 min", "price": "45 €" },
+          { "name": "Rituel signature Lúa", "duration": "2h", "price": "180 €", "notes": "Gommage, enveloppement, massage" }
+        ] }
+      ],
+      "contact": { "intro": "Une question avant de réserver, un bon cadeau à offrir ? Écrivez-nous, on répond dans la journée.", "policy": ["L'acompte de 30 % confirme le rendez-vous.", "Annulation gratuite jusqu'à 48 h avant, acompte remboursé.", "Au-delà de 10 minutes de retard, la durée du soin est réduite d'autant."], "note": "Le spa est au rez-de-chaussée sur cour, sonnez « Maison Lúa ». Métro Château d'Eau (ligne 4) à trois minutes." },
+      "cta": { "title1": "Prenez", "title2": "une heure", "title3": " pour vous.", "desc": "Choisissez votre soin, votre praticienne et votre créneau en ligne." },
+      "team_roles": { "Adjoa Mensah": "Fondatrice · Massages et soins du corps", "Léna Morel": "Praticienne · Soins du visage et rituels" }
+    },
+    "en": {
+      "hero": { "title1": "A sanctuary", "title2": "for body", "title3": " and mind.", "desc": "Maison Lúa, spa and massage studio in the 10th: massages, body rituals and facials in two quiet rooms, three minutes from the metro. You come for an hour and leave with a week of lightness.", "lead_service": "Hot stone massage, the most booked treatment" },
+      "highlights": [
+        { "title": "Massages", "desc": "Swedish, deep tissue, pregnancy: pressure adjusted to your body, never a routine applied to everyone." },
+        { "title": "Hot stones", "desc": "Heated basalt, warm oils, slow movements: the treatment that releases backs tired from desks and commutes." },
+        { "title": "Facials", "desc": "Cleansing, mask and facial massage, with products chosen for every complexion." },
+        { "title": "Body rituals", "desc": "Scrub, wrap, then massage: a complete two-hour journey, alone or as a pair." }
+      ],
+      "about": { "title2": "Maison Lúa", "desc": "Adjoa learned massage in Accra from her grandmother, then at a school in Lyon. Twelve years later she opened Maison Lúa with a simple idea: a human-sized spa, two rooms, no elevator music, real tea after every treatment. Léna joined her for facials and rituals.", "bullets": ["Two rooms only, never corridor noise", "Cold-pressed plant oils, no synthetic fragrance", "A five-minute chat before every first treatment"], "sign": "Adjoa and Léna" },
+      "pillars": [
+        { "label": "Calm", "text": "Phones stay outside, the light is low, the announced time is respected." },
+        { "label": "Precision", "text": "Every massage starts from your tension points, not from a fixed protocol." },
+        { "label": "Care", "text": "Fresh linen for every client, quality oils, the room aired between appointments." }
+      ],
+      "marquee": ["Swedish massage", "Hot stones", "Deep tissue", "Signature ritual", "Facial", "Paris 10th"],
+      "footerTagline": "Spa and massage studio in Paris 10th. Online booking, 30% deposit.",
+      "offer": "Offer of the week: the 60 min Swedish massage at 69 € instead of 85 €, Monday to Thursday",
+      "faq": [
+        { "q": "What should I bring?", "a": "Nothing. Towels, robe, slippers and tea are provided. Arrive five minutes early to settle in." },
+        { "q": "Can we book a massage for two?", "a": "Yes, the two rooms connect. Choose the duo massage on the menu and two therapists welcome you at the same time." },
+        { "q": "Is the pregnancy massage possible from the first trimester?", "a": "From the second trimester, on the side with a dedicated cushion. Before that, we suggest a facial or a foot massage." },
+        { "q": "How does the deposit work?", "a": "A 30% deposit confirms your slot. It is deducted on the day and refunded if you cancel 48 hours before." }
+      ],
+      "services": [
+        { "title": "Massages", "items": [
+          { "name": "Swedish massage", "duration": "60 min", "price": "85 €" },
+          { "name": "Swedish massage", "duration": "90 min", "price": "120 €" },
+          { "name": "Deep tissue", "duration": "60 min", "price": "95 €" },
+          { "name": "Pregnancy massage", "duration": "60 min", "price": "90 €", "notes": "From the 2nd trimester" },
+          { "name": "Duo massage", "duration": "60 min", "price": "170 €", "notes": "For two people" }
+        ] },
+        { "title": "Hot stones", "items": [
+          { "name": "Hot stones back and neck", "duration": "45 min", "price": "75 €" },
+          { "name": "Hot stones full body", "duration": "90 min", "price": "135 €" }
+        ] },
+        { "title": "Facials", "items": [
+          { "name": "Glow facial", "duration": "45 min", "price": "70 €" },
+          { "name": "Deep hydrating facial", "duration": "60 min", "price": "85 €" }
+        ] },
+        { "title": "Body rituals", "items": [
+          { "name": "Body scrub", "duration": "30 min", "price": "45 €" },
+          { "name": "Lúa signature ritual", "duration": "2h", "price": "180 €", "notes": "Scrub, wrap, massage" }
+        ] }
+      ],
+      "contact": { "intro": "A question before booking, a gift voucher to offer? Write to us, we answer the same day.", "policy": ["The 30% deposit confirms the appointment.", "Free cancellation up to 48 hours before, deposit refunded.", "After 10 minutes late, the treatment time is shortened accordingly."], "note": "The spa is on the ground floor on the courtyard, ring « Maison Lúa ». Château d'Eau metro (line 4) three minutes away." },
+      "cta": { "title1": "Take", "title2": "an hour", "title3": " for yourself.", "desc": "Choose your treatment, your therapist and your time slot online." },
+      "team_roles": { "Adjoa Mensah": "Founder · Massages and body treatments", "Léna Morel": "Therapist · Facials and rituals" }
+    }
+  }
+}

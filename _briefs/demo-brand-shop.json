@@ -1,0 +1,175 @@
+{
+  "slug": "demo-brand-shop",
+  "template": "brand-shop",
+  "category": "shop",
+  "brand_name": "Ayélé Naturels",
+  "professional_name": "Ayélé Mensah",
+  "first_name": "Ayélé",
+  "display_parts": ["Ayélé", "Naturels"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "22890000000",
+  "logo_url": "",
+  "portrait_tag": "Karité, huiles et soins faits main",
+  "years_experience": 6,
+  "contact": {
+    "phone_human": "+228 90 00 00 00",
+    "phone_tel": "+22890000000",
+    "email": "bonjour@ayele-naturels.tg",
+    "address": "Boulevard du 13 Janvier, Tokoin, Lomé",
+    "city": "Lomé",
+    "region": "Tokoin",
+    "location_hint": "Boutique au rez-de-chaussée, retrait des commandes sur place",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#2F7D4F"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1600&q=80",
+      "https://images.unsplash.com/photo-1617897903246-719242758050?w=1600&q=80",
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=1600&q=80",
+      "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=1600&q=80",
+      "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=1600&q=80",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80",
+      "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=1600&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80"
+    ]
+  },
+  "products": [
+    {
+      "id": "p-karite-250",
+      "name": "Beurre de karité brut 250 g",
+      "description": "Karité non raffiné des coopératives de la région des Savanes, fouetté à la main. Pour le corps, les cheveux et les lèvres.",
+      "price_amount": 4500, "currency": "XOF", "kind": "physical", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=1600&q=80",
+        "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "p-huile-capillaire",
+      "name": "Huile capillaire croissance 100 ml",
+      "description": "Ricin, moringa et baobab infusés 21 jours. Nourrit le cuir chevelu et renforce les pointes des cheveux crépus et bouclés.",
+      "price_amount": 6500, "currency": "XOF", "kind": "physical", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1617897903246-719242758050?w=1600&q=80",
+        "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "p-gommage-corps",
+      "name": "Gommage corps sucre et café 300 g",
+      "description": "Sucre de canne, marc de café et huile de coco. Lisse la peau et prépare l'hydratation, une à deux fois par semaine.",
+      "price_amount": 7000, "currency": "XOF", "kind": "physical", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=1600&q=80",
+        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "p-masque-capillaire",
+      "name": "Masque capillaire réparateur 250 ml",
+      "description": "Karité, avocat et protéines de riz. Un masque de 20 minutes pour les cheveux cassants, défrisés ou décolorés.",
+      "price_amount": 8500, "currency": "XOF", "kind": "physical", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "p-lait-corporel",
+      "name": "Lait corporel karité et coco 250 ml",
+      "description": "Texture légère, absorption rapide, parfum coco naturel. Hydrate 24 h sans film gras, même sous la chaleur.",
+      "price_amount": 6000, "currency": "XOF", "kind": "physical", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1600&q=80",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "p-savon-noir",
+      "name": "Savon noir traditionnel 200 g",
+      "description": "Recette familiale à base de cendres de cabosses de cacao et d'huile de palmiste. Nettoie visage et corps en douceur.",
+      "price_amount": 3000, "currency": "XOF", "kind": "physical", "in_stock": false,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1600&q=80",
+        "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1600&q=80"
+      ]
+    }
+  ],
+  "reviews": [
+    { "author": "Afi K.", "text": "Le beurre de karité est vraiment brut, l'odeur est celle de mon enfance. Mes cheveux n'ont jamais été aussi doux.", "rating": 5, "service": "Beurre de karité", "date": "2026-09-20" },
+    { "author": "Essi D.", "text": "L'huile croissance a stoppé ma chute de cheveux après l'accouchement. Je recommande à toutes les mamans.", "rating": 5, "service": "Huile capillaire", "date": "2026-09-02" },
+    { "author": "Kossi A.", "text": "Commande sur WhatsApp le matin, livrée le soir même à Agoè. Le gommage sent le café, on l'adore à la maison.", "rating": 4, "service": "Gommage corps", "date": "2026-08-18" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 64 },
+  "hours": [
+    { "day": 0, "ranges": [["09:00", "18:00"]] },
+    { "day": 1, "ranges": [["09:00", "18:00"]] },
+    { "day": 2, "ranges": [["09:00", "18:00"]] },
+    { "day": 3, "ranges": [["09:00", "18:00"]] },
+    { "day": 4, "ranges": [["09:00", "18:00"]] },
+    { "day": 5, "ranges": [["09:00", "14:00"]] },
+    { "day": 6, "ranges": [] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Des soins", "title2": "faits main", "title3": " pour les peaux et cheveux texturés.", "desc": "Ayélé Naturels fabrique à Lomé des cosmétiques au karité brut, sans parabènes ni parfum de synthèse : beurres, huiles, gommages et savons pensés pour le quotidien.", "lead_service": "Beurre de karité brut, le produit le plus commandé" },
+      "highlights": [
+        { "title": "Nettoyer en douceur", "desc": "Le savon noir ou le gommage au café retirent les impuretés sans décaper la peau ni le cuir chevelu." },
+        { "title": "Nourrir en profondeur", "desc": "L'huile capillaire sur cuir chevelu humide, le masque réparateur sur longueurs : vingt minutes, pas plus." },
+        { "title": "Sceller l'hydratation", "desc": "Le lait corporel ou une noisette de karité pour garder l'eau dans la peau et les cheveux toute la journée." }
+      ],
+      "about": { "title2": "Ayélé Naturels", "desc": "Ayélé a commencé en 2020 dans sa cuisine de Tokoin avec dix pots de karité fouetté pour ses amies. Aujourd'hui, l'atelier travaille avec deux coopératives de femmes des Savanes et produit chaque semaine de petites séries, étiquetées à la main. Rien n'est fabriqué à l'avance : vous commandez, on prépare, on livre.", "bullets": ["Karité brut acheté directement aux coopératives", "Sans parabènes, sans silicone, sans parfum de synthèse", "Petites séries datées, préparées chaque semaine"], "sign": "L'équipe Ayélé Naturels" },
+      "pillars": [
+        { "label": "Traçabilité", "text": "Chaque pot indique sa coopérative d'origine et sa date de fabrication." },
+        { "label": "Formules courtes", "text": "Cinq à huit ingrédients par produit, tous lisibles sur l'étiquette." },
+        { "label": "Livraison rapide", "text": "Commande sur WhatsApp, livraison à Lomé sous 48 h, retrait possible en boutique." }
+      ],
+      "marquee": ["100 % naturel", "Karité des Savanes", "Sans parabènes", "Fait main à Lomé", "Livraison 48 h", "Peaux et cheveux texturés"],
+      "footerTagline": "Cosmétiques au karité brut faits main à Lomé. Commande sur WhatsApp, livraison sous 48 h.",
+      "offer": "Livraison offerte à Lomé dès 20 000 FCFA de commande",
+      "faq": [
+        { "q": "Comment passer commande ?", "a": "Depuis le bouton Commander : vous choisissez vos produits, vous recevez le total sur WhatsApp et vous réglez par mobile money ou en espèces à la livraison." },
+        { "q": "Combien de temps se conservent les produits ?", "a": "Six mois pour les beurres et les huiles, trois mois pour le lait corporel, à l'abri de la chaleur. La date est indiquée sur chaque pot." },
+        { "q": "Livrez-vous en dehors de Lomé ?", "a": "Oui, partout au Togo par transporteur, sous trois à cinq jours. Les frais sont indiqués avant validation de la commande." }
+      ],
+      "services": [],
+      "contact": { "intro": "Une question sur un produit ou une commande ? Écrivez-nous, on répond dans la journée.", "policy": ["Les commandes sont préparées sous 24 h et livrées sous 48 h à Lomé.", "Un produit abîmé à la livraison est remplacé sans frais sous 7 jours.", "Les produits ouverts ne sont ni repris ni échangés."], "note": "La boutique est à côté de la pharmacie du 13 Janvier, retrait possible du lundi au samedi." },
+      "cta": { "title1": "Envie d'une", "title2": "routine naturelle", "title3": " ?", "desc": "Choisissez vos produits, on prépare votre commande et on vous livre." }
+    },
+    "en": {
+      "hero": { "title1": "Handmade", "title2": "skincare", "title3": " for textured skin and hair.", "desc": "Ayélé Naturels makes raw shea cosmetics in Lomé, free of parabens and synthetic fragrance: butters, oils, scrubs and soaps designed for everyday use.", "lead_service": "Raw shea butter, the most ordered product" },
+      "highlights": [
+        { "title": "Cleanse gently", "desc": "Black soap or the coffee scrub remove impurities without stripping the skin or the scalp." },
+        { "title": "Nourish deeply", "desc": "Hair oil on a damp scalp, the repairing mask on lengths: twenty minutes, no more." },
+        { "title": "Seal in moisture", "desc": "Body milk or a dab of shea to keep water in your skin and hair all day long." }
+      ],
+      "about": { "title2": "Ayélé Naturels", "desc": "Ayélé started in 2020 in her Tokoin kitchen with ten jars of whipped shea for her friends. Today the workshop works with two women's cooperatives in the Savanes region and produces small, hand-labelled batches every week. Nothing is made ahead: you order, we prepare, we deliver.", "bullets": ["Raw shea bought directly from the cooperatives", "No parabens, no silicone, no synthetic fragrance", "Small dated batches, prepared every week"], "sign": "The team at Ayélé Naturels" },
+      "pillars": [
+        { "label": "Traceability", "text": "Every jar states its cooperative of origin and its production date." },
+        { "label": "Short formulas", "text": "Five to eight ingredients per product, all readable on the label." },
+        { "label": "Fast delivery", "text": "Order on WhatsApp, delivery in Lomé within 48 hours, pick-up available at the shop." }
+      ],
+      "marquee": ["100% natural", "Shea from the Savanes", "Paraben free", "Handmade in Lomé", "48 h delivery", "Textured skin and hair"],
+      "footerTagline": "Raw shea cosmetics handmade in Lomé. Order on WhatsApp, delivery within 48 hours.",
+      "offer": "Free delivery in Lomé on orders from 20,000 FCFA",
+      "faq": [
+        { "q": "How do I order?", "a": "From the Order button: pick your products, receive the total on WhatsApp and pay by mobile money or in cash on delivery." },
+        { "q": "How long do the products keep?", "a": "Six months for butters and oils, three months for the body milk, away from heat. The date is printed on every jar." },
+        { "q": "Do you deliver outside Lomé?", "a": "Yes, anywhere in Togo by courier, within three to five days. Fees are shown before you confirm the order." }
+      ],
+      "services": [],
+      "contact": { "intro": "A question about a product or an order? Write to us, we answer the same day.", "policy": ["Orders are prepared within 24 hours and delivered within 48 hours in Lomé.", "A product damaged on delivery is replaced free of charge within 7 days.", "Opened products are neither returned nor exchanged."], "note": "The shop is next to the 13 Janvier pharmacy, pick-up available Monday to Saturday." },
+      "cta": { "title1": "Ready for a", "title2": "natural routine", "title3": "?", "desc": "Pick your products, we prepare your order and deliver it to you." }
+    }
+  }
+}

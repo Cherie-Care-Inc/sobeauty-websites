@@ -71,6 +71,7 @@ interface Brief {
   first_name?: string;
   display_parts?: [string, string];
   schema_type?: SiteContent["brand"]["schemaType"];
+  about_mode?: "her" | "salon";
   langs?: Lang[];
   default_lang?: Lang;
   booking_url?: string;
@@ -290,7 +291,7 @@ function assemble(b: Brief, host: string, template: TemplateKey, category: Categ
     const L = LABELS[lang];
     const c = b.copy[lang];
     if (!c) die(`brief.copy missing language "${lang}"`);
-    const salonVoice = /^l'équipe|^the team|^notre|^our/i.test(c.about.sign ?? "") || mode === "salon" && team.length > 1;
+    const salonVoice = b.about_mode === "salon" || (b.about_mode !== "her" && (/^l'équipe|^the team|^notre|^our/i.test(c.about.sign ?? "") || team.length > 1));
     const highlights = c.highlights.map((h) => ({ title: clean(h.title), desc: clean(h.desc) })).filter((h) => h.title && h.desc).slice(0, 4);
     const menu: ServiceGroup[] = c.services.map((g) => ({ title: clean(g.title), items: g.items.map((it) => ({ name: clean(it.name), duration: clean(it.duration), price: clean(it.price), ...(it.notes ? { notes: clean(it.notes) } : {}), ...(it.image ? { image: it.image } : {}) })).filter((it) => it.name && it.price) })).filter((g) => g.title && g.items.length);
     // Highlights never empty when there is a menu: derive from the first groups.
@@ -439,7 +440,11 @@ console.log(`\n🏗  Building ${brief.brand_name} → ${host}  [${template} · $
 // 1. materialise the client folder from the template (always refresh the code,
 //    keep the folder's downloaded assets out of the copy)
 mkdirSync(dir, { recursive: true });
-cpSync(TEMPLATE, dir, { recursive: true, filter: (s) => !/\/(node_modules|dist|\.wrangler)(\/|$)/.test(s) && !/\/src\/assets\/[^/]+\.(jpe?g|png|webp|avif)$/.test(s) });
+// Bun's cpSync keeps files that already exist: wipe the code so a rebuilt folder
+// (committed client sites, demos) always carries the current layouts.
+rmSync(join(dir, "src"), { recursive: true, force: true });
+rmSync(join(dir, "public"), { recursive: true, force: true });
+cpSync(TEMPLATE, dir, { recursive: true, force: true, filter: (s) => !/\/(node_modules|dist|\.wrangler)(\/|$)/.test(s) && !/\/src\/assets\/[^/]+\.(jpe?g|png|webp|avif)$/.test(s) });
 mkdirSync(join(dir, "src/assets"), { recursive: true });
 // Registry + schema come from _schema (single source).
 writeFileSync(join(dir, "src/site-content.ts"), readFileSync(join(REPO, "_schema/site-content.ts"), "utf-8"));
@@ -514,4 +519,3 @@ if (flags.has("--deploy")) {
   run("npx", ["wrangler", "deploy"]);
   console.log(`\n🚀  Deployed → https://${host}`);
 }
-void rmSync;

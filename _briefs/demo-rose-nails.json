@@ -1,0 +1,165 @@
+{
+  "slug": "demo-rose-nails",
+  "template": "rose-nails",
+  "category": "nails",
+  "brand_name": "Mawa Nails Bar",
+  "professional_name": "Mawa Cissé",
+  "first_name": "Mawa",
+  "display_parts": ["Mawa", "Nails Bar"],
+  "schema_type": "NailSalon",
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "33600000000",
+  "logo_url": "",
+  "portrait_tag": "Prothésiste ongulaire · Gel et nail art",
+  "years_experience": 6,
+  "deposit_percent": 30,
+  "contact": {
+    "phone_human": "+33 6 00 00 00 00",
+    "phone_tel": "+33600000000",
+    "email": "hello@mawanailsbar.fr",
+    "address": "24 rue de Paris, 93100 Montreuil",
+    "city": "Montreuil",
+    "postal_code": "93100",
+    "region": "Seine-Saint-Denis",
+    "location_hint": "Métro Croix de Chavaux, sortie rue de Paris",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#8E3A5E"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=1600&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=1600&q=80",
+      "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=1600&q=80",
+      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1600&q=80",
+      "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1600&q=80",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1600&q=80",
+      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=1600&q=80"
+    ]
+  },
+  "team": [],
+  "reviews": [
+    { "author": "Inès L.", "text": "Pose de gel impeccable, aucune bulle, et trois semaines plus tard tout tient encore. Mawa est précise et douce.", "rating": 5, "service": "Pose gel", "date": "2026-09-18" },
+    { "author": "Sandra M.", "text": "La pédicure spa est un vrai moment pour soi. Talons lisses, vernis net, je suis repartie reposée.", "rating": 5, "service": "Pédicure spa", "date": "2026-09-02" },
+    { "author": "Aminata D.", "text": "J'ai amené une photo de nail art compliquée, elle l'a reproduite à l'identique. Réservation en ligne très simple.", "rating": 5, "service": "Nail art", "date": "2026-08-20" },
+    { "author": "Chloé R.", "text": "Manucure russe très propre, cuticules nickel. Le salon est petit, calme et toujours impeccable.", "rating": 4, "service": "Manucure russe", "date": "2026-07-30" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 143 },
+  "hours": [
+    { "day": 0, "ranges": [] },
+    { "day": 1, "ranges": [["10:00", "19:00"]] },
+    { "day": 2, "ranges": [["10:00", "19:00"]] },
+    { "day": 3, "ranges": [["10:00", "20:00"]] },
+    { "day": 4, "ranges": [["10:00", "20:00"]] },
+    { "day": 5, "ranges": [["09:30", "18:30"]] },
+    { "day": 6, "ranges": [] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Des ongles", "title2": "soignés", "title3": " qui durent.", "desc": "Mawa Nails Bar, onglerie à Montreuil : manucure, pédicure et pose de gel réalisées par Mawa, seule au salon, sur rendez-vous. Des poses nettes, des cuticules respectées et un nail art qui tient trois semaines.", "lead_service": "Pose gel sur ongles naturels, la prestation la plus réservée" },
+      "highlights": [
+        { "title": "Manucure", "desc": "Manucure classique ou russe, vernis semi-permanent, soin des cuticules : des mains nettes en moins d'une heure." },
+        { "title": "Pédicure", "desc": "Pédicure soin ou spa, talons lissés, semi-permanent pieds : des pieds prêts pour les sandales." },
+        { "title": "Gel", "desc": "Pose, remplissage, renfort sur ongles naturels, extensions et nail art : la tenue de trois semaines." }
+      ],
+      "about": { "title2": "Mawa", "desc": "Formée à Paris en 2020, j'ai ouvert ce petit salon à Montreuil pour travailler comme j'aime : une cliente à la fois, sans précipitation, avec des produits que je choisis pour la santé de l'ongle. Je prends le temps de préparer, de poser et de finir, parce que c'est là que la tenue se joue.", "bullets": ["Une seule cliente à la fois", "Produits sans HEMA, limes à usage unique", "Nail art sur photo ou à main levée"], "sign": "Des ongles soignés, c'est une confiance qu'on porte au bout des doigts." },
+      "pillars": [
+        { "label": "Précision", "text": "Cuticules nettes, bords réguliers, zéro débordement." },
+        { "label": "Tenue", "text": "Une préparation soignée pour une pose qui tient trois semaines." },
+        { "label": "Hygiène", "text": "Limes et bâtonnets à usage unique, outils stérilisés entre chaque cliente." }
+      ],
+      "marquee": ["Pose gel", "Manucure russe", "Semi-permanent", "Pédicure spa", "Nail art", "Montreuil"],
+      "footerTagline": "Onglerie à Montreuil, métro Croix de Chavaux. Manucure, pédicure et gel sur rendez-vous.",
+      "offer": "Du mardi au jeudi avant 13 h : dépose offerte avec toute nouvelle pose",
+      "faq": [
+        { "q": "Combien de temps tient une pose gel ?", "a": "Trois semaines en moyenne. Un remplissage est conseillé entre la troisième et la quatrième semaine." },
+        { "q": "Faut-il venir sans vernis ?", "a": "Non, la dépose est incluse dans toute nouvelle pose. Venez simplement avec les mains propres." },
+        { "q": "Puis-je apporter un modèle de nail art ?", "a": "Oui, envoyez la photo sur WhatsApp avant le rendez-vous pour que je prévoie le temps nécessaire." },
+        { "q": "Comment fonctionne l'acompte ?", "a": "Un acompte de 30 % confirme votre créneau, il est déduit du prix le jour même." }
+      ],
+      "services": [
+        { "title": "Manucure", "items": [
+          { "name": "Manucure classique", "duration": "45 min", "price": "25 €" },
+          { "name": "Manucure russe", "duration": "1h", "price": "35 €", "notes": "Cuticules à la fraise" },
+          { "name": "Semi-permanent mains", "duration": "1h", "price": "38 €" },
+          { "name": "Dépose semi-permanent", "duration": "20 min", "price": "10 €" },
+          { "name": "Soin des cuticules", "duration": "20 min", "price": "12 €" }
+        ] },
+        { "title": "Pédicure", "items": [
+          { "name": "Pédicure soin", "duration": "45 min", "price": "35 €" },
+          { "name": "Pédicure spa", "duration": "1h15", "price": "55 €", "notes": "Bain, gommage, masque et massage" },
+          { "name": "Semi-permanent pieds", "duration": "50 min", "price": "40 €" },
+          { "name": "Lissage des talons", "duration": "25 min", "price": "18 €" }
+        ] },
+        { "title": "Gel", "items": [
+          { "name": "Pose gel sur ongles naturels", "duration": "1h30", "price": "55 €", "notes": "Dépose incluse" },
+          { "name": "Remplissage gel", "duration": "1h15", "price": "45 €" },
+          { "name": "Extensions chablon", "duration": "2h", "price": "70 €" },
+          { "name": "Renfort gel sur ongles naturels", "duration": "1h", "price": "48 €" },
+          { "name": "Nail art (par ongle)", "duration": "10 min", "price": "3 €", "notes": "Sur photo ou à main levée" },
+          { "name": "Dépose gel", "duration": "30 min", "price": "15 €" }
+        ] }
+      ],
+      "contact": { "intro": "Une question sur une pose ou un nail art ? Écrivez-moi sur WhatsApp, je réponds entre deux clientes.", "policy": ["L'acompte de 30 % confirme le rendez-vous.", "Annulation gratuite jusqu'à 24 h avant.", "Au-delà de 15 minutes de retard, la prestation peut être écourtée."], "note": "Le salon est à deux minutes du métro Croix de Chavaux, sortie rue de Paris. Accès au rez-de-chaussée." },
+      "cta": { "title1": "Réservez", "title2": "votre pose", "title3": " en ligne.", "desc": "Choisissez votre prestation et votre créneau, confirmation immédiate." }
+    },
+    "en": {
+      "hero": { "title1": "Neat nails", "title2": "that last", "title3": ".", "desc": "Mawa Nails Bar, nail salon in Montreuil: manicure, pedicure and gel by Mawa, alone at the salon, by appointment. Clean applications, cuticles respected and nail art that holds three weeks.", "lead_service": "Gel on natural nails, the most booked service" },
+      "highlights": [
+        { "title": "Manicure", "desc": "Classic or Russian manicure, gel polish, cuticle care: neat hands in under an hour." },
+        { "title": "Pedicure", "desc": "Care or spa pedicure, smoothed heels, gel polish on toes: feet ready for sandals." },
+        { "title": "Gel", "desc": "Application, infill, overlay on natural nails, extensions and nail art: the three-week hold." }
+      ],
+      "about": { "title2": "Mawa", "desc": "Trained in Paris in 2020, I opened this small salon in Montreuil to work the way I like: one client at a time, no rush, with products I choose for the health of the nail. I take the time to prep, apply and finish, because that is where the hold is decided.", "bullets": ["One client at a time", "HEMA-free products, single-use files", "Nail art from a photo or freehand"], "sign": "Neat nails are a confidence you carry at your fingertips." },
+      "pillars": [
+        { "label": "Precision", "text": "Clean cuticles, even edges, zero overflow." },
+        { "label": "Hold", "text": "Careful prep for an application that lasts three weeks." },
+        { "label": "Hygiene", "text": "Single-use files and sticks, tools sterilised between every client." }
+      ],
+      "marquee": ["Gel application", "Russian manicure", "Gel polish", "Spa pedicure", "Nail art", "Montreuil"],
+      "footerTagline": "Nail salon in Montreuil, Croix de Chavaux metro. Manicure, pedicure and gel by appointment.",
+      "offer": "Tuesday to Thursday before 1 pm: free removal with any new application",
+      "faq": [
+        { "q": "How long does a gel application last?", "a": "Three weeks on average. An infill is recommended between the third and the fourth week." },
+        { "q": "Should I come without polish?", "a": "No, removal is included in any new application. Just come with clean hands." },
+        { "q": "Can I bring a nail art reference?", "a": "Yes, send the photo on WhatsApp before the appointment so I can plan the time needed." },
+        { "q": "How does the deposit work?", "a": "A 30% deposit confirms your slot and is deducted from the price on the day." }
+      ],
+      "services": [
+        { "title": "Manicure", "items": [
+          { "name": "Classic manicure", "duration": "45 min", "price": "€25" },
+          { "name": "Russian manicure", "duration": "1h", "price": "€35", "notes": "E-file cuticle work" },
+          { "name": "Gel polish hands", "duration": "1h", "price": "€38" },
+          { "name": "Gel polish removal", "duration": "20 min", "price": "€10" },
+          { "name": "Cuticle care", "duration": "20 min", "price": "€12" }
+        ] },
+        { "title": "Pedicure", "items": [
+          { "name": "Care pedicure", "duration": "45 min", "price": "€35" },
+          { "name": "Spa pedicure", "duration": "1h15", "price": "€55", "notes": "Soak, scrub, mask and massage" },
+          { "name": "Gel polish toes", "duration": "50 min", "price": "€40" },
+          { "name": "Heel smoothing", "duration": "25 min", "price": "€18" }
+        ] },
+        { "title": "Gel", "items": [
+          { "name": "Gel on natural nails", "duration": "1h30", "price": "€55", "notes": "Removal included" },
+          { "name": "Gel infill", "duration": "1h15", "price": "€45" },
+          { "name": "Form extensions", "duration": "2h", "price": "€70" },
+          { "name": "Gel overlay on natural nails", "duration": "1h", "price": "€48" },
+          { "name": "Nail art (per nail)", "duration": "10 min", "price": "€3", "notes": "From a photo or freehand" },
+          { "name": "Gel removal", "duration": "30 min", "price": "€15" }
+        ] }
+      ],
+      "contact": { "intro": "A question about an application or a nail art? Write to me on WhatsApp, I answer between two clients.", "policy": ["The 30% deposit confirms the appointment.", "Free cancellation up to 24 hours before.", "After 15 minutes late, the service may be shortened."], "note": "The salon is two minutes from Croix de Chavaux metro, rue de Paris exit. Ground-floor access." },
+      "cta": { "title1": "Book", "title2": "your appointment", "title3": " online.", "desc": "Pick your service and your slot, instant confirmation." }
+    }
+  }
+}

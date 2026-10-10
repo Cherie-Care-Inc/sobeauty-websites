@@ -1,0 +1,147 @@
+{
+  "slug": "demo-sand",
+  "template": "sand",
+  "category": "spa",
+  "brand_name": "Sable et Soie",
+  "professional_name": "Mariama Touré",
+  "first_name": "Mariama",
+  "display_parts": ["Sable", "et Soie"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "2250100000000",
+  "logo_url": "",
+  "portrait_tag": "Massothérapeute · À domicile",
+  "years_experience": 6,
+  "deposit_percent": 25,
+  "contact": {
+    "phone_human": "+225 01 00 00 00 00",
+    "phone_tel": "+2250100000000",
+    "email": "mariama@sable-et-soie.ci",
+    "address": "Riviera Golf, Cocody, Abidjan",
+    "city": "Abidjan",
+    "region": "Cocody",
+    "location_hint": "Studio au calme, dans une villa avec parking",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "home"
+  },
+  "theme": { "brand_colors": ["#7A5A2E"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1600&q=80",
+      "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&q=80",
+      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1600&q=80",
+      "https://images.unsplash.com/photo-1611073615830-9f76902c10fe?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80",
+      "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1600&q=80",
+      "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1600&q=80",
+      "https://images.unsplash.com/photo-1600428877878-1a0fd85beda8?w=1600&q=80"
+    ]
+  },
+  "team": [],
+  "products": [
+    { "id": "forfait-5", "name": "Forfait 5 massages", "description": "Cinq massages de 60 min au choix, valables six mois. Le sixième est offert si vous venez avec une amie.", "price_amount": 110000, "currency": "XOF", "image_urls": ["https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&q=80"], "kind": "physical", "in_stock": true },
+    { "id": "forfait-dos", "name": "Forfait dos et nuque, 4 séances", "description": "Quatre séances de 45 min rapprochées pour les tensions installées. À prendre sur un mois.", "price_amount": 70000, "currency": "XOF", "image_urls": ["https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80"], "kind": "physical", "in_stock": true }
+  ],
+  "reviews": [
+    { "author": "Fatim C.", "text": "Mariama a les mains les plus justes que je connaisse. Elle trouve la tension avant que je la décrive. Mon dos ne me réveille plus la nuit.", "rating": 5, "service": "Massage profond", "date": "2026-09-18" },
+    { "author": "Olivier A.", "text": "Studio calme, odeur d'huile de karité, pas de musique forte. Le massage sportif après mes semaines de course est devenu indispensable.", "rating": 5, "service": "Massage sportif", "date": "2026-08-27" },
+    { "author": "Nadège B.", "text": "Le massage femme enceinte m'a fait un bien fou au troisième trimestre. Mariama installe des coussins partout, on se sent en sécurité.", "rating": 5, "service": "Massage femme enceinte", "date": "2026-08-05" }
+  ],
+  "reviews_summary": { "average": 5.0, "count": 41 },
+  "hours": [
+    { "day": 0, "ranges": [["09:00", "18:00"]] },
+    { "day": 1, "ranges": [["09:00", "18:00"]] },
+    { "day": 2, "ranges": [] },
+    { "day": 3, "ranges": [["09:00", "18:00"]] },
+    { "day": 4, "ranges": [["09:00", "18:00"]] },
+    { "day": 5, "ranges": [["10:00", "16:00"]] },
+    { "day": 6, "ranges": [] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Le massage", "title2": "qui vous attend", "title3": " chez moi.", "desc": "Je m'appelle Mariama, massothérapeute à Cocody. Je vous reçois dans mon studio, une pièce calme au fond d'une villa de la Riviera Golf : table chauffante, huiles de karité et de coco pressées à froid, une seule personne à la fois.", "lead_service": "Massage profond 60 min, le soin le plus réservé" },
+      "highlights": [
+        { "title": "Massage profond", "desc": "Pression soutenue sur les zones de tension, dos, nuque et épaules en priorité. Pour les corps qui portent beaucoup." },
+        { "title": "Massage relaxant", "desc": "Gestes lents et enveloppants, huile tiède, lumière basse. Pour relâcher le mental autant que les muscles." },
+        { "title": "Massage femme enceinte", "desc": "Sur le côté, coussins adaptés, à partir du deuxième trimestre. Pour soulager le bas du dos et les jambes lourdes." },
+        { "title": "Massage sportif", "desc": "Préparation ou récupération, étirements passifs inclus. Pour les coureurs, les danseurs et les gens pressés." }
+      ],
+      "about": { "title2": "Mariama", "desc": "J'ai commencé par masser les mains de ma grand-mère, puis je me suis formée pendant deux ans à Dakar. Depuis six ans je reçois chez moi, parce qu'un massage demande un lieu silencieux et un temps qui ne soit pas compté. Mon studio est une pièce fraîche, sans téléphone, avec une table chauffante et des huiles que je prépare moi-même.", "bullets": ["Une personne à la fois, jamais de salle d'attente", "Huiles de karité et de coco pressées à froid", "Un échange de cinq minutes avant chaque premier massage"], "sign": "Mariama" },
+      "pillars": [
+        { "label": "Écoute", "text": "Vous me dites où ça tire, je commence par là et j'ajuste la pression en cours de séance." },
+        { "label": "Silence", "text": "Pas de musique forte, pas de téléphone, pas de passage : une pièce, une table, vous." },
+        { "label": "Régularité", "text": "Je propose des forfaits pour celles et ceux qui veulent un suivi, sans jamais le pousser." }
+      ],
+      "marquee": ["Massage profond", "Massage relaxant", "Femme enceinte", "Massage sportif", "Karité", "Riviera Golf"],
+      "footerTagline": "Massothérapie à domicile, Riviera Golf, Cocody. Réservation en ligne, acompte de 25 %.",
+      "faq": [
+        { "q": "Où se passe le massage ?", "a": "Dans mon studio, au fond d'une villa de la Riviera Golf. L'adresse exacte et le code du portail vous sont envoyés après confirmation du rendez-vous." },
+        { "q": "Que dois-je apporter ?", "a": "Rien. Serviettes, drap et huiles sont fournis. Venez avec des vêtements confortables et sans parfum fort." },
+        { "q": "Comment fonctionne l'acompte ?", "a": "Un acompte de 25 % confirme votre créneau. Il est déduit le jour de la séance et remboursé en cas d'annulation 24 h avant." }
+      ],
+      "services": [
+        { "title": "Massages", "items": [
+          { "name": "Massage profond", "duration": "60 min", "price": "25 000 FCFA" },
+          { "name": "Massage profond", "duration": "90 min", "price": "35 000 FCFA" },
+          { "name": "Massage relaxant", "duration": "60 min", "price": "22 000 FCFA" },
+          { "name": "Massage relaxant", "duration": "90 min", "price": "32 000 FCFA" },
+          { "name": "Massage femme enceinte", "duration": "60 min", "price": "25 000 FCFA", "notes": "À partir du 2e trimestre" },
+          { "name": "Massage sportif", "duration": "60 min", "price": "27 000 FCFA", "notes": "Étirements inclus" }
+        ] },
+        { "title": "Soins ciblés", "items": [
+          { "name": "Dos et nuque", "duration": "45 min", "price": "18 000 FCFA" },
+          { "name": "Pieds et jambes", "duration": "30 min", "price": "12 000 FCFA" },
+          { "name": "Crâne et visage", "duration": "30 min", "price": "12 000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "Une question sur une douleur, une grossesse, un forfait ? Écrivez-moi, je réponds entre deux séances.", "policy": ["L'acompte de 25 % confirme le rendez-vous.", "Annulation gratuite jusqu'à 24 h avant, acompte remboursé.", "Au-delà de 15 minutes de retard, la séance est écourtée d'autant."], "note": "Le studio est dans une villa avec parking, le code du portail est envoyé la veille par WhatsApp." },
+      "cta": { "title1": "Venez", "title2": "poser", "title3": " ce que vous portez.", "desc": "Choisissez votre massage et votre créneau, je m'occupe du reste." }
+    },
+    "en": {
+      "hero": { "title1": "The massage", "title2": "that waits for you", "title3": " at my place.", "desc": "My name is Mariama, massage therapist in Cocody. I welcome you in my studio, a quiet room at the back of a villa in Riviera Golf: heated table, cold-pressed shea and coconut oils, one person at a time.", "lead_service": "Deep massage 60 min, the most booked treatment" },
+      "highlights": [
+        { "title": "Deep massage", "desc": "Firm pressure on tension areas, back, neck and shoulders first. For bodies that carry a lot." },
+        { "title": "Relaxing massage", "desc": "Slow, enveloping movements, warm oil, low light. To release the mind as much as the muscles." },
+        { "title": "Pregnancy massage", "desc": "On the side, with dedicated cushions, from the second trimester. To relieve the lower back and heavy legs." },
+        { "title": "Sports massage", "desc": "Preparation or recovery, passive stretches included. For runners, dancers and busy people." }
+      ],
+      "about": { "title2": "Mariama", "desc": "I started by massaging my grandmother's hands, then trained for two years in Dakar. For six years I have welcomed clients at home, because a massage needs a silent place and time that is not counted. My studio is a cool room, no phone, a heated table and oils I prepare myself.", "bullets": ["One person at a time, never a waiting room", "Cold-pressed shea and coconut oils", "A five-minute chat before every first massage"], "sign": "Mariama" },
+      "pillars": [
+        { "label": "Listening", "text": "You tell me where it pulls, I start there and adjust the pressure during the session." },
+        { "label": "Silence", "text": "No loud music, no phone, no passing through: one room, one table, you." },
+        { "label": "Consistency", "text": "I offer packs for those who want a follow-up, without ever pushing them." }
+      ],
+      "marquee": ["Deep massage", "Relaxing massage", "Pregnancy", "Sports massage", "Shea butter", "Riviera Golf"],
+      "footerTagline": "Home massage therapy, Riviera Golf, Cocody. Online booking, 25% deposit.",
+      "faq": [
+        { "q": "Where does the massage take place?", "a": "In my studio, at the back of a villa in Riviera Golf. The exact address and the gate code are sent after the appointment is confirmed." },
+        { "q": "What should I bring?", "a": "Nothing. Towels, sheet and oils are provided. Come in comfortable clothes and without strong perfume." },
+        { "q": "How does the deposit work?", "a": "A 25% deposit confirms your slot. It is deducted on the day and refunded if you cancel 24 hours before." }
+      ],
+      "services": [
+        { "title": "Massages", "items": [
+          { "name": "Deep massage", "duration": "60 min", "price": "25,000 FCFA" },
+          { "name": "Deep massage", "duration": "90 min", "price": "35,000 FCFA" },
+          { "name": "Relaxing massage", "duration": "60 min", "price": "22,000 FCFA" },
+          { "name": "Relaxing massage", "duration": "90 min", "price": "32,000 FCFA" },
+          { "name": "Pregnancy massage", "duration": "60 min", "price": "25,000 FCFA", "notes": "From the 2nd trimester" },
+          { "name": "Sports massage", "duration": "60 min", "price": "27,000 FCFA", "notes": "Stretches included" }
+        ] },
+        { "title": "Targeted treatments", "items": [
+          { "name": "Back and neck", "duration": "45 min", "price": "18,000 FCFA" },
+          { "name": "Feet and legs", "duration": "30 min", "price": "12,000 FCFA" },
+          { "name": "Head and face", "duration": "30 min", "price": "12,000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "A question about a pain, a pregnancy, a pack? Write to me, I answer between two sessions.", "policy": ["The 25% deposit confirms the appointment.", "Free cancellation up to 24 hours before, deposit refunded.", "After 15 minutes late, the session is shortened accordingly."], "note": "The studio is in a villa with parking, the gate code is sent the day before on WhatsApp." },
+      "cta": { "title1": "Come", "title2": "put down", "title3": " what you carry.", "desc": "Choose your massage and your time slot, I take care of the rest." }
+    }
+  }
+}

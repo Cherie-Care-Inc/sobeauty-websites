@@ -1,0 +1,149 @@
+{
+  "slug": "demo-academy",
+  "template": "academy",
+  "category": "training",
+  "brand_name": "Académie Fari",
+  "professional_name": "Fari Diop",
+  "first_name": "Fari",
+  "display_parts": ["Académie", "Fari"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "221770000000",
+  "logo_url": "",
+  "portrait_tag": "Formatrice · Tresses et nattes",
+  "years_experience": 10,
+  "contact": {
+    "phone_human": "+221 77 000 00 00",
+    "phone_tel": "+221770000000",
+    "email": "contact@academie-fari.sn",
+    "address": "Sacré-Cœur 3, Villa 9200, Dakar",
+    "city": "Dakar",
+    "region": "Sacré-Cœur",
+    "location_hint": "Ateliers en présentiel le samedi, formations vidéo accessibles partout",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#3B6B45"] },
+  "images": {
+    "hero_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/1dff49858bc52c022f450a6f601c5d3b.jpg",
+    "about_url": "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/2a47031cd111c62c4a4ed5a056cfc578.jpg",
+      "https://images.unsplash.com/photo-1560523159-4a9692d222ef?w=1600&q=80",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/78b70cb9bdb02804075de823770cdfbd.jpg"
+    ],
+    "gallery_urls": [
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/14588f7563356f9bf105694e496e67c9.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/27bd8664d3131aa99b9c1563355127b7.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/72dac18c45692fe84e2f2792ea7bf73e.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/8b2a566d5f2c8774ca4962a0f495c81c.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/b58398bc7ff6da89deb75027c21fa23f.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/d50b47f5653d85d3df95e415f384f683.jpg"
+    ]
+  },
+  "products": [
+    {
+      "id": "f-knotless",
+      "name": "Masterclass Knotless Braids",
+      "description": "Formation vidéo complète, accès à vie, du premier carré à la finition.\nLa préparation du cheveu et la séparation des sections sans tirer\nLa technique knotless, la tension juste et l'ajout des mèches\nLes bordures, les baby hairs et la finition brillante\n6 heures de vidéo, un livret PDF et un groupe WhatsApp d'entraide",
+      "price_amount": 45000, "currency": "XOF", "kind": "digital", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1583147610149-78ac5cb5a303?w=1600&q=80",
+        "https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "f-nattes",
+      "name": "Nattes collées et tresses design",
+      "description": "Les nattes droites, courbes et en motifs, filmées en gros plan.\nLe tracé des motifs au peigne et la lecture de la forme du crâne\nLes nattes collées fines, les fulani et les tresses avec perles\nLes astuces de tenue pour que la coiffure dure trois semaines\n4 heures de vidéo et les 12 schémas de motifs à imprimer",
+      "price_amount": 35000, "currency": "XOF", "kind": "digital", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1600&q=80",
+        "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=1600&q=80"
+      ]
+    },
+    {
+      "id": "f-salon",
+      "name": "Lancer son activité de tresses",
+      "description": "Tout ce que Fari aurait voulu savoir en ouvrant son premier salon.\nFixer ses prix et ses durées sans se brader\nRemplir son agenda avec Instagram, TikTok et la réservation en ligne\nGérer les acomptes, les retards et les clientes difficiles\n3 heures de vidéo, les modèles de grille tarifaire et de messages clients",
+      "price_amount": 25000, "currency": "XOF", "kind": "digital", "in_stock": true,
+      "image_urls": [
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80",
+        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=80"
+      ]
+    }
+  ],
+  "reviews": [
+    { "author": "Aminata S.", "text": "J'ai suivi la masterclass knotless depuis Thiès. En trois semaines je prenais mes premières clientes à 15 000 FCFA la pose.", "rating": 5, "service": "Masterclass Knotless Braids", "date": "2026-09-18" },
+    { "author": "Mame Diarra F.", "text": "Les vidéos sont filmées de près, on voit vraiment les doigts. Fari répond à toutes les questions dans le groupe WhatsApp.", "rating": 5, "service": "Nattes collées et tresses design", "date": "2026-08-27" },
+    { "author": "Rokhaya N.", "text": "La formation business m'a fait doubler mes prix sans perdre de clientes. J'aurais dû la suivre il y a deux ans.", "rating": 5, "service": "Lancer son activité de tresses", "date": "2026-08-05" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 52 },
+  "hours": [
+    { "day": 0, "ranges": [["10:00", "18:00"]] },
+    { "day": 1, "ranges": [["10:00", "18:00"]] },
+    { "day": 2, "ranges": [["10:00", "18:00"]] },
+    { "day": 3, "ranges": [["10:00", "18:00"]] },
+    { "day": 4, "ranges": [["10:00", "18:00"]] },
+    { "day": 5, "ranges": [["09:00", "17:00"]] },
+    { "day": 6, "ranges": [] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Apprenez", "title2": "les tresses", "title3": " comme au salon.", "desc": "Fari Diop forme depuis dix ans les coiffeuses et coiffeurs de Dakar aux tresses, nattes collées et locs. Ses formations vidéo reprennent chaque geste en gros plan, à votre rythme, avec un suivi sur WhatsApp.", "lead_service": "Masterclass Knotless Braids, la formation la plus suivie" },
+      "highlights": [
+        { "title": "Accès à vie", "desc": "Les vidéos restent disponibles, mises à jour comprises." },
+        { "title": "Suivi WhatsApp", "desc": "Un groupe par formation, Fari répond sous 24 h." },
+        { "title": "Atelier mensuel", "desc": "Une journée pratique à Dakar, offerte aux inscrits." },
+        { "title": "Attestation", "desc": "Remise après la réalisation filmée de votre coiffure." }
+      ],
+      "about": { "title2": "Fari", "desc": "J'ai commencé à tresser à quatorze ans dans le salon de ma tante à Pikine. Dix ans de salon, trois cents clientes fidèles, puis une question qui revenait sans cesse : comment tu fais ? J'ai filmé mes mains, j'ai écrit les étapes, et l'Académie est née. Mes élèves sont à Dakar, à Abidjan, à Paris : ce qu'elles ont en commun, c'est l'envie de vivre de leurs mains.", "bullets": ["Plus de 400 élèves formées depuis 2023", "Chaque geste filmé en gros plan, sans coupe", "Un atelier pratique chaque mois à Dakar"], "sign": "Fari" },
+      "pillars": [
+        { "label": "Pratique", "text": "Pas de théorie inutile : chaque module se termine par une coiffure à réaliser." },
+        { "label": "Proximité", "text": "Fari relit vos vidéos et corrige vos gestes dans le groupe." },
+        { "label": "Rentabilité", "text": "Des techniques choisies pour ce que les clientes demandent et paient." }
+      ],
+      "marquee": ["Knotless braids", "Nattes collées", "Fulani braids", "Business de la coiffure", "Dakar", "100 % en ligne"],
+      "footerTagline": "Formations vidéo aux tresses et nattes, avec suivi WhatsApp et atelier mensuel à Dakar.",
+      "offer": "Jusqu'au 31 octobre : les trois formations pour 85 000 FCFA",
+      "faq": [
+        { "q": "Faut-il déjà savoir tresser ?", "a": "Non pour la masterclass knotless, qui part de zéro. La formation nattes collées suppose de savoir faire une natte simple." },
+        { "q": "Comment accéder aux vidéos après l'achat ?", "a": "Vous recevez un lien et un code d'accès sur WhatsApp dans l'heure qui suit la confirmation du paiement." },
+        { "q": "Peut-on payer en plusieurs fois ?", "a": "Oui, en deux fois par mobile money : la moitié à l'inscription, le reste 30 jours plus tard. Écrivez-nous sur WhatsApp pour activer cette option." }
+      ],
+      "services": [],
+      "contact": { "intro": "Une question avant de vous inscrire ? Écrivez à Fari, elle répond elle-même.", "policy": ["L'accès aux vidéos est ouvert dans l'heure qui suit le paiement.", "Remboursement intégral sous 7 jours si moins de 20 % de la formation a été visionné.", "L'atelier mensuel se réserve sur WhatsApp, 12 places par session."], "note": "Les ateliers ont lieu à Sacré-Cœur 3, le samedi de 10 h à 17 h. Têtes à coiffer et mèches fournies." },
+      "cta": { "title1": "Envie de", "title2": "vivre de vos mains", "title3": " ?", "desc": "Choisissez votre formation, inscrivez-vous en ligne et commencez aujourd'hui." }
+    },
+    "en": {
+      "hero": { "title1": "Learn braiding", "title2": "the salon way", "title3": ", from anywhere.", "desc": "Fari Diop has trained Dakar's braiders for ten years in braids, cornrows and locs. Her video trainings show every movement in close-up, at your pace, with follow-up on WhatsApp.", "lead_service": "Knotless Braids Masterclass, the most followed training" },
+      "highlights": [
+        { "title": "Lifetime access", "desc": "The videos stay available, updates included." },
+        { "title": "WhatsApp follow-up", "desc": "One group per training, Fari answers within 24 hours." },
+        { "title": "Monthly workshop", "desc": "A hands-on day in Dakar, free for enrolled students." },
+        { "title": "Certificate", "desc": "Issued after the filmed completion of your style." }
+      ],
+      "about": { "title2": "Fari", "desc": "I started braiding at fourteen in my aunt's salon in Pikine. Ten years of salon work, three hundred loyal clients, then one question that kept coming back: how do you do it? I filmed my hands, wrote down the steps, and the Academy was born. My students are in Dakar, Abidjan and Paris: what they share is the wish to make a living with their hands.", "bullets": ["More than 400 students trained since 2023", "Every movement filmed in close-up, without cuts", "A hands-on workshop every month in Dakar"], "sign": "Fari" },
+      "pillars": [
+        { "label": "Hands-on", "text": "No useless theory: every module ends with a style to complete." },
+        { "label": "Closeness", "text": "Fari reviews your videos and corrects your movements in the group." },
+        { "label": "Profitability", "text": "Techniques chosen for what clients ask for and pay for." }
+      ],
+      "marquee": ["Knotless braids", "Cornrows", "Fulani braids", "Hair business", "Dakar", "100% online"],
+      "footerTagline": "Video trainings in braids and cornrows, with WhatsApp follow-up and a monthly workshop in Dakar.",
+      "offer": "Until 31 October: all three trainings for 85,000 FCFA",
+      "faq": [
+        { "q": "Do I need to know how to braid already?", "a": "Not for the knotless masterclass, which starts from zero. The cornrows training assumes you can do a simple braid." },
+        { "q": "How do I access the videos after purchase?", "a": "You receive a link and an access code on WhatsApp within the hour after the payment is confirmed." },
+        { "q": "Can I pay in instalments?", "a": "Yes, in two mobile money payments: half at enrolment, the rest 30 days later. Write to us on WhatsApp to activate this option." }
+      ],
+      "services": [],
+      "contact": { "intro": "A question before enrolling? Write to Fari, she answers herself.", "policy": ["Access to the videos opens within the hour after payment.", "Full refund within 7 days if less than 20% of the training has been watched.", "The monthly workshop is booked on WhatsApp, 12 seats per session."], "note": "Workshops take place at Sacré-Cœur 3, on Saturdays from 10 am to 5 pm. Mannequin heads and hair provided." },
+      "cta": { "title1": "Ready to", "title2": "make a living with your hands", "title3": "?", "desc": "Pick your training, enrol online and start today." }
+    }
+  }
+}

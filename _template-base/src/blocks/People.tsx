@@ -26,8 +26,8 @@ export function Team({ data, variant = "grid", className = "" }: { data: SiteDat
     <ul className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-4 ${className}`}>
       {data.team.map((m) => (
         <li key={m.name} className="group flex flex-col overflow-hidden rounded-[var(--radius)] border border-line bg-surface">
-          <div className="aspect-[4/5] bg-surface-2">
-            {m.photo ? <Img src={m.photo} alt={m.name} className="transition-transform duration-700 group-hover:scale-[1.03]" />
+          <div className="relative aspect-[4/5] shrink-0 overflow-hidden bg-surface-2">
+            {m.photo ? <Img src={m.photo} alt={m.name} className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.03]" />
               : <div className="flex h-full items-center justify-center"><Avatar name={m.name} className="h-24 w-24 text-3xl" /></div>}
           </div>
           <div className="flex flex-1 flex-col gap-1 p-5">

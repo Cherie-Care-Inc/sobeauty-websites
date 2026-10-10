@@ -1,0 +1,160 @@
+{
+  "slug": "demo-clean-barber",
+  "template": "clean-barber",
+  "category": "barber",
+  "brand_name": "Mansa Barbershop",
+  "professional_name": "Moussa Keïta",
+  "first_name": "Moussa",
+  "display_parts": ["Mansa", "Barbershop"],
+  "schema_type": "Barber",
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "237690000000",
+  "logo_url": "",
+  "portrait_tag": "Barbershop · Dégradés et barbe",
+  "years_experience": 9,
+  "deposit_percent": 0,
+  "contact": {
+    "phone_human": "+237 6 90 00 00 00",
+    "phone_tel": "+237690000000",
+    "email": "contact@mansabarbershop.cm",
+    "address": "Rue Njo-Njo, Bonapriso, Douala",
+    "city": "Douala",
+    "region": "Bonapriso",
+    "location_hint": "En face de la station Total, entrée sur le côté",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": { "brand_colors": ["#111111"] },
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=1600&q=80",
+    "about_url": "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=1600&q=80",
+      "https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=1600&q=80",
+      "https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80",
+      "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=1600&q=80",
+      "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80",
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80",
+      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80"
+    ]
+  },
+  "team": [
+    { "name": "Moussa Keïta", "photo_url": "https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=800&q=80", "owner": true, "share_code": "MOU1", "services": {} },
+    { "name": "Yannick Mbarga", "photo_url": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=800&q=80", "owner": false, "share_code": "YAN2", "services": { "fr": ["Dégradés", "Barbe"], "en": ["Fades", "Beard"] } }
+  ],
+  "reviews": [
+    { "author": "Franck E.", "text": "Dégradé propre, lignes nettes, et Moussa prend le temps de vérifier la symétrie avant de te laisser partir.", "rating": 5, "service": "Dégradé", "date": "2026-09-22" },
+    { "author": "Steve N.", "text": "Rasage à la serviette chaude impeccable. Pas d'irritation, et le contour de barbe tient dix jours.", "rating": 5, "service": "Rasage serviette chaude", "date": "2026-09-03" },
+    { "author": "Ibrahim D.", "text": "Je réserve en ligne, j'arrive, je m'assois. Zéro attente, c'est ce que je cherchais.", "rating": 5, "service": "Coupe et barbe", "date": "2026-08-15" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 68 },
+  "hours": [
+    { "day": 0, "ranges": [["09:00", "20:00"]] },
+    { "day": 1, "ranges": [["09:00", "20:00"]] },
+    { "day": 2, "ranges": [["09:00", "20:00"]] },
+    { "day": 3, "ranges": [["09:00", "20:00"]] },
+    { "day": 4, "ranges": [["09:00", "21:00"]] },
+    { "day": 5, "ranges": [["08:00", "21:00"]] },
+    { "day": 6, "ranges": [["10:00", "15:00"]] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Coupe nette.", "title2": "Barbe soignée.", "title3": "", "desc": "Mansa Barbershop, à Bonapriso. Deux barbiers, des dégradés précis, des rasages à la serviette chaude et des créneaux qui commencent à l'heure. Réservez en ligne, passez, repartez propre.", "lead_service": "Dégradé et barbe, la prestation la plus demandée" },
+      "highlights": [
+        { "title": "Dégradés", "desc": "Skin fade, low, mid ou high, taper, lignes au rasoir : une coupe nette qui tient deux semaines." },
+        { "title": "Barbe", "desc": "Taille, contour au rasoir, rasage complet à la serviette chaude et huile de finition." },
+        { "title": "Soins homme", "desc": "Soin visage, black mask, coloration de barbe : le détail qui finit la coupe." }
+      ],
+      "about": { "title2": "Mansa Barbershop", "desc": "Un barbershop simple : deux fauteuils, deux barbiers, des outils propres et un seul objectif, que vous repartiez avec exactement la coupe demandée. Pas de musique trop forte, pas d'attente sur le banc, pas de surprise sur le prix.", "bullets": ["Réservation en ligne, créneau à l'heure", "Rasoir neuf à chaque client", "Prix affichés, sans supplément"], "sign": "Moussa et Yannick" },
+      "pillars": [
+        { "label": "Précision", "text": "Dégradés symétriques et lignes nettes, vérifiés au miroir avant la fin." },
+        { "label": "Hygiène", "text": "Lame neuve pour chaque rasage, outils désinfectés entre deux clients." },
+        { "label": "Ponctualité", "text": "Votre créneau démarre à l'heure réservée, sans file d'attente." }
+      ],
+      "marquee": ["Skin fade", "Taper", "Rasage serviette chaude", "Contour barbe", "Coupe enfant", "Bonapriso"],
+      "footerTagline": "Barbershop à Bonapriso, Douala. Dégradés, barbe et soins homme, sur réservation.",
+      "offer": "Du lundi au mercredi avant midi : coupe et barbe à 7 000 FCFA",
+      "faq": [
+        { "q": "Peut-on venir sans réserver ?", "a": "Oui, si un fauteuil est libre. Les clients qui ont réservé passent en premier, la réservation en ligne prend une minute." },
+        { "q": "Combien de temps dure un dégradé ?", "a": "Comptez 45 minutes pour un dégradé seul, 1h15 avec la barbe." },
+        { "q": "Faites-vous les coupes enfants ?", "a": "Oui, à partir de 4 ans, du lundi au vendredi. Le samedi est réservé aux adultes." },
+        { "q": "Quels moyens de paiement ?", "a": "Espèces, Orange Money et MTN MoMo, sur place après la prestation." }
+      ],
+      "services": [
+        { "title": "Coupes", "items": [
+          { "name": "Dégradé (skin, low, mid, high)", "duration": "45 min", "price": "5 000 FCFA" },
+          { "name": "Coupe classique aux ciseaux", "duration": "40 min", "price": "4 500 FCFA" },
+          { "name": "Coupe et barbe", "duration": "1h15", "price": "8 000 FCFA", "notes": "Contour au rasoir inclus" },
+          { "name": "Coupe enfant", "duration": "30 min", "price": "3 000 FCFA", "notes": "Jusqu'à 12 ans, du lundi au vendredi" },
+          { "name": "Lignes et design", "duration": "20 min", "price": "2 000 FCFA" }
+        ] },
+        { "title": "Barbe", "items": [
+          { "name": "Taille de barbe", "duration": "25 min", "price": "3 000 FCFA" },
+          { "name": "Rasage serviette chaude", "duration": "35 min", "price": "4 000 FCFA", "notes": "Lame neuve, huile de finition" },
+          { "name": "Contour de barbe", "duration": "15 min", "price": "2 000 FCFA" }
+        ] },
+        { "title": "Soins homme", "items": [
+          { "name": "Soin visage homme", "duration": "30 min", "price": "5 000 FCFA" },
+          { "name": "Black mask", "duration": "20 min", "price": "3 500 FCFA" },
+          { "name": "Coloration de barbe", "duration": "30 min", "price": "6 000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "Une question avant de passer ? Appelez ou écrivez sur WhatsApp, on répond entre deux clients.", "policy": ["Annulation gratuite jusqu'à 2 h avant le créneau.", "Au-delà de 10 minutes de retard, le créneau est libéré.", "Paiement sur place après la prestation."], "note": "Le salon est en face de la station Total de Bonapriso, entrée sur le côté. Parking sur la rue." },
+      "cta": { "title1": "Réservez", "title2": "votre fauteuil", "title3": ".", "desc": "Choisissez votre barbier et votre créneau, confirmation immédiate." },
+      "team_roles": { "Moussa Keïta": "Fondateur · Dégradés et rasage", "Yannick Mbarga": "Barbier · Dégradés et barbe" }
+    },
+    "en": {
+      "hero": { "title1": "Sharp cut.", "title2": "Clean beard.", "title3": "", "desc": "Mansa Barbershop, in Bonapriso. Two barbers, precise fades, hot-towel shaves and slots that start on time. Book online, walk in, walk out sharp.", "lead_service": "Fade and beard, the most requested service" },
+      "highlights": [
+        { "title": "Fades", "desc": "Skin fade, low, mid or high, taper, razor lines: a sharp cut that holds two weeks." },
+        { "title": "Beard", "desc": "Trim, razor line-up, full hot-towel shave and finishing oil." },
+        { "title": "Men's care", "desc": "Facial, black mask, beard colour: the detail that finishes the cut." }
+      ],
+      "about": { "title2": "Mansa Barbershop", "desc": "A simple barbershop: two chairs, two barbers, clean tools and one goal, that you leave with exactly the cut you asked for. No loud music, no waiting on the bench, no surprise on the price.", "bullets": ["Online booking, slot on time", "New blade for every client", "Prices displayed, no extras"], "sign": "Moussa and Yannick" },
+      "pillars": [
+        { "label": "Precision", "text": "Symmetrical fades and clean lines, checked in the mirror before the end." },
+        { "label": "Hygiene", "text": "New blade for every shave, tools disinfected between two clients." },
+        { "label": "Punctuality", "text": "Your slot starts at the booked time, no queue." }
+      ],
+      "marquee": ["Skin fade", "Taper", "Hot-towel shave", "Beard line-up", "Kids cut", "Bonapriso"],
+      "footerTagline": "Barbershop in Bonapriso, Douala. Fades, beard and men's care, by appointment.",
+      "offer": "Monday to Wednesday before noon: cut and beard for 7,000 FCFA",
+      "faq": [
+        { "q": "Can I walk in?", "a": "Yes, if a chair is free. Clients with a booking go first, and booking online takes a minute." },
+        { "q": "How long does a fade take?", "a": "Allow 45 minutes for a fade alone, 1h15 with the beard." },
+        { "q": "Do you cut kids' hair?", "a": "Yes, from age 4, Monday to Friday. Saturday is adults only." },
+        { "q": "Which payment methods?", "a": "Cash, Orange Money and MTN MoMo, on site after the service." }
+      ],
+      "services": [
+        { "title": "Cuts", "items": [
+          { "name": "Fade (skin, low, mid, high)", "duration": "45 min", "price": "5,000 FCFA" },
+          { "name": "Classic scissor cut", "duration": "40 min", "price": "4,500 FCFA" },
+          { "name": "Cut and beard", "duration": "1h15", "price": "8,000 FCFA", "notes": "Razor line-up included" },
+          { "name": "Kids cut", "duration": "30 min", "price": "3,000 FCFA", "notes": "Up to 12, Monday to Friday" },
+          { "name": "Lines and design", "duration": "20 min", "price": "2,000 FCFA" }
+        ] },
+        { "title": "Beard", "items": [
+          { "name": "Beard trim", "duration": "25 min", "price": "3,000 FCFA" },
+          { "name": "Hot-towel shave", "duration": "35 min", "price": "4,000 FCFA", "notes": "New blade, finishing oil" },
+          { "name": "Beard line-up", "duration": "15 min", "price": "2,000 FCFA" }
+        ] },
+        { "title": "Men's care", "items": [
+          { "name": "Men's facial", "duration": "30 min", "price": "5,000 FCFA" },
+          { "name": "Black mask", "duration": "20 min", "price": "3,500 FCFA" },
+          { "name": "Beard colour", "duration": "30 min", "price": "6,000 FCFA" }
+        ] }
+      ],
+      "contact": { "intro": "A question before coming in? Call or write on WhatsApp, we answer between two clients.", "policy": ["Free cancellation up to 2 hours before the slot.", "After 10 minutes late, the slot is released.", "Payment on site after the service."], "note": "The shop is opposite the Total station in Bonapriso, side entrance. Street parking." },
+      "cta": { "title1": "Book", "title2": "your chair", "title3": ".", "desc": "Pick your barber and your slot, instant confirmation." },
+      "team_roles": { "Moussa Keïta": "Founder · Fades and shaves", "Yannick Mbarga": "Barber · Fades and beard" }
+    }
+  }
+}

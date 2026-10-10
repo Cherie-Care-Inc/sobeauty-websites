@@ -1,0 +1,575 @@
+{
+  "slug": "demo-studio-team",
+  "template": "studio-team",
+  "category": "hair",
+  "brand_name": "Studio Kémi",
+  "professional_name": "Kémi Sow",
+  "first_name": "Kémi",
+  "display_parts": [
+    "Studio",
+    "Kémi"
+  ],
+  "langs": [
+    "fr",
+    "en"
+  ],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "221770000000",
+  "logo_url": "",
+  "portrait_tag": "Salon de coiffure · Tresses, coupes, couleur",
+  "years_experience": 11,
+  "deposit_percent": 20,
+  "contact": {
+    "phone_human": "+221 77 000 00 00",
+    "phone_tel": "+221770000000",
+    "email": "bonjour@studiokemi.sn",
+    "address": "Rue 10 x Avenue Cheikh Anta Diop, Point E, Dakar",
+    "city": "Dakar",
+    "region": "Point E",
+    "location_hint": "Au premier étage, au-dessus de la pharmacie",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": {
+    "brand_colors": [
+      "#6B3F27"
+    ]
+  },
+  "images": {
+    "hero_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/8b2a566d5f2c8774ca4962a0f495c81c.jpg",
+    "about_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/2a47031cd111c62c4a4ed5a056cfc578.jpg",
+    "svc_urls": [
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/14588f7563356f9bf105694e496e67c9.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/cac67ffaa7f2899c8e0353cb8efe33f4.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/d50b47f5653d85d3df95e415f384f683.jpg"
+    ],
+    "gallery_urls": [
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/27bd8664d3131aa99b9c1563355127b7.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/6fee304620dee38a1ab31b538aa3b10c.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/cac67ffaa7f2899c8e0353cb8efe33f4.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/d50b47f5653d85d3df95e415f384f683.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/14588f7563356f9bf105694e496e67c9.jpg",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/2a47031cd111c62c4a4ed5a056cfc578.jpg"
+    ]
+  },
+  "team": [
+    {
+      "name": "Kémi Sow",
+      "photo_url": "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=800&q=80",
+      "owner": true,
+      "share_code": "KEM1",
+      "services": {}
+    },
+    {
+      "name": "Adja Ndiaye",
+      "photo_url": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80",
+      "owner": false,
+      "share_code": "ADJ2",
+      "services": {
+        "fr": [
+          "Tresses",
+          "Tissages"
+        ],
+        "en": [
+          "Braids",
+          "Weaves"
+        ]
+      }
+    },
+    {
+      "name": "Binta Fall",
+      "photo_url": "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?w=800&q=80",
+      "owner": false,
+      "share_code": "BIN3",
+      "services": {
+        "fr": [
+          "Coupes",
+          "Brushing"
+        ],
+        "en": [
+          "Cuts",
+          "Blow-dry"
+        ]
+      }
+    },
+    {
+      "name": "Rokhaya Diop",
+      "photo_url": "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=800&q=80",
+      "owner": false,
+      "share_code": "ROK4",
+      "services": {
+        "fr": [
+          "Couleur",
+          "Soins"
+        ],
+        "en": [
+          "Colour",
+          "Treatments"
+        ]
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Mame Diarra S.",
+      "text": "Adja a posé mes knotless en trois heures, sans tirer, et elles sont tombées parfaitement dès le premier jour.",
+      "rating": 5,
+      "service": "Knotless braids",
+      "date": "2026-09-20"
+    },
+    {
+      "author": "Yacine T.",
+      "text": "Binta a compris ma coupe en deux phrases. Le brushing a tenu toute la semaine malgré l'humidité.",
+      "rating": 5,
+      "service": "Coupe et brushing",
+      "date": "2026-09-05"
+    },
+    {
+      "author": "Oumou B.",
+      "text": "Couleur cuivrée faite par Rokhaya, soin inclus, mes cheveux sont restés doux. Je reviens pour la retouche.",
+      "rating": 5,
+      "service": "Coloration",
+      "date": "2026-08-18"
+    },
+    {
+      "author": "Khady N.",
+      "text": "Le salon est propre, calme, et on respecte l'heure du rendez-vous. Rare à Dakar.",
+      "rating": 4,
+      "service": "Tissage fermé",
+      "date": "2026-07-29"
+    }
+  ],
+  "reviews_summary": {
+    "average": 4.9,
+    "count": 52
+  },
+  "hours": [
+    {
+      "day": 0,
+      "ranges": []
+    },
+    {
+      "day": 1,
+      "ranges": [
+        [
+          "09:00",
+          "19:00"
+        ]
+      ]
+    },
+    {
+      "day": 2,
+      "ranges": [
+        [
+          "09:00",
+          "19:00"
+        ]
+      ]
+    },
+    {
+      "day": 3,
+      "ranges": [
+        [
+          "09:00",
+          "19:00"
+        ]
+      ]
+    },
+    {
+      "day": 4,
+      "ranges": [
+        [
+          "09:00",
+          "20:00"
+        ]
+      ]
+    },
+    {
+      "day": 5,
+      "ranges": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ]
+    },
+    {
+      "day": 6,
+      "ranges": [
+        [
+          "10:00",
+          "16:00"
+        ]
+      ]
+    }
+  ],
+  "copy": {
+    "fr": {
+      "hero": {
+        "title1": "Le salon où",
+        "title2": "chaque fauteuil",
+        "title3": " a sa spécialiste.",
+        "desc": "Studio Kémi a ouvert en 2015 dans deux pièces au-dessus d'une pharmacie du Point E. Aujourd'hui, quatre coiffeuses, chacune avec sa spécialité, et toujours la même règle : on vous écoute avant de vous coiffer.",
+        "lead_service": "Knotless braids, la prestation la plus réservée"
+      },
+      "highlights": [
+        {
+          "title": "Coupes et brushing",
+          "desc": "Coupe sur cheveux naturels ou défrisés, brushing lisse ou wavy, avec un soin thermo-protecteur à chaque passage."
+        },
+        {
+          "title": "Tresses et tissages",
+          "desc": "Knotless, box braids, nattes collées, tissages fermés ou avec closure : des poses légères qui durent."
+        },
+        {
+          "title": "Couleur et soins",
+          "desc": "Coloration, balayage cuivré ou miel, soins protéinés et hydratants pour des cheveux nourris."
+        }
+      ],
+      "about": {
+        "title2": "Studio Kémi",
+        "desc": "Kémi a commencé seule, avec un fauteuil et une liste d'attente qui débordait. Elle a formé Adja, puis Binta, puis Rokhaya, chacune sur ce qu'elle fait de mieux. Vous choisissez votre coiffeuse, votre prestation et votre créneau en ligne, et vous êtes prise en charge à l'heure, sans attente sur le canapé.",
+        "bullets": [
+          "Quatre spécialistes, une par famille de prestations",
+          "Rendez-vous à l'heure, durée annoncée",
+          "Produits adaptés aux cheveux texturés"
+        ],
+        "sign": "L'équipe Studio Kémi"
+      },
+      "pillars": [
+        {
+          "label": "Spécialisation",
+          "text": "Chaque coiffeuse maîtrise sa famille de prestations et ne fait que ça toute la journée."
+        },
+        {
+          "label": "Ponctualité",
+          "text": "Votre créneau est le vôtre : on démarre à l'heure et on respecte la durée annoncée."
+        },
+        {
+          "label": "Conseil",
+          "text": "On vous dit ce qui tiendra, ce qui abîmera, et ce qu'on ne fera pas."
+        }
+      ],
+      "marquee": [
+        "Knotless braids",
+        "Coupe et brushing",
+        "Balayage cuivré",
+        "Tissage fermé",
+        "Soin protéiné",
+        "Point E, Dakar"
+      ],
+      "footerTagline": "Salon de coiffure au Point E, Dakar. Quatre coiffeuses, réservation en ligne, acompte de 20 %.",
+      "offer": "Nouvelle cliente : le soin hydratant offert avec toute première coupe",
+      "faq": [
+        {
+          "q": "Comment choisir ma coiffeuse ?",
+          "a": "Chaque coiffeuse affiche sa spécialité. Réservez directement avec elle depuis la page Équipe, ou laissez-nous attribuer le créneau le plus proche."
+        },
+        {
+          "q": "Les mèches sont-elles incluses ?",
+          "a": "Oui pour les knotless et box braids. Pour les tissages, apportez vos mèches ou commandez-les chez nous à l'avance."
+        },
+        {
+          "q": "Puis-je venir sans rendez-vous ?",
+          "a": "Les coupes et brushings sont possibles sans rendez-vous selon les disponibilités. Les tresses et couleurs se réservent en ligne."
+        },
+        {
+          "q": "Comment fonctionne l'acompte ?",
+          "a": "Un acompte de 20 % confirme votre créneau et il est déduit du prix le jour même."
+        }
+      ],
+      "services": [
+        {
+          "title": "Coupes et brushing",
+          "items": [
+            {
+              "name": "Coupe femme",
+              "duration": "45 min",
+              "price": "8 000 FCFA"
+            },
+            {
+              "name": "Brushing lisse ou wavy",
+              "duration": "1h",
+              "price": "7 000 FCFA",
+              "notes": "Soin thermo-protecteur inclus"
+            },
+            {
+              "name": "Coupe et brushing",
+              "duration": "1h30",
+              "price": "13 000 FCFA"
+            },
+            {
+              "name": "Coupe enfant",
+              "duration": "30 min",
+              "price": "5 000 FCFA"
+            }
+          ]
+        },
+        {
+          "title": "Tresses et tissages",
+          "items": [
+            {
+              "name": "Knotless braids (mi-longues)",
+              "duration": "3h",
+              "price": "30 000 FCFA",
+              "notes": "Mèches incluses"
+            },
+            {
+              "name": "Box braids",
+              "duration": "4h",
+              "price": "28 000 FCFA",
+              "notes": "Mèches incluses"
+            },
+            {
+              "name": "Nattes collées",
+              "duration": "1h30",
+              "price": "10 000 FCFA"
+            },
+            {
+              "name": "Tissage fermé",
+              "duration": "2h30",
+              "price": "20 000 FCFA"
+            },
+            {
+              "name": "Tissage avec closure",
+              "duration": "3h",
+              "price": "25 000 FCFA"
+            }
+          ]
+        },
+        {
+          "title": "Couleur et soins",
+          "items": [
+            {
+              "name": "Coloration complète",
+              "duration": "2h",
+              "price": "22 000 FCFA",
+              "notes": "Soin inclus"
+            },
+            {
+              "name": "Balayage cuivré ou miel",
+              "duration": "2h30",
+              "price": "35 000 FCFA"
+            },
+            {
+              "name": "Soin protéiné",
+              "duration": "45 min",
+              "price": "9 000 FCFA"
+            },
+            {
+              "name": "Soin hydratant",
+              "duration": "30 min",
+              "price": "6 000 FCFA"
+            }
+          ]
+        }
+      ],
+      "contact": {
+        "intro": "Une question sur une prestation ou sur une coiffeuse ? Écrivez-nous, on répond dans la journée.",
+        "policy": [
+          "L'acompte de 20 % confirme le rendez-vous.",
+          "Annulation gratuite jusqu'à 24 h avant.",
+          "Au-delà de 15 minutes de retard, le créneau peut être réattribué."
+        ],
+        "note": "Le salon est au premier étage, au-dessus de la pharmacie du Point E. Parking dans la rue."
+      },
+      "cta": {
+        "title1": "Choisissez",
+        "title2": "votre coiffeuse",
+        "title3": " et votre créneau.",
+        "desc": "Réservation en ligne en deux minutes, confirmation immédiate."
+      },
+      "team_roles": {
+        "Kémi Sow": "Fondatrice · Tresses et coupes",
+        "Adja Ndiaye": "Coiffeuse · Tresses et tissages",
+        "Binta Fall": "Coiffeuse · Coupes et brushing",
+        "Rokhaya Diop": "Coloriste · Couleur et soins"
+      }
+    },
+    "en": {
+      "hero": {
+        "title1": "The salon where",
+        "title2": "every chair",
+        "title3": " has its specialist.",
+        "desc": "Studio Kémi opened in 2015 in two rooms above a pharmacy in Point E. Today, four stylists, each with her specialty, and still the same rule: we listen before we style.",
+        "lead_service": "Knotless braids, the most booked service"
+      },
+      "highlights": [
+        {
+          "title": "Cuts and blow-dry",
+          "desc": "Cuts on natural or relaxed hair, sleek or wavy blow-dry, with a heat-protective treatment every time."
+        },
+        {
+          "title": "Braids and weaves",
+          "desc": "Knotless, box braids, cornrows, sew-in weaves with or without closure: light installs that last."
+        },
+        {
+          "title": "Colour and treatments",
+          "desc": "Full colour, copper or honey balayage, protein and moisture treatments for nourished hair."
+        }
+      ],
+      "about": {
+        "title2": "Studio Kémi",
+        "desc": "Kémi started alone, with one chair and a waiting list that overflowed. She trained Adja, then Binta, then Rokhaya, each on what she does best. You pick your stylist, your service and your time slot online, and you are seen on time, no waiting on the sofa.",
+        "bullets": [
+          "Four specialists, one per service family",
+          "On-time appointments, duration announced",
+          "Products chosen for textured hair"
+        ],
+        "sign": "The team at Studio Kémi"
+      },
+      "pillars": [
+        {
+          "label": "Specialisation",
+          "text": "Each stylist masters her service family and does only that all day long."
+        },
+        {
+          "label": "Punctuality",
+          "text": "Your slot is yours: we start on time and respect the announced duration."
+        },
+        {
+          "label": "Honest advice",
+          "text": "We tell you what will hold, what will damage, and what we will not do."
+        }
+      ],
+      "marquee": [
+        "Knotless braids",
+        "Cut and blow-dry",
+        "Copper balayage",
+        "Sew-in weave",
+        "Protein treatment",
+        "Point E, Dakar"
+      ],
+      "footerTagline": "Hair salon in Point E, Dakar. Four stylists, online booking, 20% deposit.",
+      "offer": "New client: the moisture treatment is free with any first cut",
+      "faq": [
+        {
+          "q": "How do I choose my stylist?",
+          "a": "Each stylist shows her specialty. Book directly with her from the Team section, or let us assign the nearest slot."
+        },
+        {
+          "q": "Is the hair included?",
+          "a": "Yes for knotless and box braids. For weaves, bring your bundles or order them from us in advance."
+        },
+        {
+          "q": "Can I walk in?",
+          "a": "Cuts and blow-dries are possible without an appointment depending on availability. Braids and colour are booked online."
+        },
+        {
+          "q": "How does the deposit work?",
+          "a": "A 20% deposit confirms your slot and is deducted from the price on the day."
+        }
+      ],
+      "services": [
+        {
+          "title": "Cuts and blow-dry",
+          "items": [
+            {
+              "name": "Women's cut",
+              "duration": "45 min",
+              "price": "8,000 FCFA"
+            },
+            {
+              "name": "Sleek or wavy blow-dry",
+              "duration": "1h",
+              "price": "7,000 FCFA",
+              "notes": "Heat protection included"
+            },
+            {
+              "name": "Cut and blow-dry",
+              "duration": "1h30",
+              "price": "13,000 FCFA"
+            },
+            {
+              "name": "Children's cut",
+              "duration": "30 min",
+              "price": "5,000 FCFA"
+            }
+          ]
+        },
+        {
+          "title": "Braids and weaves",
+          "items": [
+            {
+              "name": "Knotless braids (medium)",
+              "duration": "3h",
+              "price": "30,000 FCFA",
+              "notes": "Hair included"
+            },
+            {
+              "name": "Box braids",
+              "duration": "4h",
+              "price": "28,000 FCFA",
+              "notes": "Hair included"
+            },
+            {
+              "name": "Cornrows",
+              "duration": "1h30",
+              "price": "10,000 FCFA"
+            },
+            {
+              "name": "Sew-in weave",
+              "duration": "2h30",
+              "price": "20,000 FCFA"
+            },
+            {
+              "name": "Weave with closure",
+              "duration": "3h",
+              "price": "25,000 FCFA"
+            }
+          ]
+        },
+        {
+          "title": "Colour and treatments",
+          "items": [
+            {
+              "name": "Full colour",
+              "duration": "2h",
+              "price": "22,000 FCFA",
+              "notes": "Treatment included"
+            },
+            {
+              "name": "Copper or honey balayage",
+              "duration": "2h30",
+              "price": "35,000 FCFA"
+            },
+            {
+              "name": "Protein treatment",
+              "duration": "45 min",
+              "price": "9,000 FCFA"
+            },
+            {
+              "name": "Moisture treatment",
+              "duration": "30 min",
+              "price": "6,000 FCFA"
+            }
+          ]
+        }
+      ],
+      "contact": {
+        "intro": "A question about a service or a stylist? Write to us, we answer the same day.",
+        "policy": [
+          "The 20% deposit confirms the appointment.",
+          "Free cancellation up to 24 hours before.",
+          "After 15 minutes late, the slot may be reassigned."
+        ],
+        "note": "The salon is on the first floor, above the Point E pharmacy. Street parking."
+      },
+      "cta": {
+        "title1": "Pick",
+        "title2": "your stylist",
+        "title3": " and your time.",
+        "desc": "Online booking in two minutes, instant confirmation."
+      },
+      "team_roles": {
+        "Kémi Sow": "Founder · Braids and cuts",
+        "Adja Ndiaye": "Stylist · Braids and weaves",
+        "Binta Fall": "Stylist · Cuts and blow-dry",
+        "Rokhaya Diop": "Colourist · Colour and treatments"
+      }
+    }
+  }
+}

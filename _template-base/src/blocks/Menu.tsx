@@ -32,7 +32,7 @@ export function MenuList({ data, groups, variant = "rows", limit, bookPerItem = 
               <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((it, i) => (
                   <li key={it.name + i} className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-line bg-surface">
-                    {it.image && <div className="aspect-[4/3] bg-surface-2"><Img src={it.image} alt={it.name} /></div>}
+                    {it.image && <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-surface-2"><Img src={it.image} alt={it.name} className="absolute inset-0" /></div>}
                     <div className="flex flex-1 flex-col gap-2 p-5">
                       <div className="flex items-start justify-between gap-3">
                         <span className="font-semibold">{it.name}</span>
@@ -106,7 +106,7 @@ export function Highlights({ data, variant = "cards", className = "" }: { data: 
     <ul className={`grid gap-5 sm:grid-cols-2 ${items.length >= 3 ? "lg:grid-cols-3" : ""} ${items.length === 4 ? "lg:grid-cols-4" : ""} ${className}`}>
       {items.map((it, i) => (
         <li key={it.title} className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-line bg-surface">
-          {imgs[i] && <div className="aspect-[4/3] bg-surface-2"><Img src={imgs[i]} alt={it.title} /></div>}
+          {imgs[i] && <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-surface-2"><Img src={imgs[i]} alt={it.title} className="absolute inset-0" /></div>}
           <div className="p-6"><h3 className="font-display text-2xl">{it.title}</h3><p className="mt-2 leading-relaxed text-muted-fg">{it.desc}</p></div>
         </li>
       ))}

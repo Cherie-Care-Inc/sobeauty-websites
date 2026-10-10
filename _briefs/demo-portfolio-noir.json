@@ -1,0 +1,151 @@
+{
+  "slug": "demo-portfolio-noir",
+  "template": "portfolio-noir",
+  "category": "makeup",
+  "brand_name": "Maëlle K. Makeup",
+  "professional_name": "Maëlle Kouassi",
+  "first_name": "Maëlle",
+  "display_parts": ["Maëlle K.", "Makeup"],
+  "langs": ["fr", "en"],
+  "default_lang": "fr",
+  "booking_slug": "salon-test-accueil",
+  "live": false,
+  "whatsapp": "33700000001",
+  "logo_url": "",
+  "portrait_tag": "Maquilleuse · Mariages et événements",
+  "years_experience": 7,
+  "deposit_percent": 30,
+  "contact": {
+    "phone_human": "+33 7 00 00 00 01",
+    "phone_tel": "+33700000001",
+    "email": "hello@maellek-makeup.fr",
+    "address": "12 rue Oberkampf, 75011 Paris",
+    "city": "Paris",
+    "postal_code": "75011",
+    "region": "Paris 11e",
+    "location_hint": "Métro Oberkampf, studio au 2e étage",
+    "instagram": "https://www.instagram.com/sobeauty.business",
+    "tiktok": "https://www.tiktok.com/@sobeauty.business",
+    "mode": "salon"
+  },
+  "theme": {},
+  "images": {
+    "hero_url": "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1600&q=80",
+    "about_url": "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/72dac18c45692fe84e2f2792ea7bf73e.jpg",
+    "svc_urls": [
+      "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1600&q=80",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1600&q=80",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80"
+    ],
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1600&q=80",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/1dff49858bc52c022f450a6f601c5d3b.jpg",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1600&q=80",
+      "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=1600&q=80",
+      "file:///Users/kevinjedeon/sobeauty-websites/_media/braiding/78b70cb9bdb02804075de823770cdfbd.jpg",
+      "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1600&q=80",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1600&q=80",
+      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=1600&q=80"
+    ]
+  },
+  "reviews": [
+    { "author": "Inès R.", "text": "Maëlle a tenu mon maquillage de mariée de 7 h du matin jusqu'à la fin de la soirée, sans une retouche. Et elle a su rassurer toute la famille.", "rating": 5, "service": "Maquillage mariée", "date": "2026-09-12" },
+    { "author": "Clémence B.", "text": "Un teint lumineux qui ressemble encore à moi sur les photos. L'essai m'a permis d'ajuster exactement ce que je voulais.", "rating": 5, "service": "Essai mariée", "date": "2026-08-30" },
+    { "author": "Awa D.", "text": "Maquillage de soirée en 40 minutes chrono avant un gala, résultat impeccable sous les flashs.", "rating": 5, "service": "Maquillage soirée", "date": "2026-07-19" },
+    { "author": "Sarah L.", "text": "Le cours d'auto-maquillage a changé ma routine du matin. Deux heures, des gestes simples, et j'ai enfin compris les teintes qui me vont.", "rating": 4, "service": "Cours d'auto-maquillage", "date": "2026-06-24" }
+  ],
+  "reviews_summary": { "average": 4.9, "count": 48 },
+  "hours": [
+    { "day": 0, "ranges": [] },
+    { "day": 1, "ranges": [["10:00", "19:00"]] },
+    { "day": 2, "ranges": [["10:00", "19:00"]] },
+    { "day": 3, "ranges": [["10:00", "19:00"]] },
+    { "day": 4, "ranges": [["10:00", "19:00"]] },
+    { "day": 5, "ranges": [["07:00", "20:00"]] },
+    { "day": 6, "ranges": [["07:00", "14:00"]] }
+  ],
+  "copy": {
+    "fr": {
+      "hero": { "title1": "Maquillage", "title2": "mariage", "title3": " et événements.", "desc": "Maquilleuse professionnelle à Paris, Maëlle sublime les mariées, les invitées et les visages de shooting avec un maquillage qui tient toute la journée et qui vous ressemble encore sur les photos.", "lead_service": "Maquillage mariée avec essai, la prestation la plus réservée" },
+      "highlights": [
+        { "title": "Mariages", "desc": "Mariée, témoins, mamans : un essai en studio, puis le jour J chez vous ou sur le lieu de la cérémonie." },
+        { "title": "Événements et soirées", "desc": "Gala, anniversaire, cérémonie : un maquillage qui tient sous les flashs et jusqu'au bout de la nuit." },
+        { "title": "Shootings et tournages", "desc": "Éditorial, portrait, plateau : un teint travaillé pour la caméra, retouches assurées pendant la séance." }
+      ],
+      "about": { "title2": "Maëlle", "desc": "Formée à Paris et passée par les plateaux de mode avant de me consacrer aux mariages, je travaille depuis sept ans toutes les carnations, des peaux les plus claires aux plus foncées, avec des produits longue tenue choisis pour la photo. Mon approche : un maquillage qui respecte votre visage, jamais un masque.", "bullets": ["Toutes les carnations", "Produits longue tenue testés en photo", "Déplacement à domicile en Île-de-France"], "sign": "Maëlle" },
+      "pillars": [
+        { "label": "Tenue", "text": "Des produits fixés pour durer de la cérémonie à la dernière danse." },
+        { "label": "Naturel", "text": "Un teint travaillé qui reste le vôtre, en vrai comme sur les photos." },
+        { "label": "Sérénité", "text": "Un essai avant le jour J, et une maquilleuse ponctuelle qui gère le timing." }
+      ],
+      "marquee": ["Mariée", "Invitée", "Soirée", "Shooting", "Toutes carnations", "Paris et Île-de-France"],
+      "footerTagline": "Maquilleuse professionnelle à Paris. Mariages, événements, shootings et cours d'auto-maquillage. Déplacement en Île-de-France.",
+      "offer": "",
+      "faq": [
+        { "q": "L'essai mariée est-il obligatoire ?", "a": "Il est vivement conseillé. Il se fait en studio quatre à six semaines avant le mariage et dure environ une heure." },
+        { "q": "Vous déplacez-vous le jour du mariage ?", "a": "Oui, à domicile, à l'hôtel ou sur le lieu de la cérémonie, dans toute l'Île-de-France. Les frais de déplacement sont indiqués au devis." },
+        { "q": "Combien de temps prévoir le jour J ?", "a": "Environ 1 h 15 pour la mariée et 40 minutes par invitée. Le planning est établi ensemble après l'essai." },
+        { "q": "Comment fonctionne l'acompte ?", "a": "Un acompte de 30 % bloque la date. Le solde est réglé le jour de la prestation." }
+      ],
+      "services": [
+        { "title": "Mariage", "items": [
+          { "name": "Maquillage mariée (jour J)", "duration": "1h15", "price": "180 €", "notes": "Déplacement inclus dans Paris" },
+          { "name": "Essai mariée", "duration": "1h", "price": "70 €", "notes": "En studio" },
+          { "name": "Invitée ou témoin", "duration": "40 min", "price": "60 €" }
+        ] },
+        { "title": "Événements", "items": [
+          { "name": "Maquillage soirée", "duration": "45 min", "price": "65 €" },
+          { "name": "Pose de faux cils", "duration": "15 min", "price": "15 €", "notes": "En complément" }
+        ] },
+        { "title": "Shooting et formation", "items": [
+          { "name": "Shooting photo", "duration": "1h", "price": "90 €", "notes": "Retouches pendant la séance" },
+          { "name": "Tournage ou plateau (demi-journée)", "duration": "4h", "price": "280 €" },
+          { "name": "Cours d'auto-maquillage", "duration": "2h", "price": "120 €", "notes": "Avec votre trousse" }
+        ] }
+      ],
+      "contact": { "intro": "Une date de mariage, un shooting, un événement ? Écrivez-moi avec la date et le lieu, je vous réponds sous 24 h.", "policy": ["L'acompte de 30 % bloque la date.", "Annulation gratuite jusqu'à 14 jours avant un mariage, 48 h pour les autres prestations.", "Les frais de déplacement hors Paris sont indiqués au devis."], "note": "Le studio est à deux minutes du métro Oberkampf, au 2e étage sans ascenseur." },
+      "cta": { "title1": "Travaillons", "title2": "ensemble", "title3": ".", "desc": "Réservez votre essai ou votre date en ligne, ou écrivez-moi sur WhatsApp." }
+    },
+    "en": {
+      "hero": { "title1": "Bridal", "title2": "and event", "title3": " makeup.", "desc": "Professional makeup artist in Paris, Maëlle makes brides, guests and photo-shoot faces shine with makeup that lasts all day and still looks like you in the pictures.", "lead_service": "Bridal makeup with trial, the most booked service" },
+      "highlights": [
+        { "title": "Weddings", "desc": "Bride, bridesmaids, mothers: a trial at the studio, then the big day at your place or at the venue." },
+        { "title": "Events and parties", "desc": "Gala, birthday, ceremony: makeup that holds under the flashes and until the end of the night." },
+        { "title": "Shoots and sets", "desc": "Editorial, portrait, film set: a complexion built for the camera, with touch-ups during the session." }
+      ],
+      "about": { "title2": "Maëlle", "desc": "Trained in Paris and shaped on fashion sets before turning to weddings, I have worked for seven years on every skin tone, from the fairest to the deepest, with long-wear products chosen for photography. My approach: makeup that respects your face, never a mask.", "bullets": ["Every skin tone", "Long-wear products tested on camera", "Travel to your place around Paris"], "sign": "Maëlle" },
+      "pillars": [
+        { "label": "Staying power", "text": "Products set to last from the ceremony to the last dance." },
+        { "label": "Natural", "text": "A polished complexion that is still yours, in real life and in the pictures." },
+        { "label": "Peace of mind", "text": "A trial before the big day, and a punctual artist who manages the timing." }
+      ],
+      "marquee": ["Bridal", "Guest", "Evening", "Photo shoot", "Every skin tone", "Paris and suburbs"],
+      "footerTagline": "Professional makeup artist in Paris. Weddings, events, photo shoots and self-makeup lessons. Travel around Paris.",
+      "offer": "",
+      "faq": [
+        { "q": "Is the bridal trial mandatory?", "a": "It is strongly recommended. It takes place at the studio four to six weeks before the wedding and lasts about an hour." },
+        { "q": "Do you travel on the wedding day?", "a": "Yes, to your home, hotel or venue, anywhere around Paris. Travel fees are stated in the quote." },
+        { "q": "How much time should I plan on the day?", "a": "About 1h15 for the bride and 40 minutes per guest. The schedule is set together after the trial." },
+        { "q": "How does the deposit work?", "a": "A 30% deposit secures the date. The balance is paid on the day." }
+      ],
+      "services": [
+        { "title": "Wedding", "items": [
+          { "name": "Bridal makeup (wedding day)", "duration": "1h15", "price": "180 €", "notes": "Travel within Paris included" },
+          { "name": "Bridal trial", "duration": "1h", "price": "70 €", "notes": "At the studio" },
+          { "name": "Guest or bridesmaid", "duration": "40 min", "price": "60 €" }
+        ] },
+        { "title": "Events", "items": [
+          { "name": "Evening makeup", "duration": "45 min", "price": "65 €" },
+          { "name": "False lashes", "duration": "15 min", "price": "15 €", "notes": "Add-on" }
+        ] },
+        { "title": "Shoots and lessons", "items": [
+          { "name": "Photo shoot", "duration": "1h", "price": "90 €", "notes": "Touch-ups during the session" },
+          { "name": "Film set (half day)", "duration": "4h", "price": "280 €" },
+          { "name": "Self-makeup lesson", "duration": "2h", "price": "120 €", "notes": "With your own kit" }
+        ] }
+      ],
+      "contact": { "intro": "A wedding date, a shoot, an event? Write to me with the date and the place, I answer within 24 hours.", "policy": ["The 30% deposit secures the date.", "Free cancellation up to 14 days before a wedding, 48 hours for other services.", "Travel fees outside Paris are stated in the quote."], "note": "The studio is two minutes from Oberkampf metro, on the 2nd floor without a lift." },
+      "cta": { "title1": "Let's work", "title2": "together", "title3": ".", "desc": "Book your trial or your date online, or message me on WhatsApp." }
+    }
+  }
+}

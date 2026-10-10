@@ -11,7 +11,7 @@ export const hour = (hhmm: string, lang: Lang): string => {
 };
 
 export const rangesLabel = (ranges: [string, string][], lang: Lang, closed: string): string =>
-  ranges.length ? ranges.map(([a, b]) => `${hour(a, lang)} – ${hour(b, lang)}`).join(lang === "en" ? ", " : " et ") : closed;
+  ranges.length ? ranges.map(([a, b]) => (lang === "en" ? `${hour(a, lang)} to ${hour(b, lang)}` : `${hour(a, lang)} à ${hour(b, lang)}`)).join(lang === "en" ? ", " : " et ") : closed;
 
 /** Day index Monday = 0 … Sunday = 6, from a JS Date. */
 export const todayIndex = (): number => (new Date().getDay() + 6) % 7;
