@@ -36,7 +36,7 @@ const REPO = join(import.meta.dir, "..");
 const TEMPLATE = join(REPO, "_template-base");
 const BASE_DOMAIN = "sobeauty.business";
 const API_BASE = "https://api.cherie.care/functions/v1";
-const CREDIT = { label: "SoBeauty", url: "https://sobeauty.business", logoUrl: "https://sobeauty.business/logo-sobeauty.png" };
+const CREDIT = { label: "SoBeauty", url: "https://sobeauty.business", logoUrl: "https://sobeauty.business/lovable-uploads/c7fadc4d-63e3-4259-9348-e54ad2da526f.png" };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Brief (the edge agent's output). v1 briefs still build (template inferred).
