@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SiteFooter } from "./index";
+import { getLiveMenu, SITE_ONLY_SECTIONS } from "@/lib/live-menu";
 import ingridLogoImg from "@/assets/ingrid-logo.jpeg";
 
 const LOGO_URL = ingridLogoImg;
@@ -273,6 +274,9 @@ const translations = {
 };
 
 export const Route = createFileRoute("/services")({
+  // Sa carte en direct depuis son app ; ses forfaits et rituels (pas encore dans l'app) restent écrits ici.
+  loader: async () => ({ live: await getLiveMenu() }),
+  staleTime: 5 * 60 * 1000,
   component: ServicesPage,
   head: () => ({
     meta: [
@@ -300,6 +304,11 @@ function ServicesPage() {
   };
 
   const t = translations[lang];
+  const { live } = Route.useLoaderData();
+  const liveGroups = live?.[lang];
+  const groups: Group[] = liveGroups?.length
+    ? [...liveGroups, ...t.groups.filter((g) => SITE_ONLY_SECTIONS(g.title))]
+    : t.groups;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -330,7 +339,7 @@ function ServicesPage() {
 
       <section className="py-24 px-6">
         <div className="mx-auto max-w-5xl space-y-20">
-          {t.groups.map((g) => (
+          {groups.map((g) => (
             <div key={g.title}>
               <h2 className="font-display text-3xl md:text-4xl font-light mb-6 pb-4 border-b border-border">
                 <em className="text-gradient-copper not-italic font-normal">{g.title}</em>
