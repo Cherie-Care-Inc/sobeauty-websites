@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { getLiveMenu, livePriceOf } from "@/lib/live-menu";
 import { useEffect, useState } from "react";
 import { ArrowRight, Instagram, Music2, Facebook, Star } from "lucide-react";
 
@@ -128,6 +129,9 @@ const translations = {
 };
 
 export const Route = createFileRoute("/")({
+  // Les prix de ses prestations phares suivent son app quand le nom correspond.
+  loader: async () => ({ live: await getLiveMenu() }),
+  staleTime: 5 * 60 * 1000,
   component: HomePage,
   head: () => ({
     meta: [
@@ -153,13 +157,14 @@ function HomePage() {
   };
 
   const t = translations[lang];
+  const { live } = Route.useLoaderData();
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <PageHeader lang={lang} setLanguage={setLanguage} t={t.nav} />
       <HeroSection t={t.hero} />
       <MarqueeSection items={t.marquee} />
-      <ServicesSection t={t.services} />
+      <ServicesSection t={{ ...t.services, items: t.services.items.map((it) => ({ ...it, price: livePriceOf(live?.[lang], it.name) ?? it.price })) }} />
       <AboutSection t={t.about} />
       <TestimonialsSection t={t.testimonials} />
       <SiteFooter t={{ footer: t.footer }} />

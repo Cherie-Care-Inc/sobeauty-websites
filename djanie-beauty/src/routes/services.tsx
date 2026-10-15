@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Info } from "lucide-react";
 import { SiteFooter } from "./index";
+import { getLiveMenu } from "@/lib/live-menu";
 
 type Lang = "fr" | "en";
 type Item = { name: string; duration?: string; price: string; notes?: string };
@@ -115,6 +116,9 @@ const translations = {
 };
 
 export const Route = createFileRoute("/services")({
+  // Sa carte en direct depuis son app (prix, durées, prestations ajoutées ou retirées).
+  loader: async () => ({ live: await getLiveMenu() }),
+  staleTime: 5 * 60 * 1000,
   component: ServicesPage,
   head: () => ({
     meta: [
@@ -142,6 +146,8 @@ function ServicesPage() {
   };
 
   const t = translations[lang];
+  const { live } = Route.useLoaderData();
+  const groups = live?.[lang]?.length ? live[lang]! : t.groups;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -161,7 +167,7 @@ function ServicesPage() {
 
       <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl space-y-16">
-          {t.groups.map((group) => (
+          {groups.map((group) => (
             <div key={group.title}>
               <h2 className="font-display text-3xl md:text-4xl font-light mb-8 pb-4 border-b border-border">
                 {group.title}
