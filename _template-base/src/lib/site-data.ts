@@ -45,7 +45,8 @@ export function buildSiteData(content: SiteContent, live: LiveByLang, lang: Lang
     reviews: facts?.reviews ?? content.blocks.reviews,
     reviewsSummary: facts ? facts.reviewsSummary : content.blocks.reviewsSummary,
     hours: content.blocks.hours,
-    images: { hero: heroImg, about: aboutImg, svc: svcImgs.filter(Boolean), gallery: gallery.slice(0, 12) },
+    // svc keeps its positions: image i belongs to highlight card i (an empty one = no image).
+    images: { hero: heroImg, about: aboutImg, svc: svcImgs, gallery: gallery.slice(0, 12) },
     whatsappUrl: facts?.whatsappUrl || content.brand.whatsappUrl,
     live: !!facts,
   };
