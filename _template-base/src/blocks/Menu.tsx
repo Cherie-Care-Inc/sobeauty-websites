@@ -15,19 +15,31 @@ export function MenuList({ data, groups, variant = "rows", limit, bookPerItem = 
   const book = data.content.brand.bookingUrl;
   const list = (groups ?? data.menu).filter((g) => g.items.length);
   if (!list.length) return null;
+  // Collapse by category when there's more than one group and no hard limit, so
+  // the page shows the categories (with their photo) rather than every service
+  // at once. The first category opens by default; the rest expand on tap.
+  const collapsible = list.length > 1 && !limit;
   let n = 0;
   return (
     <div className={`space-y-12 ${className}`}>
-      {list.map((g) => {
+      {list.map((g, gi) => {
         const items = limit ? g.items.slice(0, Math.max(0, limit - n)) : g.items;
         if (!items.length) return null;
         n += items.length;
-        return (
-          <div key={g.title}>
-            <h3 className="mb-5 flex items-end justify-between gap-4 border-b border-line pb-3 font-display text-2xl sm:text-3xl">
-              <span>{g.title}</span>
-              <span className="text-xs font-body font-medium uppercase tracking-widest text-muted-fg">{g.items.length}</span>
-            </h3>
+        const header = (
+          <h3 className="mb-5 flex items-center justify-between gap-4 border-b border-line pb-3 font-display text-2xl sm:text-3xl">
+            <span className="flex min-w-0 items-center gap-3">
+              {g.image && <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-line"><Img src={g.image} alt={g.title} className="h-full w-full object-cover" /></span>}
+              <span className="truncate">{g.title}</span>
+            </span>
+            <span className="flex shrink-0 items-center gap-2 text-xs font-body font-medium uppercase tracking-widest text-muted-fg">
+              {g.items.length}
+              {collapsible && <svg className="h-4 w-4 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6" /></svg>}
+            </span>
+          </h3>
+        );
+        const body = (
+          <>
             {variant === "cards" ? (
               <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((it, i) => (
@@ -61,6 +73,17 @@ export function MenuList({ data, groups, variant = "rows", limit, bookPerItem = 
                 ))}
               </ul>
             )}
+          </>
+        );
+        return collapsible ? (
+          <details key={g.title} open={gi === 0} className="group">
+            <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">{header}</summary>
+            {body}
+          </details>
+        ) : (
+          <div key={g.title}>
+            {header}
+            {body}
           </div>
         );
       })}

@@ -23,7 +23,7 @@ export type LiveByLang = Partial<Record<Lang, LiveFacts>>;
 const TIMEOUT_MS = 4000;
 const CACHE_SECONDS = 300;
 
-type PricingType = "fixed" | "hourly" | "quote";
+type PricingType = "fixed" | "hourly" | "quote" | "starting_from";
 interface ApiServiceItem {
   item_type: "service" | "category" | "subcategory";
   service_item_id: string;
@@ -46,7 +46,7 @@ interface ApiProfile {
   subcategories?: ApiServiceItem[];
   portfolio?: { photo_url: string }[];
   reviews_summary?: { total_reviews: number; overall_rating?: number; average_rating?: number };
-  reviews?: { client?: { name?: string }; rating_overall?: number; comment?: string; text?: string; created_at?: string; service_label?: string }[];
+  reviews?: { client?: { name?: string }; review_text?: string | null; ratings?: { overall?: number } | null; rating_overall?: number; comment?: string; text?: string; created_at?: string; service_label?: string }[];
   products?: { id: string; name: string; description?: string | null; image_url?: string | null; image_urls?: string[]; price_amount: number; currency: string; in_stock: boolean; kind?: "physical" | "digital" }[];
   shop?: { whatsapp: string | null } | null;
 }
@@ -60,40 +60,70 @@ export const formatMoney = (amount: number, currency: string, lang: Lang): strin
   }
 };
 
-const priceLabel = (it: ApiServiceItem, lang: Lang): string => {
+const priceLabel = (it: ApiServiceItem, lang: Lang, startingFrom = false): string => {
   if (it.pricing_type === "quote" || it.price_amount == null) return lang === "en" ? "On quote" : "Sur devis";
   const base = formatMoney(Number(it.price_amount), it.currency || "EUR", lang);
-  return it.pricing_type === "hourly" ? `${base} / h` : base;
+  if (it.pricing_type === "hourly") return `${base} / h`;
+  // "À partir de" when the service is priced from a floor (starting_from) or has
+  // several size variants sharing the one name (we keep the lowest).
+  if (startingFrom || it.pricing_type === "starting_from") return `${lang === "en" ? "From" : "Dès"} ${base}`;
+  return base;
 };
 
-/** Group the priced rows by category, keeping the snapshot's durations and order. */
+/**
+ * Group the priced services by their CATEGORY (e.g. "Tresses", "Locks", not the
+ * family "Coiffure"), each with the category image. One row per service, priced
+ * "à partir de" its lowest variant. Keeps the snapshot's durations and order.
+ */
 export function toMenu(profile: ApiProfile, lang: Lang, snapshot: ServiceGroup[]): ServiceGroup[] {
   const durationByName = new Map<string, string>();
   for (const g of snapshot) for (const it of g.items) durationByName.set(it.name.toLowerCase(), it.duration);
-  const groups = new Map<string, ServiceGroup>();
+
+  // category service_item_id -> { label, image } (the app's category level).
+  const catById = new Map<string, { label: string; image?: string | null; order: number }>();
+  (profile.categories ?? []).forEach((c, i) => catById.set(c.service_item_id, { label: c.label.trim(), image: c.image_url, order: i }));
+
+  type Row = { title: string; image?: string | null; order: number; items: Map<string, { it: ApiServiceItem; count: number }> };
+  const groups = new Map<string, Row>();
   for (const it of profile.subcategories ?? []) {
     if (it.price_amount == null && it.pricing_type !== "quote") continue;
-    const title = (it.parent_category_label || it.category_label || "").trim() || (lang === "en" ? "Services" : "Prestations");
-    const g = groups.get(title) ?? { title, items: [] };
-    g.items.push({
-      name: it.label.trim(),
-      duration: durationByName.get(it.label.trim().toLowerCase()) ?? "",
-      price: priceLabel(it, lang),
-      ...(it.description ? { notes: String(it.description).trim().slice(0, 140) } : {}),
-      ...(it.image_url ? { image: it.image_url } : {}),
-    });
-    groups.set(title, g);
+    const cat = it.parent_category_id ? catById.get(it.parent_category_id) : undefined;
+    const title = (cat?.label || it.category_label || it.parent_category_label || "").trim()
+      || (lang === "en" ? "Services" : "Prestations");
+    const key = title.toLowerCase();
+    const g = groups.get(key) ?? { title, image: cat?.image ?? undefined, order: cat?.order ?? 999, items: new Map() };
+    // Collapse size variants of the same service to one row, keeping the lowest price.
+    const nameKey = it.label.trim().toLowerCase();
+    const prev = g.items.get(nameKey);
+    if (!prev) g.items.set(nameKey, { it, count: 1 });
+    else {
+      prev.count += 1;
+      const pa = Number(it.price_amount ?? Infinity), pb = Number(prev.it.price_amount ?? Infinity);
+      if (Number.isFinite(pa) && pa < pb) prev.it = it;
+    }
+    groups.set(key, g);
   }
   if (!groups.size) return snapshot;
-  // Snapshot order first (the agent sorted it), then new groups.
-  const order = snapshot.map((g) => g.title);
-  return [...groups.values()].sort((a, b) => {
-    const ia = order.indexOf(a.title), ib = order.indexOf(b.title);
-    if (ia === -1 && ib === -1) return b.items.length - a.items.length;
-    if (ia === -1) return 1;
-    if (ib === -1) return -1;
-    return ia - ib;
-  });
+
+  const order = snapshot.map((g) => g.title.toLowerCase());
+  return [...groups.values()]
+    .map((g) => ({
+      title: g.title,
+      ...(g.image ? { image: g.image } : {}),
+      items: [...g.items.values()].map(({ it, count }) => ({
+        name: it.label.trim(),
+        duration: durationByName.get(it.label.trim().toLowerCase()) ?? "",
+        price: priceLabel(it, lang, count > 1),
+        ...(it.description ? { notes: String(it.description).trim().slice(0, 140) } : {}),
+        ...(it.image_url ? { image: it.image_url } : {}),
+      })),
+    }))
+    .sort((a, b) => {
+      const ia = order.indexOf(a.title.toLowerCase()), ib = order.indexOf(b.title.toLowerCase());
+      if (ia !== -1 || ib !== -1) { if (ia === -1) return 1; if (ib === -1) return -1; return ia - ib; }
+      const oa = groups.get(a.title.toLowerCase())?.order ?? 999, ob = groups.get(b.title.toLowerCase())?.order ?? 999;
+      return oa - ob || b.items.length - a.items.length;
+    });
 }
 
 export function toFacts(profile: ApiProfile, lang: Lang, content: SiteContent): LiveFacts {
@@ -121,12 +151,20 @@ export function toFacts(profile: ApiProfile, lang: Lang, content: SiteContent): 
     inStock: p.in_stock !== false,
     url: content.brand.shopUrl || bookingUrl,
   }));
+  // L'API renvoie `review_text` et `ratings.overall` (17/10/2026) : sans eux, aucun
+  // avis ne passait. Prénom + initiale, jamais le nom complet de la cliente.
+  const textOf = (r: NonNullable<ApiProfile["reviews"]>[number]) => (r.review_text ?? r.comment ?? r.text ?? "").trim();
+  const shortName = (name: string) => {
+    const [first, ...rest] = name.trim().split(/\s+/);
+    const last = rest.pop();
+    return first ? `${first.charAt(0).toUpperCase()}${first.slice(1).toLowerCase()}${last ? ` ${last.charAt(0).toUpperCase()}.` : ""}` : "";
+  };
   const reviews: Review[] = (profile.reviews ?? [])
-    .filter((r) => (r.comment ?? r.text ?? "").trim().length > 12)
+    .filter((r) => textOf(r).length > 12)
     .map((r) => ({
-      author: (r.client?.name ?? "").trim() || (lang === "en" ? "A client" : "Une cliente"),
-      text: (r.comment ?? r.text ?? "").trim(),
-      rating: Math.max(1, Math.min(5, Math.round(Number(r.rating_overall ?? 5)))),
+      author: shortName(r.client?.name ?? "") || (lang === "en" ? "A client" : "Une cliente"),
+      text: textOf(r),
+      rating: Math.max(1, Math.min(5, Math.round(Number(r.ratings?.overall ?? r.rating_overall ?? 5)))),
       service: (r.service_label ?? "").trim(),
       date: r.created_at ? String(r.created_at).slice(0, 10) : "",
     }));

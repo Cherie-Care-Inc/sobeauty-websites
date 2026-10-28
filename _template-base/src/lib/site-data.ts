@@ -47,7 +47,8 @@ export function buildSiteData(content: SiteContent, live: LiveByLang, lang: Lang
     hours: content.blocks.hours,
     // svc keeps its positions: image i belongs to highlight card i (an empty one = no image).
     images: { hero: heroImg, about: aboutImg, svc: svcImgs, gallery: gallery.slice(0, 12) },
-    whatsappUrl: facts?.whatsappUrl || content.brand.whatsappUrl,
+    // WhatsApp is opt-in (brand.whatsappButton): off => no WhatsApp button, footer icon or contact line anywhere.
+    whatsappUrl: content.brand.whatsappButton ? (facts?.whatsappUrl || content.brand.whatsappUrl) : "",
     live: !!facts,
   };
 }

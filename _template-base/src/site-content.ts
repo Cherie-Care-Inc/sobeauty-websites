@@ -122,6 +122,8 @@ export interface PageCopy {
 /** One priced group on the /services menu page. */
 export interface ServiceGroup {
   title: string;
+  /** Category image (from the app category, or the AM's chosen photo). */
+  image?: string;
   items: { name: string; duration: string; price: string; notes?: string; image?: string }[];
 }
 
@@ -201,6 +203,7 @@ export interface SiteContent {
     bookingUrl: string;           // https://book.sobeauty.business/<booking-slug>
     shopUrl: string;              // booking page, shop tab ("" when no products)
     whatsappUrl: string;          // https://wa.me/<digits> ("" when no number)
+    whatsappButton?: boolean;     // opt-in: show the WhatsApp button/links (off => no WhatsApp anywhere)
     schemaType: "HairSalon" | "BeautySalon" | "NailSalon" | "Barber" | "DaySpa" | "Store" | "EducationalOrganization";
     defaultLang: Lang;
     langs: Lang[];

@@ -79,6 +79,7 @@ interface Brief {
   live?: boolean;
   shop_url?: string;
   whatsapp?: string;                  // digits, international
+  whatsapp_button?: boolean;          // opt-in: show the WhatsApp button/links (default off)
   logo_url?: string;
   owner_photo_url?: string;
   credit_logo_url?: string;
@@ -362,6 +363,7 @@ function assemble(b: Brief, host: string, template: TemplateKey, category: Categ
     brand: {
       name: clean(b.brand_name), displayParts, initial: b.brand_name.trim()[0].toUpperCase(), slug: b.slug,
       logoUrl: b.logo_url ?? "", bookingUrl, shopUrl: b.shop_url ?? (products.length ? `${bookingUrl}${bookingUrl.includes("?") ? "&" : "?"}tab=boutique` : ""),
+      whatsappButton: b.whatsapp_button ?? false,
       whatsappUrl, schemaType: schemaTypeFor(category, b.schema_type), defaultLang, langs,
     },
     contact: {
