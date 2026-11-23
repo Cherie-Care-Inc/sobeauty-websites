@@ -1,11 +1,15 @@
 ---
 name: handoff
-description: Close a long-running session without losing its work: save decisions to memory, write a handoff brief, start a FRESH successor session with it, then stop. Trigger on /handoff, "hand off this session", "close this session and continue in a new one".
+description: Close a long-running session without losing its work: measure usage, save decisions to memory, write a handoff brief, start a FRESH successor session with it, report the context saved, then stop. Trigger on /handoff, "hand off this session", "close this session and continue in a new one". Run it when the context passes ~150k tokens, when the task changes, or at the end of the day for a session that continues tomorrow.
 ---
 
 # handoff
 
-The user is closing this session to free context. Do the four steps below in order, then stop. Plain full sentences in the memory files and the brief; this is persisted text, caveman does not apply there.
+The user is closing this session to free context. Do the five steps below in order, then stop. Plain full sentences in the memory files and the brief; this is persisted text, caveman does not apply there.
+
+## 0. Measure first
+
+If `mcp__ccd_session_mgmt__get_usage` is available (desktop app), call it with `session_id` "self" and keep: context tokens used and percent, the per-category tokens (system prompt, tools, skills, memory files, messages), and each weekly-limit window's percent used and reset time. Where the tool does not exist (cloud, terminal CLI), skip this step silently and leave the numbers out of the report.
 
 ## 1. Save to memory
 
@@ -33,4 +37,10 @@ If no session tool exists in this host, print the brief in a code block instead 
 
 ## 4. Report and stop
 
-Reply with the new session's link and a three-line summary of what was saved. Make no further changes in this session.
+Reply with:
+
+- the new session's link
+- three lines on what was saved
+- when step 0 ran, a usage recap in this shape: context before (tokens and percent); the successor's expected starting size (the fixed categories, meaning system prompt, tools, skills and memory files, plus the brief); the per-message saving that implies, as a percent; the weekly-limit percentages and reset time. Say in a few words that the weekly percentage measures the account, not this handoff, so it cannot show what the handoff saved.
+
+Make no further changes in this session.
