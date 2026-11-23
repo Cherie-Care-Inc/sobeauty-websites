@@ -1,0 +1,18 @@
+{
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "20"
+  },
+  "hooks": {
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Write the summary as a handoff brief with these sections: goal; folder, branch and worktree; files touched; done and verified; done but not verified; not done, as next steps in order; decisions and their reasons; open questions and traps found; checks and deploy rules to run before deploying; memory files to read first. Keep exact paths, commands, error strings and numbers verbatim.\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
