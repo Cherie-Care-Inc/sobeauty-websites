@@ -5,7 +5,7 @@ description: Close a long-running session without losing its work: measure usage
 
 # handoff
 
-The user is closing this session to free context. Do the five steps below in order, then stop. Plain full sentences in the memory files and the brief; this is persisted text, caveman does not apply there.
+The user is closing this session to free context. Do the five steps below in order, then stop. Plain full sentences in the memory files and the brief; this is persisted text, caveman does not apply there. Write them densely all the same: every sentence carries a fact the successor needs (a path, a decision, a state, a number), nothing a successor can read in the repo, git history or an existing memory file, no narrative of how the session went. Do not run /caveman-compress on the brief or the memory files: that spends a model call to shorten text that is read once.
 
 ## 0. Measure first
 
@@ -26,6 +26,8 @@ Write a brief for a successor session that has none of this conversation:
 - what is not done, as next steps in order
 - checks to run before deploying, and any deploy rules that apply (deploy scripts, contract files, live checks)
 - the memory files to read first, by file name
+
+Keep the brief under about 1,500 words. Exact paths, commands, error strings and numbers stay verbatim; everything else is summarised.
 
 Synthesize it in your own words. Never write "based on the findings above" or refer to this conversation.
 
